@@ -1,0 +1,44 @@
+[
+  {
+    "order_id": 1001,
+    "name": "John Doe",
+    "phone": "555-1234",
+    "type": "pickup",
+    "address": "",
+    "items": [
+      { "id": 1, "name": "Chicken Teriyaki Bowl", "qty": 1, "price": 11.99 },
+      { "id": 4, "name": "Miso Soup", "qty": 2, "price": 2.99 }
+    ],
+    "total": 17.97,
+    "status": "Completed",
+    "timestamp": "2025-02-10 12:15:00"
+  },
+  {
+    "order_id": 1002,
+    "name": "Sarah Lee",
+    "phone": "555-9876",
+    "type": "delivery",
+    "address": "123 Maple Street",
+    "items": [
+      { "id": 2, "name": "Beef Gyudon", "qty": 1, "price": 12.49 },
+      { "id": 3, "name": "Vegetable Tempura", "qty": 1, "price": 7.99 }
+    ],
+    "total": 20.48,
+    "status": "Pending",
+    "timestamp": "2025-02-10 13:42:00"
+  },
+  {
+    "order_id": 1003,
+    "name": "Kevin Park",
+    "phone": "555-2222",
+    "type": "pickup",
+    "address": "",
+    "items": [
+      { "id": 5, "name": "California Roll", "qty": 2, "price": 8.49 },
+      { "id": 6, "name": "Spicy Tuna Roll", "qty": 1, "price": 9.99 }
+    ],
+    "total": 26.97,
+    "status": "Preparing",
+    "timestamp": "2025-02-10 14:05:00"
+  }
+]

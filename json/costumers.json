@@ -1,0 +1,16 @@
+[
+  {
+    "customer_id": 1,
+    "name": "John Doe",
+    "phone": "555-1234",
+    "email": "john@example.com",
+    "password": "$2y$10$examplehashforpassword123456789" 
+  },
+  {
+    "customer_id": 2,
+    "name": "Sarah Lee",
+    "phone": "555-9876",
+    "email": "sarah@example.com",
+    "password": "$2y$10$examplehashforpasswordabcdefghi"
+  }
+]

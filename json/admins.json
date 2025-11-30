@@ -1,0 +1,12 @@
+[
+  {
+    "admin_id": 1,
+    "username": "admin",
+    "password": "$2y$10$9AbCdEfGhIjKlmNoPqRsTuVwxYz1234567890hash"
+  },
+  {
+    "admin_id": 2,
+    "username": "manager",
+    "password": "$2y$10$xyzhashpassword87654321sample"
+  }
+]

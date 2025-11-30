@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Chicken Teriyaki Bowl",
+    "price": 11.99,
+    "category": "Bowls",
+    "description": "Grilled chicken glazed with teriyaki sauce served over steamed rice.",
+    "image": "images/chicken_teriyaki.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Beef Gyudon",
+    "price": 12.49,
+    "category": "Bowls",
+    "description": "Thin sliced beef simmered with onion in a savory sweet sauce.",
+    "image": "images/beef_gyudon.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Vegetable Tempura",
+    "price": 7.99,
+    "category": "Sides",
+    "description": "Crispy tempura assortment of seasonal vegetables.",
+    "image": "images/veggie_tempura.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Miso Soup",
+    "price": 2.99,
+    "category": "Sides",
+    "description": "Classic miso soup with tofu, seaweed, and green onions.",
+    "image": "images/miso_soup.jpg"
+  },
+  {
+    "id": 5,
+    "name": "California Roll",
+    "price": 8.49,
+    "category": "Sushi",
+    "description": "Imitation crab, avocado, and cucumber rolled in sushi rice.",
+    "image": "images/california_roll.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Spicy Tuna Roll",
+    "price": 9.99,
+    "category": "Sushi",
+    "description": "Fresh tuna mixed with spicy mayo wrapped in rice and seaweed.",
+    "image": "images/spicy_tuna_roll.jpg"
+  }
+]
