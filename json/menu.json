@@ -1,50 +1,82 @@
 [
   {
     "id": 1,
-    "name": "Chicken Teriyaki Bowl",
-    "price": 11.99,
-    "category": "Bowls",
-    "description": "Grilled chicken glazed with teriyaki sauce served over steamed rice.",
-    "image": "images/chicken_teriyaki.jpg"
+    "name": "Spaghetti",
+    "price": 7.29,
+    "category": "Entrees",
+    "description": "Classic spaghetti pasta served with marinara sauce and herbs.",
+    "image": "images/spaghetti.jpg"
   },
   {
     "id": 2,
-    "name": "Beef Gyudon",
-    "price": 12.49,
-    "category": "Bowls",
-    "description": "Thin sliced beef simmered with onion in a savory sweet sauce.",
-    "image": "images/beef_gyudon.jpg"
+    "name": "Vegetable Pizza",
+    "price": 5.49,
+    "category": "Entrees",
+    "description": "Thin crust pizza topped with fresh vegetables and cheese.",
+    "image": "images/vegetable_pizza.jpg"
   },
   {
     "id": 3,
-    "name": "Vegetable Tempura",
-    "price": 7.99,
-    "category": "Sides",
-    "description": "Crispy tempura assortment of seasonal vegetables.",
-    "image": "images/veggie_tempura.jpg"
+    "name": "Mushroom Pizza",
+    "price": 7.49,
+    "category": "Entrees",
+    "description": "Pizza topped with mixed mushrooms and mozzarella cheese.",
+    "image": "images/mushroom_pizza.jpg"
   },
   {
     "id": 4,
-    "name": "Miso Soup",
-    "price": 2.99,
-    "category": "Sides",
-    "description": "Classic miso soup with tofu, seaweed, and green onions.",
-    "image": "images/miso_soup.jpg"
+    "name": "Sweets",
+    "price": 6.49,
+    "category": "Dessert",
+    "description": "Sweet creamy dessert topped with nuts.",
+    "image": "images/sweets.jpg"
   },
   {
     "id": 5,
-    "name": "California Roll",
-    "price": 8.49,
-    "category": "Sushi",
-    "description": "Imitation crab, avocado, and cucumber rolled in sushi rice.",
-    "image": "images/california_roll.jpg"
+    "name": "Appetizer Sample",
+    "price": 4.49,
+    "category": "Appetizers",
+    "description": "Light appetizer to start your meal.",
+    "image": "images/appetizer.jpg"
   },
   {
     "id": 6,
-    "name": "Spicy Tuna Roll",
-    "price": 9.99,
-    "category": "Sushi",
-    "description": "Fresh tuna mixed with spicy mayo wrapped in rice and seaweed.",
-    "image": "images/spicy_tuna_roll.jpg"
+    "name": "Salad Bowl",
+    "price": 6.99,
+    "category": "Salad",
+    "description": "Fresh and healthy salad bowl with vegetables and dressing.",
+    "image": "images/salad.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Iced Drink",
+    "price": 3.49,
+    "category": "Drink",
+    "description": "Cold refreshing drink to enjoy with your meal.",
+    "image": "images/drink.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Italian Pizza",
+    "price": 7.49,
+    "category": "Entrees",
+    "description": "Italian-style pizza with cheese and herbs.",
+    "image": "images/italian_pizza.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Sausage Pizza",
+    "price": 7.49,
+    "category": "Entrees",
+    "description": "Pizza topped with sausage and mozzarella.",
+    "image": "images/sausage_pizza.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Cheese Pizza",
+    "price": 7.49,
+    "category": "Entrees",
+    "description": "Classic cheese pizza with golden crust.",
+    "image": "images/cheese_pizza.jpg"
   }
 ]
