@@ -2,81 +2,321 @@
   {
     "id": 1,
     "name": "Spaghetti",
-    "price": 7.29,
+    "price": 12.99,
     "category": "Entrees",
     "description": "Classic spaghetti pasta served with marinara sauce and herbs.",
-    "image": "images/spaghetti.jpg"
+    "image": "img/Food/Entree/Spaghetti.png"
   },
   {
-    "id": 2,
-    "name": "Vegetable Pizza",
-    "price": 5.49,
+    "id": 30,
+    "name": "Burger",
+    "price": 11.99,
     "category": "Entrees",
-    "description": "Thin crust pizza topped with fresh vegetables and cheese.",
-    "image": "images/vegetable_pizza.jpg"
+    "description": "Juicy beef burger with fresh vegetables and special sauce.",
+    "image": "img/Food/Entree/Burger.png"
   },
   {
-    "id": 3,
-    "name": "Mushroom Pizza",
-    "price": 7.49,
+    "id": 31,
+    "name": "Chicken with Grapes and Fennel",
+    "price": 15.99,
     "category": "Entrees",
-    "description": "Pizza topped with mixed mushrooms and mozzarella cheese.",
-    "image": "images/mushroom_pizza.jpg"
+    "description": "Tender chicken cooked with sweet grapes and aromatic fennel.",
+    "image": "img/Food/Entree/ChickenGrapesFennel.png"
+  },
+  {
+    "id": 32,
+    "name": "Chicken Rice Porridge",
+    "price": 9.99,
+    "category": "Entrees",
+    "description": "Comforting chicken and rice porridge, warm and satisfying.",
+    "image": "img/Food/Entree/ChickenRicePorridge.png"
+  },
+  {
+    "id": 33,
+    "name": "Clams with Sherry and Olives",
+    "price": 16.99,
+    "category": "Entrees",
+    "description": "Fresh clams cooked in sherry with briny olives.",
+    "image": "img/Food/Entree/clamsWithSherryandOlives.png"
+  },
+  {
+    "id": 34,
+    "name": "Crispy Roast Chicken",
+    "price": 14.99,
+    "category": "Entrees",
+    "description": "Perfectly roasted chicken with crispy golden skin.",
+    "image": "img/Food/Entree/CrispyRoastChicken.png"
+  },
+  {
+    "id": 35,
+    "name": "Mushroom Tacos",
+    "price": 10.99,
+    "category": "Entrees",
+    "description": "Savory mushroom tacos with fresh toppings and salsa.",
+    "image": "img/Food/Entree/MushroomTacos.png"
+  },
+  {
+    "id": 36,
+    "name": "Pork Chops with Grape and Fig Agrodolce",
+    "price": 17.99,
+    "category": "Entrees",
+    "description": "Tender pork chops with sweet and sour grape and fig sauce.",
+    "image": "img/Food/Entree/Pork-Chops-with-Grape-and-Fig-Agrodolce.png"
+  },
+  {
+    "id": 37,
+    "name": "Risotto with Mushrooms and Thyme",
+    "price": 13.99,
+    "category": "Entrees",
+    "description": "Creamy risotto with wild mushrooms and fresh thyme.",
+    "image": "img/Food/Entree/risotto-with-mushrooms-and-thyme.png"
+  },
+  {
+    "id": 38,
+    "name": "Shrimp Noodle",
+    "price": 14.99,
+    "category": "Entrees",
+    "description": "Fresh shrimp served over flavorful noodles.",
+    "image": "img/Food/Entree/ShrimpNoodle.png"
   },
   {
     "id": 4,
-    "name": "Sweets",
-    "price": 6.49,
+    "name": "7UP Cake",
+    "price": 6.99,
     "category": "Dessert",
-    "description": "Sweet creamy dessert topped with nuts.",
-    "image": "images/sweets.jpg"
+    "description": "Light and fluffy cake made with 7UP for a unique citrus flavor.",
+    "image": "img/Food/dessert/7upCake.png"
+  },
+  {
+    "id": 24,
+    "name": "Apple Pie Cookies",
+    "price": 5.99,
+    "category": "Dessert",
+    "description": "Delicious cookies with apple pie filling, perfect for dessert lovers.",
+    "image": "img/Food/dessert/Apple-Pie-Cookies.png"
+  },
+  {
+    "id": 25,
+    "name": "Cannoli",
+    "price": 7.49,
+    "category": "Dessert",
+    "description": "Traditional Italian pastry filled with sweet ricotta cream.",
+    "image": "img/Food/dessert/Cannoli.png"
+  },
+  {
+    "id": 26,
+    "name": "Flourless Chocolate Cake",
+    "price": 8.99,
+    "category": "Dessert",
+    "description": "Rich and decadent flourless chocolate cake, gluten-free and indulgent.",
+    "image": "img/Food/dessert/FlourlessChocolate.png"
+  },
+  {
+    "id": 27,
+    "name": "Gateau Basque",
+    "price": 8.49,
+    "category": "Dessert",
+    "description": "Traditional French pastry cake with a buttery crust and sweet filling.",
+    "image": "img/Food/dessert/GateauBasque.png"
+  },
+  {
+    "id": 28,
+    "name": "Pear Tart",
+    "price": 7.99,
+    "category": "Dessert",
+    "description": "Elegant pear tart with delicate pastry and caramelized pears.",
+    "image": "img/Food/dessert/PearTart.png"
+  },
+  {
+    "id": 29,
+    "name": "Yellow Cake with Chocolate Frosting",
+    "price": 6.99,
+    "category": "Dessert",
+    "description": "Classic yellow cake topped with rich chocolate frosting.",
+    "image": "img/Food/dessert/YellowCakewithChocholateFrosting.png"
   },
   {
     "id": 5,
-    "name": "Appetizer Sample",
-    "price": 4.49,
+    "name": "Cheese Biscuits",
+    "price": 5.99,
     "category": "Appetizers",
-    "description": "Light appetizer to start your meal.",
-    "image": "images/appetizer.jpg"
+    "description": "Freshly baked cheese biscuits with a golden crust.",
+    "image": "img/Food/appetizers/CheeseBiscuits.png"
+  },
+  {
+    "id": 11,
+    "name": "Dim Sum",
+    "price": 6.49,
+    "category": "Appetizers",
+    "description": "Traditional steamed dumplings with savory fillings.",
+    "image": "img/Food/appetizers/Dimsum.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Figs with Bacon and Chile",
+    "price": 7.99,
+    "category": "Appetizers",
+    "description": "Sweet figs wrapped in crispy bacon with a hint of chile.",
+    "image": "img/Food/appetizers/figs-with-bacon-and-chile.png"
+  },
+  {
+    "id": 13,
+    "name": "French Fries",
+    "price": 4.99,
+    "category": "Appetizers",
+    "description": "Crispy golden french fries served hot and fresh.",
+    "image": "img/Food/appetizers/fries.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Goat Cheese Salami Stuffed Dates",
+    "price": 8.49,
+    "category": "Appetizers",
+    "description": "Sweet dates stuffed with creamy goat cheese and salami.",
+    "image": "img/Food/appetizers/GoatCheeseSalamiStuffedDates.png"
+  },
+  {
+    "id": 15,
+    "name": "Jalapeno Peppers with Smoked Gouda",
+    "price": 6.99,
+    "category": "Appetizers",
+    "description": "Spicy jalapeno peppers filled with rich smoked gouda cheese.",
+    "image": "img/Food/appetizers/JalapenoPeppersWithSmokedGouda.png"
+  },
+  {
+    "id": 16,
+    "name": "Pickled Shrimp",
+    "price": 7.49,
+    "category": "Appetizers",
+    "description": "Fresh shrimp marinated in tangy pickling spices.",
+    "image": "img/Food/appetizers/Pickled-Shrimp.png"
+  },
+  {
+    "id": 17,
+    "name": "Smoked Salmon",
+    "price": 9.99,
+    "category": "Appetizers",
+    "description": "Premium smoked salmon served with capers and cream cheese.",
+    "image": "img/Food/appetizers/smokedSalmon.jpg"
   },
   {
     "id": 6,
-    "name": "Salad Bowl",
-    "price": 6.99,
+    "name": "Black Eyed Pea Salad with Hot Sauce Vinaigrette",
+    "price": 7.99,
     "category": "Salad",
-    "description": "Fresh and healthy salad bowl with vegetables and dressing.",
-    "image": "images/salad.jpg"
+    "description": "Hearty black eyed pea salad with a spicy hot sauce vinaigrette dressing.",
+    "image": "img/Food/Salad/BlackEyedPeaSaladwithHotSauceVinaigrette.png"
+  },
+  {
+    "id": 18,
+    "name": "Caprese Salad",
+    "price": 8.49,
+    "category": "Salad",
+    "description": "Classic Italian salad with fresh mozzarella, tomatoes, and basil.",
+    "image": "img/Food/Salad/CapreseSalad.png"
+  },
+  {
+    "id": 19,
+    "name": "Five Bean Salad with Smoked Paprika Vinaigrette",
+    "price": 7.49,
+    "category": "Salad",
+    "description": "Nutritious five bean salad with a smoky paprika vinaigrette.",
+    "image": "img/Food/Salad/FiveBeanSaladWithSmokedPaprikaVinaigrette.png"
+  },
+  {
+    "id": 20,
+    "name": "Kimchi Fried Rice",
+    "price": 8.99,
+    "category": "Salad",
+    "description": "Flavorful Korean-style kimchi fried rice with vegetables.",
+    "image": "img/Food/Salad/KimchiFriedRice.png"
+  },
+  {
+    "id": 21,
+    "name": "Maui Kale Salad with Sweet Onion Dressing",
+    "price": 8.99,
+    "category": "Salad",
+    "description": "Fresh kale salad with tropical flavors and sweet onion dressing.",
+    "image": "img/Food/Salad/MauiKaleSaladWithSweetOnionDressing.png"
+  },
+  {
+    "id": 22,
+    "name": "Miso Kale Caesar Salad",
+    "price": 9.49,
+    "category": "Salad",
+    "description": "Asian-inspired kale Caesar salad with miso dressing.",
+    "image": "img/Food/Salad/MisoKaleCaesarSalad.png"
+  },
+  {
+    "id": 23,
+    "name": "Winter Salad Hummus Bowls",
+    "price": 8.99,
+    "category": "Salad",
+    "description": "Seasonal winter vegetables with creamy hummus in a satisfying bowl.",
+    "image": "img/Food/Salad/WinterSaladHummusBowls.png"
   },
   {
     "id": 7,
-    "name": "Iced Drink",
-    "price": 3.49,
+    "name": "Flannel Factor",
+    "price": 5.99,
     "category": "Drink",
-    "description": "Cold refreshing drink to enjoy with your meal.",
-    "image": "images/drink.jpg"
+    "description": "A cozy and warming cocktail perfect for any occasion.",
+    "image": "img/Food/drinks/FlannelFactor.png"
   },
   {
-    "id": 8,
-    "name": "Italian Pizza",
-    "price": 7.49,
-    "category": "Entrees",
-    "description": "Italian-style pizza with cheese and herbs.",
-    "image": "images/italian_pizza.jpg"
+    "id": 39,
+    "name": "Lemon, Lime, and Bitters",
+    "price": 4.99,
+    "category": "Drink",
+    "description": "Refreshing citrus drink with a hint of bitters.",
+    "image": "img/Food/drinks/lemon,lime,andbitters.png"
   },
   {
-    "id": 9,
-    "name": "Sausage Pizza",
-    "price": 7.49,
-    "category": "Entrees",
-    "description": "Pizza topped with sausage and mozzarella.",
-    "image": "images/sausage_pizza.jpg"
+    "id": 40,
+    "name": "Mint Matcha Sparkler",
+    "price": 6.49,
+    "category": "Drink",
+    "description": "Refreshing matcha green tea with mint and sparkling water.",
+    "image": "img/Food/drinks/Mint-Matcha-Sparkler.png"
   },
   {
-    "id": 10,
-    "name": "Cheese Pizza",
+    "id": 41,
+    "name": "Mulled Wine",
+    "price": 7.99,
+    "category": "Drink",
+    "description": "Warm spiced wine with aromatic spices, perfect for cooler weather.",
+    "image": "img/Food/drinks/MulledWine.png"
+  },
+  {
+    "id": 42,
+    "name": "Prizefighter No. 1",
+    "price": 6.99,
+    "category": "Drink",
+    "description": "A bold and flavorful cocktail with a winning combination.",
+    "image": "img/Food/drinks/PrizefighterNo1.png"
+  },
+  {
+    "id": 43,
+    "name": "Razzle Dazzle",
+    "price": 5.99,
+    "category": "Drink",
+    "description": "A vibrant and fruity cocktail that's sure to impress.",
+    "image": "img/Food/drinks/RazzleDazzle.png"
+  },
+  {
+    "id": 44,
+    "name": "Spicy Citrus Refresher",
+    "price": 5.49,
+    "category": "Drink",
+    "description": "A zesty citrus drink with a spicy kick for a refreshing experience.",
+    "image": "img/Food/drinks/spicy-citrus-refresher.png"
+  },
+  {
+    "id": 45,
+    "name": "Tipperary",
     "price": 7.49,
-    "category": "Entrees",
-    "description": "Classic cheese pizza with golden crust.",
-    "image": "images/cheese_pizza.jpg"
+    "category": "Drink",
+    "description": "Classic Irish cocktail with a smooth and sophisticated flavor.",
+    "image": "img/Food/drinks/Tipperary.png"
   }
 ]

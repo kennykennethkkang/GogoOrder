@@ -1,9 +1,9 @@
 [
   {
     "customer_id": 1,
-    "name": "John Doe",
+    "name": "Navid Shaghaghi",
     "phone": "555-1234",
-    "email": "john@example.com",
+    "email": "navid@example.com",
     "password": "$2y$10$examplehashforpassword123456789" 
   },
   {
