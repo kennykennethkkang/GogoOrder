@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gogo Order</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -39,7 +40,6 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="text" placeholder="Search...">
             </div>
-
             <div class="user-info">
                 <img src="https://i.pravatar.cc/60" alt="User">
                 <span>Navid Shaghaghi</span>
@@ -48,14 +48,14 @@
 
         <!-- Hero -->
         <section class="hero">
-            <div class="hero-left">
-                <h2>Hello, Navid Shaghaghi</h2>
-                <p>Get <span class="blue">FREE delivery</span> on every weekend</p>
-                <button class="hero-btn">Check Menu</button>
-            </div>
-
-            <div class="hero-image">
-                <img src="https://i.imgur.com/5ZQ0VYw.jpeg" alt="Drinks">
+            <div class="hero-banner">
+                <img src="img/Banner.png" alt="Banner">
+                <div class="hero-content">
+                    <p class="hero-label">Deal of the weekend</p>
+                    <h2>Hello, Navid Shaghaghi</h2>
+                    <p>Get <span class="blue">FREE delivery</span> on every weekend</p>
+                    <button class="hero-btn">Check Menu</button>
+                </div>
             </div>
 
             <div class="hero-promo">
@@ -69,19 +69,36 @@
         <section class="categories">
             <div class="section-title">
                 <h3>Menu category</h3>
-                <a href="#">View All</a>
+                <a href="#">View All <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="category-list">
                 <div class="category active">
-                    <img src="https://i.imgur.com/eWg6JZr.png">
+                    <img src="img/categories/appetizers.png">
                     <p>Appetizers</p>
+                    <i class="fa-solid fa-arrow-right category-arrow"></i>
                 </div>
 
-                <div class="category"><img src="https://i.imgur.com/n3bqUO4.png"><p>Entrees</p></div>
-                <div class="category"><img src="https://i.imgur.com/2M9K1mT.png"><p>Dessert</p></div>
-                <div class="category"><img src="https://i.imgur.com/GQrWDh5.png"><p>Salad</p></div>
-                <div class="category"><img src="https://i.imgur.com/WyIjiLk.png"><p>Drink</p></div>
+                <div class="category">
+                    <img src="img/categories/Entrees.png">
+                    <p>Entrees</p>
+                    <i class="fa-solid fa-arrow-right category-arrow"></i>
+                </div>
+                <div class="category">
+                    <img src="img/categories/dessert.png">
+                    <p>Dessert</p>
+                    <i class="fa-solid fa-arrow-right category-arrow"></i>
+                </div>
+                <div class="category">
+                    <img src="img/categories/salad.png">
+                    <p>Salad</p>
+                    <i class="fa-solid fa-arrow-right category-arrow"></i>
+                </div>
+                <div class="category">
+                    <img src="img/categories/drink.png">
+                    <p>Drink</p>
+                    <i class="fa-solid fa-arrow-right category-arrow"></i>
+                </div>
             </div>
         </section>
 
@@ -90,25 +107,68 @@
             <div class="item-card">
                 <img src="https://i.imgur.com/Q5qY9xP.jpeg" alt="Spaghetti">
                 <h4>Spaghetti</h4>
-                <p class="price">$7.29</p>
+                <div class="item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="item-footer">
+                    <p class="price">$7.29</p>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
 
             <div class="item-card">
                 <img src="https://i.imgur.com/lYkU2zv.jpeg" alt="Veg Pizza">
                 <h4>Vegetable Pizza</h4>
-                <p class="price">$5.49</p>
+                <div class="item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="item-footer">
+                    <p class="price">$5.49</p>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
 
-            <div class="item-card">
+            <div class="item-card featured">
                 <img src="https://i.imgur.com/J5b65QJ.jpeg" alt="Mushroom">
                 <h4>Mushroom Pizza</h4>
-                <p class="price">$7.49</p>
+                <div class="item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="item-footer">
+                    <div class="price-group">
+                        <p class="price">$7.49</p>
+                        <p class="old-price">$8.49</p>
+                    </div>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
 
             <div class="item-card">
                 <img src="https://i.imgur.com/vWS7PKi.jpeg" alt="Soup">
                 <h4>Sweets</h4>
-                <p class="price">$6.49</p>
+                <div class="item-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="item-footer">
+                    <p class="price">$6.49</p>
+                    <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
         </section>
     </main>
@@ -119,21 +179,41 @@
 
         <div class="cart-item">
             <img src="https://i.imgur.com/J5b65QJ.jpeg">
-            <div>
+            <div class="cart-item-info">
                 <p>Mushroom Pizza</p>
                 <span>×1</span>
             </div>
-            <p>$7.49</p>
+            <p class="cart-price">$7.49</p>
             <i class="fa-solid fa-trash"></i>
         </div>
 
         <div class="cart-item">
             <img src="https://i.imgur.com/nLypx7Z.jpeg">
-            <div>
+            <div class="cart-item-info">
                 <p>Italian Pizza</p>
                 <span>×1</span>
             </div>
-            <p>$7.49</p>
+            <p class="cart-price">$7.49</p>
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="cart-item">
+            <img src="https://i.imgur.com/nLypx7Z.jpeg">
+            <div class="cart-item-info">
+                <p>Sausage Pizza</p>
+                <span>×1</span>
+            </div>
+            <p class="cart-price">$7.49</p>
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="cart-item">
+            <img src="https://i.imgur.com/nLypx7Z.jpeg">
+            <div class="cart-item-info">
+                <p>Cheese Pizza</p>
+                <span>×1</span>
+            </div>
+            <p class="cart-price">$7.49</p>
             <i class="fa-solid fa-trash"></i>
         </div>
 
