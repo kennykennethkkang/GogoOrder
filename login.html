@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Gogo Order</title>
+    <link rel="stylesheet" href="base.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fef9f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 1000' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,180 C60,175 140,185 250,200 C450,220 700,100 1000,30' stroke='rgba(255,123,41,0.25)' fill='none' stroke-width='2.5'/%3E%3Cpath d='M0,220 C60,225 140,215 250,200 C450,180 700,300 1000,450' stroke='rgba(255,123,41,0.25)' fill='none' stroke-width='2.5'/%3E%3C/svg%3E") no-repeat;
+            background-size: 100% 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .login-container {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            padding: 40px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            margin-bottom: 30px;
+        }
+
+        .brand-logo img {
+            width: 80px;
+        }
+
+        .form-title {
+            font-family: "Prata", serif;
+            font-size: 36px;
+            color: #1a365d;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .form-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #ffb380;
+            border-radius: 50px;
+            background: white;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #ff7b29;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ffb380;
+            border-radius: 4px;
+            accent-color: #ff7b29;
+        }
+
+        .remember-me label {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .forgot-password {
+            color: #ff7b29;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #ff5a00;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #ff7b29;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-bottom: 25px;
+        }
+
+        .submit-btn:hover {
+            background: #ff5a00;
+        }
+
+        .signup-link {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #ff7b29;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .signup-link a:hover {
+            color: #ff5a00;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="brand-logo">
+            <img src="img/logo.png" alt="Gogo Order Logo">
+        </div>
+        
+        <div class="form-wrapper">
+            <h1 class="form-title">Sign In</h1>
+            <p class="form-subtitle">Sign in to stay connected.</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me?</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password</a>
+                </div>
+                
+                <button type="submit" class="submit-btn">Sign in</button>
+            </form>
+            
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Click here to sign up.</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
