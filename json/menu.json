@@ -4,319 +4,774 @@
     "name": "Spaghetti",
     "price": 12.99,
     "category": "Entrees",
-    "description": "Classic spaghetti pasta served with marinara sauce and herbs.",
-    "image": "img/Food/Entree/Spaghetti.png"
+    "description": "Classic spaghetti pasta served with marinara sauce and fresh herbs. A timeless Italian favorite made with premium ingredients.",
+    "image": "img/Food/Entree/Spaghetti.png",
+    "ingredients": [
+      {"name": "Parmesan Cheese", "removable": true},
+      {"name": "Basil", "removable": true},
+      {"name": "Garlic", "removable": true},
+      {"name": "Onions", "removable": true},
+      {"name": "Meatballs", "removable": true},
+      {"name": "Marinara Sauce", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 30,
     "name": "Burger",
     "price": 11.99,
     "category": "Entrees",
-    "description": "Juicy beef burger with fresh vegetables and special sauce.",
-    "image": "img/Food/Entree/Burger.png"
+    "description": "Juicy beef burger with fresh vegetables and our signature special sauce. Served on a toasted brioche bun.",
+    "image": "img/Food/Entree/Burger.png",
+    "ingredients": [
+      {"name": "Lettuce", "removable": true},
+      {"name": "Tomato", "removable": true},
+      {"name": "Onions", "removable": true},
+      {"name": "Pickles", "removable": true},
+      {"name": "Special Sauce", "removable": true},
+      {"name": "Cheese", "removable": true}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 42, "name": "Prizefighter No. 1", "price": 6.99, "type": "beverage"}
+    ]
   },
   {
     "id": 31,
     "name": "Chicken with Grapes and Fennel",
     "price": 15.99,
     "category": "Entrees",
-    "description": "Tender chicken cooked with sweet grapes and aromatic fennel.",
-    "image": "img/Food/Entree/ChickenGrapesFennel.png"
+    "description": "Tender chicken cooked with sweet grapes and aromatic fennel. A sophisticated dish with a perfect balance of flavors.",
+    "image": "img/Food/Entree/ChickenGrapesFennel.png",
+    "ingredients": [
+      {"name": "Grapes", "removable": true},
+      {"name": "Fennel", "removable": true},
+      {"name": "Herbs", "removable": true},
+      {"name": "White Wine", "removable": false},
+      {"name": "Butter", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 6, "name": "Black Eyed Pea Salad", "price": 7.99, "type": "side"},
+      {"id": 41, "name": "Mulled Wine", "price": 7.99, "type": "beverage"}
+    ]
   },
   {
     "id": 32,
     "name": "Chicken Rice Porridge",
     "price": 9.99,
     "category": "Entrees",
-    "description": "Comforting chicken and rice porridge, warm and satisfying.",
-    "image": "img/Food/Entree/ChickenRicePorridge.png"
+    "description": "Comforting chicken and rice porridge, warm and satisfying. Perfect for a cozy meal.",
+    "image": "img/Food/Entree/ChickenRicePorridge.png",
+    "ingredients": [
+      {"name": "Green Onions", "removable": true},
+      {"name": "Ginger", "removable": true},
+      {"name": "Soy Sauce", "removable": true},
+      {"name": "Sesame Oil", "removable": true},
+      {"name": "Chicken", "removable": false},
+      {"name": "Rice", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 5, "name": "Cheese Biscuits", "price": 5.99, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 33,
     "name": "Clams with Sherry and Olives",
     "price": 16.99,
     "category": "Entrees",
-    "description": "Fresh clams cooked in sherry with briny olives.",
-    "image": "img/Food/Entree/clamsWithSherryandOlives.png"
+    "description": "Fresh clams cooked in sherry with briny olives. A seafood delicacy with rich, complex flavors.",
+    "image": "img/Food/Entree/clamsWithSherryandOlives.png",
+    "ingredients": [
+      {"name": "Olives", "removable": true},
+      {"name": "Garlic", "removable": true},
+      {"name": "Parsley", "removable": true},
+      {"name": "Lemon", "removable": true},
+      {"name": "Sherry", "removable": false},
+      {"name": "Clams", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"}
+    ]
   },
   {
     "id": 34,
     "name": "Crispy Roast Chicken",
     "price": 14.99,
     "category": "Entrees",
-    "description": "Perfectly roasted chicken with crispy golden skin.",
-    "image": "img/Food/Entree/CrispyRoastChicken.png"
+    "description": "Perfectly roasted chicken with crispy golden skin. Juicy and flavorful, served with pan drippings.",
+    "image": "img/Food/Entree/CrispyRoastChicken.png",
+    "ingredients": [
+      {"name": "Lemon", "removable": true},
+      {"name": "Herbs", "removable": true},
+      {"name": "Garlic", "removable": true},
+      {"name": "Butter", "removable": false},
+      {"name": "Chicken", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 7, "name": "Flannel Factor", "price": 5.99, "type": "beverage"}
+    ]
   },
   {
     "id": 35,
     "name": "Mushroom Tacos",
     "price": 10.99,
     "category": "Entrees",
-    "description": "Savory mushroom tacos with fresh toppings and salsa.",
-    "image": "img/Food/Entree/MushroomTacos.png"
+    "description": "Savory mushroom tacos with fresh toppings and salsa. A vegetarian favorite with bold flavors.",
+    "image": "img/Food/Entree/MushroomTacos.png",
+    "ingredients": [
+      {"name": "Lettuce", "removable": true},
+      {"name": "Tomatoes", "removable": true},
+      {"name": "Onions", "removable": true},
+      {"name": "Cilantro", "removable": true},
+      {"name": "Salsa", "removable": true},
+      {"name": "Cheese", "removable": true},
+      {"name": "Sour Cream", "removable": true},
+      {"name": "Mushrooms", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 44, "name": "Spicy Citrus Refresher", "price": 5.49, "type": "beverage"}
+    ]
   },
   {
     "id": 36,
     "name": "Pork Chops with Grape and Fig Agrodolce",
     "price": 17.99,
     "category": "Entrees",
-    "description": "Tender pork chops with sweet and sour grape and fig sauce.",
-    "image": "img/Food/Entree/Pork-Chops-with-Grape-and-Fig-Agrodolce.png"
+    "description": "Tender pork chops with sweet and sour grape and fig sauce. An elegant dish with complex flavors.",
+    "image": "img/Food/Entree/Pork-Chops-with-Grape-and-Fig-Agrodolce.png",
+    "ingredients": [
+      {"name": "Grapes", "removable": true},
+      {"name": "Figs", "removable": true},
+      {"name": "Herbs", "removable": true},
+      {"name": "Balsamic Vinegar", "removable": false},
+      {"name": "Pork Chops", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 22, "name": "Miso Kale Caesar Salad", "price": 9.49, "type": "side"},
+      {"id": 42, "name": "Prizefighter No. 1", "price": 6.99, "type": "beverage"}
+    ]
   },
   {
     "id": 37,
     "name": "Risotto with Mushrooms and Thyme",
     "price": 13.99,
     "category": "Entrees",
-    "description": "Creamy risotto with wild mushrooms and fresh thyme.",
-    "image": "img/Food/Entree/risotto-with-mushrooms-and-thyme.png"
+    "description": "Creamy risotto with wild mushrooms and fresh thyme. Rich and comforting Italian classic.",
+    "image": "img/Food/Entree/risotto-with-mushrooms-and-thyme.png",
+    "ingredients": [
+      {"name": "Parmesan Cheese", "removable": true},
+      {"name": "Thyme", "removable": true},
+      {"name": "Garlic", "removable": true},
+      {"name": "White Wine", "removable": false},
+      {"name": "Mushrooms", "removable": false},
+      {"name": "Arborio Rice", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"}
+    ]
   },
   {
     "id": 38,
     "name": "Shrimp Noodle",
     "price": 14.99,
     "category": "Entrees",
-    "description": "Fresh shrimp served over flavorful noodles.",
-    "image": "img/Food/Entree/ShrimpNoodle.png"
+    "description": "Fresh shrimp served over flavorful noodles. A delicious Asian-inspired dish with perfectly cooked seafood.",
+    "image": "img/Food/Entree/ShrimpNoodle.png",
+    "ingredients": [
+      {"name": "Green Onions", "removable": true},
+      {"name": "Bean Sprouts", "removable": true},
+      {"name": "Cilantro", "removable": true},
+      {"name": "Lime", "removable": true},
+      {"name": "Chili", "removable": true},
+      {"name": "Shrimp", "removable": false},
+      {"name": "Noodles", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 20, "name": "Kimchi Fried Rice", "price": 8.99, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 4,
     "name": "7UP Cake",
     "price": 6.99,
     "category": "Dessert",
-    "description": "Light and fluffy cake made with 7UP for a unique citrus flavor.",
-    "image": "img/Food/dessert/7upCake.png"
+    "description": "Light and fluffy cake made with 7UP for a unique citrus flavor. Moist and refreshing dessert.",
+    "image": "img/Food/dessert/7upCake.png",
+    "ingredients": [
+      {"name": "Lemon Zest", "removable": true},
+      {"name": "Powdered Sugar", "removable": false},
+      {"name": "7UP", "removable": false},
+      {"name": "Flour", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 24,
     "name": "Apple Pie Cookies",
     "price": 5.99,
     "category": "Dessert",
-    "description": "Delicious cookies with apple pie filling, perfect for dessert lovers.",
-    "image": "img/Food/dessert/Apple-Pie-Cookies.png"
+    "description": "Delicious cookies with apple pie filling, perfect for dessert lovers. Warm, spiced, and comforting.",
+    "image": "img/Food/dessert/Apple-Pie-Cookies.png",
+    "ingredients": [
+      {"name": "Cinnamon", "removable": true},
+      {"name": "Nutmeg", "removable": true},
+      {"name": "Vanilla Ice Cream", "removable": true},
+      {"name": "Apple Filling", "removable": false},
+      {"name": "Cookie Dough", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 7, "name": "Flannel Factor", "price": 5.99, "type": "beverage"},
+      {"id": 41, "name": "Mulled Wine", "price": 7.99, "type": "beverage"}
+    ]
   },
   {
     "id": 25,
     "name": "Cannoli",
     "price": 7.49,
     "category": "Dessert",
-    "description": "Traditional Italian pastry filled with sweet ricotta cream.",
-    "image": "img/Food/dessert/Cannoli.png"
+    "description": "Traditional Italian pastry filled with sweet ricotta cream. Crispy shell with creamy, decadent filling.",
+    "image": "img/Food/dessert/Cannoli.png",
+    "ingredients": [
+      {"name": "Chocolate Chips", "removable": true},
+      {"name": "Pistachios", "removable": true},
+      {"name": "Powdered Sugar", "removable": false},
+      {"name": "Ricotta Cream", "removable": false},
+      {"name": "Pastry Shell", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"},
+      {"id": 43, "name": "Razzle Dazzle", "price": 5.99, "type": "beverage"}
+    ]
   },
   {
     "id": 26,
     "name": "Flourless Chocolate Cake",
     "price": 8.99,
     "category": "Dessert",
-    "description": "Rich and decadent flourless chocolate cake, gluten-free and indulgent.",
-    "image": "img/Food/dessert/FlourlessChocolate.png"
+    "description": "Rich and decadent flourless chocolate cake, gluten-free and indulgent. Perfect for chocolate lovers.",
+    "image": "img/Food/dessert/FlourlessChocolate.png",
+    "ingredients": [
+      {"name": "Whipped Cream", "removable": true},
+      {"name": "Berries", "removable": true},
+      {"name": "Chocolate Ganache", "removable": true},
+      {"name": "Dark Chocolate", "removable": false},
+      {"name": "Eggs", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 41, "name": "Mulled Wine", "price": 7.99, "type": "beverage"},
+      {"id": 7, "name": "Flannel Factor", "price": 5.99, "type": "beverage"}
+    ]
   },
   {
     "id": 27,
     "name": "Gateau Basque",
     "price": 8.49,
     "category": "Dessert",
-    "description": "Traditional French pastry cake with a buttery crust and sweet filling.",
-    "image": "img/Food/dessert/GateauBasque.png"
+    "description": "Traditional French pastry cake with a buttery crust and sweet filling. Elegant and sophisticated.",
+    "image": "img/Food/dessert/GateauBasque.png",
+    "ingredients": [
+      {"name": "Cherry Filling", "removable": true},
+      {"name": "Almond Cream", "removable": true},
+      {"name": "Powdered Sugar", "removable": false},
+      {"name": "Butter", "removable": false},
+      {"name": "Pastry", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 28,
     "name": "Pear Tart",
     "price": 7.99,
     "category": "Dessert",
-    "description": "Elegant pear tart with delicate pastry and caramelized pears.",
-    "image": "img/Food/dessert/PearTart.png"
+    "description": "Elegant pear tart with delicate pastry and caramelized pears. A refined dessert with beautiful presentation.",
+    "image": "img/Food/dessert/PearTart.png",
+    "ingredients": [
+      {"name": "Vanilla Ice Cream", "removable": true},
+      {"name": "Caramel Sauce", "removable": true},
+      {"name": "Cinnamon", "removable": true},
+      {"name": "Pears", "removable": false},
+      {"name": "Pastry", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 41, "name": "Mulled Wine", "price": 7.99, "type": "beverage"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 29,
     "name": "Yellow Cake with Chocolate Frosting",
     "price": 6.99,
     "category": "Dessert",
-    "description": "Classic yellow cake topped with rich chocolate frosting.",
-    "image": "img/Food/dessert/YellowCakewithChocholateFrosting.png"
+    "description": "Classic yellow cake topped with rich chocolate frosting. A timeless favorite that never disappoints.",
+    "image": "img/Food/dessert/YellowCakewithChocholateFrosting.png",
+    "ingredients": [
+      {"name": "Chocolate Frosting", "removable": true},
+      {"name": "Sprinkles", "removable": true},
+      {"name": "Vanilla Extract", "removable": false},
+      {"name": "Yellow Cake", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 7, "name": "Flannel Factor", "price": 5.99, "type": "beverage"},
+      {"id": 43, "name": "Razzle Dazzle", "price": 5.99, "type": "beverage"}
+    ]
   },
   {
     "id": 5,
     "name": "Cheese Biscuits",
     "price": 5.99,
     "category": "Appetizers",
-    "description": "Freshly baked cheese biscuits with a golden crust.",
-    "image": "img/Food/appetizers/CheeseBiscuits.png"
+    "description": "Freshly baked cheese biscuits with a golden crust, served warm with butter. Perfect as a starter or side dish.",
+    "image": "img/Food/appetizers/CheeseBiscuits.png",
+    "ingredients": [
+      {"name": "Cheddar Cheese", "removable": true},
+      {"name": "Butter", "removable": false},
+      {"name": "Flour", "removable": false},
+      {"name": "Garlic", "removable": true},
+      {"name": "Herbs", "removable": true}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 7, "name": "Flannel Factor", "price": 5.99, "type": "beverage"}
+    ]
   },
   {
     "id": 11,
     "name": "Dim Sum",
     "price": 6.49,
     "category": "Appetizers",
-    "description": "Traditional steamed dumplings with savory fillings.",
-    "image": "img/Food/appetizers/Dimsum.jpg"
+    "description": "Traditional steamed dumplings with savory fillings. Delicate and flavorful, served with dipping sauce.",
+    "image": "img/Food/appetizers/Dimsum.jpg",
+    "ingredients": [
+      {"name": "Soy Sauce", "removable": true},
+      {"name": "Ginger", "removable": true},
+      {"name": "Green Onions", "removable": true},
+      {"name": "Sesame Oil", "removable": true},
+      {"name": "Dumpling Wrapper", "removable": false},
+      {"name": "Filling", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 20, "name": "Kimchi Fried Rice", "price": 8.99, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 12,
     "name": "Figs with Bacon and Chile",
     "price": 7.99,
     "category": "Appetizers",
-    "description": "Sweet figs wrapped in crispy bacon with a hint of chile.",
-    "image": "img/Food/appetizers/figs-with-bacon-and-chile.png"
+    "description": "Sweet figs wrapped in crispy bacon with a hint of chile. A perfect balance of sweet, savory, and spicy.",
+    "image": "img/Food/appetizers/figs-with-bacon-and-chile.png",
+    "ingredients": [
+      {"name": "Chile", "removable": true},
+      {"name": "Honey", "removable": true},
+      {"name": "Balsamic Glaze", "removable": true},
+      {"name": "Bacon", "removable": false},
+      {"name": "Figs", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 42, "name": "Prizefighter No. 1", "price": 6.99, "type": "beverage"}
+    ]
   },
   {
     "id": 13,
     "name": "French Fries",
     "price": 4.99,
     "category": "Appetizers",
-    "description": "Crispy golden french fries served hot and fresh.",
-    "image": "img/Food/appetizers/fries.jpg"
+    "description": "Crispy golden french fries served hot and fresh. The perfect side dish for any meal.",
+    "image": "img/Food/appetizers/fries.jpg",
+    "ingredients": [
+      {"name": "Ketchup", "removable": true},
+      {"name": "Mayonnaise", "removable": true},
+      {"name": "Salt", "removable": true},
+      {"name": "Potatoes", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 30, "name": "Burger", "price": 11.99, "type": "side"},
+      {"id": 44, "name": "Spicy Citrus Refresher", "price": 5.49, "type": "beverage"}
+    ]
   },
   {
     "id": 14,
     "name": "Goat Cheese Salami Stuffed Dates",
     "price": 8.49,
     "category": "Appetizers",
-    "description": "Sweet dates stuffed with creamy goat cheese and salami.",
-    "image": "img/Food/appetizers/GoatCheeseSalamiStuffedDates.png"
+    "description": "Sweet dates stuffed with creamy goat cheese and salami. An elegant appetizer with complex flavors.",
+    "image": "img/Food/appetizers/GoatCheeseSalamiStuffedDates.png",
+    "ingredients": [
+      {"name": "Honey", "removable": true},
+      {"name": "Walnuts", "removable": true},
+      {"name": "Balsamic Glaze", "removable": true},
+      {"name": "Goat Cheese", "removable": false},
+      {"name": "Salami", "removable": false},
+      {"name": "Dates", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"}
+    ]
   },
   {
     "id": 15,
     "name": "Jalapeno Peppers with Smoked Gouda",
     "price": 6.99,
     "category": "Appetizers",
-    "description": "Spicy jalapeno peppers filled with rich smoked gouda cheese.",
-    "image": "img/Food/appetizers/JalapenoPeppersWithSmokedGouda.png"
+    "description": "Spicy jalapeno peppers filled with rich smoked gouda cheese. A bold and flavorful starter.",
+    "image": "img/Food/appetizers/JalapenoPeppersWithSmokedGouda.png",
+    "ingredients": [
+      {"name": "Bacon", "removable": true},
+      {"name": "Cream Cheese", "removable": true},
+      {"name": "Cilantro", "removable": true},
+      {"name": "Jalapenos", "removable": false},
+      {"name": "Smoked Gouda", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 44, "name": "Spicy Citrus Refresher", "price": 5.49, "type": "beverage"}
+    ]
   },
   {
     "id": 16,
     "name": "Pickled Shrimp",
     "price": 7.49,
     "category": "Appetizers",
-    "description": "Fresh shrimp marinated in tangy pickling spices.",
-    "image": "img/Food/appetizers/Pickled-Shrimp.png"
+    "description": "Fresh shrimp marinated in tangy pickling spices. Refreshing and zesty seafood appetizer.",
+    "image": "img/Food/appetizers/Pickled-Shrimp.png",
+    "ingredients": [
+      {"name": "Dill", "removable": true},
+      {"name": "Red Onions", "removable": true},
+      {"name": "Lemon", "removable": true},
+      {"name": "Pickling Spices", "removable": false},
+      {"name": "Shrimp", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 6, "name": "Black Eyed Pea Salad", "price": 7.99, "type": "side"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 17,
     "name": "Smoked Salmon",
     "price": 9.99,
     "category": "Appetizers",
-    "description": "Premium smoked salmon served with capers and cream cheese.",
-    "image": "img/Food/appetizers/smokedSalmon.jpg"
+    "description": "Premium smoked salmon served with capers and cream cheese. A luxurious seafood appetizer.",
+    "image": "img/Food/appetizers/smokedSalmon.jpg",
+    "ingredients": [
+      {"name": "Capers", "removable": true},
+      {"name": "Red Onions", "removable": true},
+      {"name": "Dill", "removable": true},
+      {"name": "Lemon", "removable": true},
+      {"name": "Cream Cheese", "removable": false},
+      {"name": "Smoked Salmon", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 45, "name": "Tipperary", "price": 7.49, "type": "beverage"}
+    ]
   },
   {
     "id": 6,
     "name": "Black Eyed Pea Salad with Hot Sauce Vinaigrette",
     "price": 7.99,
     "category": "Salad",
-    "description": "Hearty black eyed pea salad with a spicy hot sauce vinaigrette dressing.",
-    "image": "img/Food/Salad/BlackEyedPeaSaladwithHotSauceVinaigrette.png"
+    "description": "Hearty black eyed pea salad with a spicy hot sauce vinaigrette dressing. Nutritious and full of flavor.",
+    "image": "img/Food/Salad/BlackEyedPeaSaladwithHotSauceVinaigrette.png",
+    "ingredients": [
+      {"name": "Red Bell Peppers", "removable": true},
+      {"name": "Celery", "removable": true},
+      {"name": "Red Onions", "removable": true},
+      {"name": "Cilantro", "removable": true},
+      {"name": "Hot Sauce", "removable": true},
+      {"name": "Black Eyed Peas", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 30, "name": "Burger", "price": 11.99, "type": "side"},
+      {"id": 44, "name": "Spicy Citrus Refresher", "price": 5.49, "type": "beverage"}
+    ]
   },
   {
     "id": 18,
     "name": "Caprese Salad",
     "price": 8.49,
     "category": "Salad",
-    "description": "Classic Italian salad with fresh mozzarella, tomatoes, and basil.",
-    "image": "img/Food/Salad/CapreseSalad.png"
+    "description": "Classic Italian salad with fresh mozzarella, tomatoes, and basil. Simple, fresh, and delicious.",
+    "image": "img/Food/Salad/CapreseSalad.png",
+    "ingredients": [
+      {"name": "Balsamic Glaze", "removable": true},
+      {"name": "Olive Oil", "removable": true},
+      {"name": "Basil", "removable": true},
+      {"name": "Mozzarella", "removable": false},
+      {"name": "Tomatoes", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 1, "name": "Spaghetti", "price": 12.99, "type": "side"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 19,
     "name": "Five Bean Salad with Smoked Paprika Vinaigrette",
     "price": 7.49,
     "category": "Salad",
-    "description": "Nutritious five bean salad with a smoky paprika vinaigrette.",
-    "image": "img/Food/Salad/FiveBeanSaladWithSmokedPaprikaVinaigrette.png"
+    "description": "Nutritious five bean salad with a smoky paprika vinaigrette. Protein-packed and flavorful.",
+    "image": "img/Food/Salad/FiveBeanSaladWithSmokedPaprikaVinaigrette.png",
+    "ingredients": [
+      {"name": "Red Onions", "removable": true},
+      {"name": "Cilantro", "removable": true},
+      {"name": "Bell Peppers", "removable": true},
+      {"name": "Smoked Paprika", "removable": false},
+      {"name": "Five Beans", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 20,
     "name": "Kimchi Fried Rice",
     "price": 8.99,
     "category": "Salad",
-    "description": "Flavorful Korean-style kimchi fried rice with vegetables.",
-    "image": "img/Food/Salad/KimchiFriedRice.png"
+    "description": "Flavorful Korean-style kimchi fried rice with vegetables. Spicy, tangy, and satisfying.",
+    "image": "img/Food/Salad/KimchiFriedRice.png",
+    "ingredients": [
+      {"name": "Fried Egg", "removable": true},
+      {"name": "Green Onions", "removable": true},
+      {"name": "Sesame Seeds", "removable": true},
+      {"name": "Gochujang", "removable": true},
+      {"name": "Kimchi", "removable": false},
+      {"name": "Rice", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 11, "name": "Dim Sum", "price": 6.49, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 21,
     "name": "Maui Kale Salad with Sweet Onion Dressing",
     "price": 8.99,
     "category": "Salad",
-    "description": "Fresh kale salad with tropical flavors and sweet onion dressing.",
-    "image": "img/Food/Salad/MauiKaleSaladWithSweetOnionDressing.png"
+    "description": "Fresh kale salad with tropical flavors and sweet onion dressing. Healthy and refreshing.",
+    "image": "img/Food/Salad/MauiKaleSaladWithSweetOnionDressing.png",
+    "ingredients": [
+      {"name": "Mango", "removable": true},
+      {"name": "Pineapple", "removable": true},
+      {"name": "Macadamia Nuts", "removable": true},
+      {"name": "Coconut", "removable": true},
+      {"name": "Kale", "removable": false},
+      {"name": "Sweet Onion Dressing", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 30, "name": "Burger", "price": 11.99, "type": "side"},
+      {"id": 44, "name": "Spicy Citrus Refresher", "price": 5.49, "type": "beverage"}
+    ]
   },
   {
     "id": 22,
     "name": "Miso Kale Caesar Salad",
     "price": 9.49,
     "category": "Salad",
-    "description": "Asian-inspired kale Caesar salad with miso dressing.",
-    "image": "img/Food/Salad/MisoKaleCaesarSalad.png"
+    "description": "Asian-inspired kale Caesar salad with miso dressing. A unique twist on a classic favorite.",
+    "image": "img/Food/Salad/MisoKaleCaesarSalad.png",
+    "ingredients": [
+      {"name": "Parmesan Cheese", "removable": true},
+      {"name": "Croutons", "removable": true},
+      {"name": "Sesame Seeds", "removable": true},
+      {"name": "Miso Dressing", "removable": false},
+      {"name": "Kale", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 38, "name": "Shrimp Noodle", "price": 14.99, "type": "side"},
+      {"id": 40, "name": "Mint Matcha Sparkler", "price": 6.49, "type": "beverage"}
+    ]
   },
   {
     "id": 23,
     "name": "Winter Salad Hummus Bowls",
     "price": 8.99,
     "category": "Salad",
-    "description": "Seasonal winter vegetables with creamy hummus in a satisfying bowl.",
-    "image": "img/Food/Salad/WinterSaladHummusBowls.png"
+    "description": "Seasonal winter vegetables with creamy hummus in a satisfying bowl. Nutritious and filling.",
+    "image": "img/Food/Salad/WinterSaladHummusBowls.png",
+    "ingredients": [
+      {"name": "Roasted Vegetables", "removable": true},
+      {"name": "Olives", "removable": true},
+      {"name": "Feta Cheese", "removable": true},
+      {"name": "Pita Chips", "removable": true},
+      {"name": "Hummus", "removable": false},
+      {"name": "Winter Greens", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 5, "name": "Cheese Biscuits", "price": 5.99, "type": "side"},
+      {"id": 39, "name": "Lemon, Lime, and Bitters", "price": 4.99, "type": "beverage"}
+    ]
   },
   {
     "id": 7,
     "name": "Flannel Factor",
     "price": 5.99,
     "category": "Drink",
-    "description": "A cozy and warming cocktail perfect for any occasion.",
-    "image": "img/Food/drinks/FlannelFactor.png"
+    "description": "A cozy and warming cocktail perfect for any occasion. Smooth and comforting.",
+    "image": "img/Food/drinks/FlannelFactor.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Lemon Twist", "removable": true},
+      {"name": "Whiskey", "removable": false},
+      {"name": "Mixers", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"},
+      {"id": 5, "name": "Cheese Biscuits", "price": 5.99, "type": "side"}
+    ]
   },
   {
     "id": 39,
     "name": "Lemon, Lime, and Bitters",
     "price": 4.99,
     "category": "Drink",
-    "description": "Refreshing citrus drink with a hint of bitters.",
-    "image": "img/Food/drinks/lemon,lime,andbitters.png"
+    "description": "Refreshing citrus drink with a hint of bitters. Light and invigorating.",
+    "image": "img/Food/drinks/lemon,lime,andbitters.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Lemon Slice", "removable": true},
+      {"name": "Lime Slice", "removable": true},
+      {"name": "Lemon Juice", "removable": false},
+      {"name": "Lime Juice", "removable": false},
+      {"name": "Bitters", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 18, "name": "Caprese Salad", "price": 8.49, "type": "side"},
+      {"id": 13, "name": "French Fries", "price": 4.99, "type": "side"}
+    ]
   },
   {
     "id": 40,
     "name": "Mint Matcha Sparkler",
     "price": 6.49,
     "category": "Drink",
-    "description": "Refreshing matcha green tea with mint and sparkling water.",
-    "image": "img/Food/drinks/Mint-Matcha-Sparkler.png"
+    "description": "Refreshing matcha green tea with mint and sparkling water. Energizing and healthy.",
+    "image": "img/Food/drinks/Mint-Matcha-Sparkler.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Mint Leaves", "removable": true},
+      {"name": "Lemon", "removable": true},
+      {"name": "Matcha Powder", "removable": false},
+      {"name": "Sparkling Water", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 20, "name": "Kimchi Fried Rice", "price": 8.99, "type": "side"},
+      {"id": 11, "name": "Dim Sum", "price": 6.49, "type": "side"}
+    ]
   },
   {
     "id": 41,
     "name": "Mulled Wine",
     "price": 7.99,
     "category": "Drink",
-    "description": "Warm spiced wine with aromatic spices, perfect for cooler weather.",
-    "image": "img/Food/drinks/MulledWine.png"
+    "description": "Warm spiced wine with aromatic spices, perfect for cooler weather. Cozy and comforting.",
+    "image": "img/Food/drinks/MulledWine.png",
+    "ingredients": [
+      {"name": "Cinnamon Stick", "removable": true},
+      {"name": "Orange Slice", "removable": true},
+      {"name": "Cloves", "removable": true},
+      {"name": "Star Anise", "removable": true},
+      {"name": "Red Wine", "removable": false},
+      {"name": "Spices", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 26, "name": "Flourless Chocolate Cake", "price": 8.99, "type": "side"},
+      {"id": 27, "name": "Gateau Basque", "price": 8.49, "type": "side"}
+    ]
   },
   {
     "id": 42,
     "name": "Prizefighter No. 1",
     "price": 6.99,
     "category": "Drink",
-    "description": "A bold and flavorful cocktail with a winning combination.",
-    "image": "img/Food/drinks/PrizefighterNo1.png"
+    "description": "A bold and flavorful cocktail with a winning combination. Strong and sophisticated.",
+    "image": "img/Food/drinks/PrizefighterNo1.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Orange Peel", "removable": true},
+      {"name": "Cherry", "removable": true},
+      {"name": "Gin", "removable": false},
+      {"name": "Vermouth", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 12, "name": "Figs with Bacon and Chile", "price": 7.99, "type": "side"},
+      {"id": 17, "name": "Smoked Salmon", "price": 9.99, "type": "side"}
+    ]
   },
   {
     "id": 43,
     "name": "Razzle Dazzle",
     "price": 5.99,
     "category": "Drink",
-    "description": "A vibrant and fruity cocktail that's sure to impress.",
-    "image": "img/Food/drinks/RazzleDazzle.png"
+    "description": "A vibrant and fruity cocktail that's sure to impress. Colorful and fun.",
+    "image": "img/Food/drinks/RazzleDazzle.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Berries", "removable": true},
+      {"name": "Mint", "removable": true},
+      {"name": "Vodka", "removable": false},
+      {"name": "Fruit Juice", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 25, "name": "Cannoli", "price": 7.49, "type": "side"},
+      {"id": 29, "name": "Yellow Cake with Chocolate Frosting", "price": 6.99, "type": "side"}
+    ]
   },
   {
     "id": 44,
     "name": "Spicy Citrus Refresher",
     "price": 5.49,
     "category": "Drink",
-    "description": "A zesty citrus drink with a spicy kick for a refreshing experience.",
-    "image": "img/Food/drinks/spicy-citrus-refresher.png"
+    "description": "A zesty citrus drink with a spicy kick for a refreshing experience. Energizing and bold.",
+    "image": "img/Food/drinks/spicy-citrus-refresher.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Lime Wedge", "removable": true},
+      {"name": "Chili", "removable": true},
+      {"name": "Citrus Juice", "removable": false},
+      {"name": "Sparkling Water", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 35, "name": "Mushroom Tacos", "price": 10.99, "type": "side"},
+      {"id": 15, "name": "Jalapeno Peppers with Smoked Gouda", "price": 6.99, "type": "side"}
+    ]
   },
   {
     "id": 45,
     "name": "Tipperary",
     "price": 7.49,
     "category": "Drink",
-    "description": "Classic Irish cocktail with a smooth and sophisticated flavor.",
-    "image": "img/Food/drinks/Tipperary.png"
+    "description": "Classic Irish cocktail with a smooth and sophisticated flavor. Rich and elegant.",
+    "image": "img/Food/drinks/Tipperary.png",
+    "ingredients": [
+      {"name": "Ice", "removable": true},
+      {"name": "Orange Peel", "removable": true},
+      {"name": "Irish Whiskey", "removable": false},
+      {"name": "Sweet Vermouth", "removable": false},
+      {"name": "Green Chartreuse", "removable": false}
+    ],
+    "recommendations": [
+      {"id": 14, "name": "Goat Cheese Salami Stuffed Dates", "price": 8.49, "type": "side"},
+      {"id": 17, "name": "Smoked Salmon", "price": 9.99, "type": "side"}
+    ]
   }
 ]
