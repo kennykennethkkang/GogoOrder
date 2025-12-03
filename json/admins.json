@@ -1,12 +1,14 @@
 [
-  {
-    "admin_id": 1,
-    "username": "admin",
-    "password": "$2y$10$9AbCdEfGhIjKlmNoPqRsTuVwxYz1234567890hash"
-  },
-  {
-    "admin_id": 2,
-    "username": "manager",
-    "password": "$2y$10$xyzhashpassword87654321sample"
-  }
+    {
+        "email": "admin@gogoorder.local",
+        "first_name": "Admin",
+        "last_name": "User",
+        "phone": "555-0100"
+    },
+    {
+        "first_name": "Kenneth",
+        "last_name": "Kang",
+        "email": "kennethkang07@gmail.com",
+        "phone": "6693092180"
+    }
 ]

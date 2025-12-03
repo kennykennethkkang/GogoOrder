@@ -1,0 +1,117 @@
+<?php
+require_once __DIR__ . '/../PHP/db.php';
+$admin = gogo_require_login('admin');
+$adminName = trim(($admin['first_name'] ?? '') . ' ' . ($admin['last_name'] ?? ''));
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gogo Order - Add Admin</title>
+
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../CSS/admin.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Prata&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="admin-body">
+
+    <div id="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="../img/logo.png" alt="Gogo Order Logo">
+            </div>
+
+            <div>
+                <div class="admin-nav-section-title">Home</div>
+                <nav class="admin-nav">
+                    <a href="admin-dashboard.php" class="admin-nav-link">
+                        <i class="fa-solid fa-grid-2"></i> Dashboard
+                    </a>
+                </nav>
+            </div>
+
+            <div>
+                <div class="admin-nav-section-title">Pages</div>
+                <nav class="admin-nav">
+                    <a href="admin-view-orders.php" class="admin-nav-link">
+                        <i class="fa-solid fa-receipt"></i> View Orders
+                    </a>
+                    <a href="admin-menu-list.php" class="admin-nav-link">
+                        <i class="fa-solid fa-utensils"></i> Edit Menu
+                    </a>
+                    <a href="admin-add-admin.php" class="admin-nav-link active">
+                        <i class="fa-solid fa-user-plus"></i> Add Admin
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-right">
+                    <a class="admin-switch" href="../index.php">Customer View</a>
+                    <div class="taskbar-user-menu">
+                        <button class="user-menu-btn" id="user-menu-btn">
+                            <?php echo htmlspecialchars($adminName !== '' ? $adminName : 'Admin'); ?>
+                            <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                        <div class="user-menu" id="user-menu" style="display:none;">
+                            <button data-open-profile>Account Settings</button>
+                            <a data-admin-link href="../index.php" style="display:none;" data-display="block">Customer View</a>
+                            <a href="../PHP/logout.php">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="admin-content">
+                <h1 class="admin-page-title">Add Admin</h1>
+
+                <div class="form-card">
+                    <form id="add-admin-form">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label>First Name</label>
+                                <input type="text" name="first_name" placeholder="Enter first name" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Last Name</label>
+                                <input type="text" name="last_name" placeholder="Enter last name" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Enter email" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" placeholder="Enter phone number" required>
+                            </div>
+                        </div>
+
+                        <div id="add-admin-msg" class="auth-success" style="display:none; margin-top:12px;"></div>
+                        <div id="add-admin-err" class="auth-error" style="display:none; margin-top:12px;"></div>
+
+                        <div class="form-actions" style="margin-top:18px;">
+                            <button type="button" class="btn-ghost" onclick="window.location.href='admin-dashboard.php'">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Admin</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../JS/admin-auth.js"></script>
+    <script src="../JS/account.js"></script>
+    <script src="../JS/admin-add-admin.js"></script>
+</body>
+
+</html>

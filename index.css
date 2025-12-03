@@ -34,6 +34,24 @@
     color: #ff7b29;
 }
 
+.nav-icons a.active {
+    color: #1e3a5f;
+    position: relative;
+}
+
+.nav-icons a.active::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    border-radius: 4px;
+    background: #ff7b29;
+}
+
+
 /* Main */
 .main {
     padding: 25px 40px;
@@ -94,7 +112,7 @@
 .hero {
     margin-top: 25px;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     gap: 25px;
 }
 
@@ -166,35 +184,7 @@
     background: #e66a1f;
 }
 
-.hero-promo {
-    background: #fff;
-    text-align: center;
-    padding: 20px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-promo img {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.hero-promo h1 {
-    color: #ff7b29;
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.hero-promo p {
-    color: #666;
-    font-size: 14px;
-}
+/* removed promo card */
 
 /* Categories */
 .categories {
@@ -469,3 +459,46 @@
     background: #e66a1f;
 }
 
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-btn {
+    border: 1px solid #ff7b29;
+    background: #fff;
+    color: #ff7b29;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.cart-total-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.muted {
+    color: #777;
+    font-size: 14px;
+}
