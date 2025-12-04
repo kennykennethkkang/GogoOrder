@@ -36,12 +36,22 @@ document.addEventListener("DOMContentLoaded", () => {
       if (statusLower === "cancelled" || statusLower === "canceled")
         statusClass = "admin-status-badge admin-status-cancelled";
 
+      const type = (order.order_type || "pickup").toLowerCase();
+      const typeText = type === "delivery" ? "Delivery" : "Pickup";
+      const address = type === "delivery" ? order.address || "" : "";
+      const timeText = order.scheduled_time || "";
+
       tr.innerHTML = `
         <td>${order.id || order.order_id}</td>
         <td>${order.customer_name || order.name || ""}</td>
         <td>${itemCount}</td>
         <td>$${Number(order.total || 0).toFixed(2)}</td>
         <td><span class="${statusClass}">${order.status || ""}</span></td>
+        <td>
+          <div>${typeText}</div>
+          ${address ? `<div class="muted">${address}</div>` : ""}
+          ${timeText ? `<div class="muted">${timeText}</div>` : ""}
+        </td>
         <td>${order.created_at || order.timestamp || ""}</td>
         <td class="admin-actions">
           ${

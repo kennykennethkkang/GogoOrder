@@ -97,8 +97,27 @@
     }
 
     const nameInput = document.querySelector("#customer-name");
+    const typeInput = document.querySelector('input[name="order_type"]:checked');
+    const scheduleInput = document.querySelector("#scheduled-time");
+    const addressInput = document.querySelector("#delivery-address");
+
+    if (scheduleInput && !scheduleInput.value) {
+      alert("Please select a pickup/delivery time or tap ASAP.");
+      return;
+    }
+
+    if (typeInput && typeInput.value === "delivery") {
+      if (!addressInput || !addressInput.value.trim()) {
+        alert("Please enter a delivery address.");
+        return;
+      }
+    }
+
     const payload = {
       name: nameInput ? nameInput.value : "",
+      order_type: typeInput ? typeInput.value : "pickup",
+      scheduled_time: scheduleInput ? scheduleInput.value : "",
+      address: addressInput ? addressInput.value : "",
       items: cart.map((item) => ({
         id: item.id,
         qty: item.qty,
@@ -126,6 +145,36 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     renderCart();
+
+    const asapBtn = document.querySelector("#asap-btn");
+    const scheduleInput = document.querySelector("#scheduled-time");
+    const addressBlock = document.querySelector("#address-block");
+    const addressInput = document.querySelector("#delivery-address");
+    document.addEventListener("change", (e) => {
+      const radio = e.target.closest('input[name="order_type"]');
+      if (radio && addressBlock) {
+        if (radio.value === "delivery") {
+          addressBlock.style.display = "block";
+          if (addressInput) addressInput.required = true;
+        } else {
+          addressBlock.style.display = "none";
+          if (addressInput) {
+            addressInput.required = false;
+            addressInput.value = "";
+          }
+        }
+      }
+    });
+    if (asapBtn && scheduleInput) {
+      asapBtn.addEventListener("click", () => {
+        // Use current time as ASAP marker
+        const now = new Date();
+        const isoLocal = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+          .toISOString()
+          .slice(0, 16);
+        scheduleInput.value = isoLocal;
+      });
+    }
 
     document.addEventListener("click", (event) => {
       const dec = event.target.closest("[data-dec]");

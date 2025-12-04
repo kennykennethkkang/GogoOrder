@@ -1,14 +1,23 @@
 [
     {
-        "email": "admin@gogoorder.local",
+        "id": 1,
         "first_name": "Admin",
         "last_name": "User",
+        "email": "admin@gogoorder.local",
         "phone": "555-0100"
     },
     {
+        "id": 2,
         "first_name": "Kenneth",
         "last_name": "Kang",
         "email": "kennethkang07@gmail.com",
         "phone": "6693092180"
+    },
+    {
+        "id": 3,
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "johndoe@scu.edu",
+        "phone": "123123123"
     }
 ]

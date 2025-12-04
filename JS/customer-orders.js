@@ -5,6 +5,15 @@
   const isHtmlSubdir = window.location.pathname.includes("/HTML/");
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
 
+  function formatDateTime(raw) {
+    if (!raw) return "";
+    const parsed = new Date(raw);
+    if (!isNaN(parsed.getTime())) {
+        return parsed.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+    }
+    return String(raw).replace("T", " ").split(".")[0];
+  }
+
   function renderOrders(orders) {
     const wrap = document.querySelector("[data-order-list]");
     if (!wrap) return;
@@ -21,7 +30,7 @@
       const totalItems = Array.isArray(order.items)
         ? order.items.reduce((sum, i) => sum + Number(i.qty || 0), 0)
         : 0;
-      const created = order.created_at ? order.created_at.replace("T", " ").split(".")[0] : "";
+      const created = formatDateTime(order.created_at || order.timestamp);
       const itemsHtml = (order.items || [])
         .map(
           (item) => `
@@ -41,6 +50,15 @@
         badgeClass += " badge-cancelled";
       if (statusLower === "completed") badgeClass += " badge-completed";
 
+      const type = (order.order_type || "pickup").toLowerCase();
+      const addressBlock =
+        type === "delivery"
+          ? `<div class="muted">Address: ${order.address || "N/A"}</div>`
+          : "";
+      const timeBlock = order.scheduled_time
+        ? `<div class="muted">Scheduled: ${formatDateTime(order.scheduled_time)}</div>`
+        : "";
+
       div.innerHTML = `
         <div class="order-card-header">
           <h4>Order #${order.id}</h4>
@@ -48,9 +66,21 @@
         </div>
         <div class="order-grid">${itemsHtml}</div>
         <div class="order-card-footer">
-          <div>${totalItems} item(s)</div>
-          <div>Total $${Number(order.total).toFixed(2)}</div>
-          <div class="muted">${created}</div>
+          <div class="order-meta-left">
+            <div class="muted">Items</div>
+            <div class="text-strong">${totalItems} item(s)</div>
+            <div class="muted">${type === "delivery" ? "Delivery" : "Pickup"}</div>
+            ${addressBlock}
+          </div>
+          <div class="order-meta-center">
+            <div class="muted">Total</div>
+            <div class="text-strong">$${Number(order.total).toFixed(2)}</div>
+            ${timeBlock}
+          </div>
+          <div class="order-meta-right">
+            <div class="muted">Placed</div>
+            <div>${created}</div>
+          </div>
           ${
             (order.status || "").toLowerCase() === "pending"
               ? `<button class="order-cancel-btn" data-cancel-id="${order.id}">Cancel</button>`

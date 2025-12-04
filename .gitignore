@@ -1,0 +1,15 @@
+# Project ignores
+data/
+img/uploads/
+JSON/*.json
+!JSON/.keep
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Node/PHP tooling (if added later)
+node_modules/
+vendor/
+package-lock.json
+composer.lock

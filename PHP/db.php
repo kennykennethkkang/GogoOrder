@@ -32,12 +32,28 @@ function gogo_db(): PDO
 
     gogo_bootstrap_schema($pdo);
     gogo_seed_if_empty($pdo);
+    gogo_backfill_credentials($pdo);
 
     return $pdo;
 }
 
 function gogo_bootstrap_schema(PDO $pdo): void
 {
+    // Helper to add missing columns without migrations.
+    $ensureColumn = static function (string $table, string $column, string $definition) use ($pdo): void {
+        $exists = false;
+        $cols = $pdo->query("PRAGMA table_info({$table})")->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($cols as $col) {
+            if (strcasecmp($col['name'], $column) === 0) {
+                $exists = true;
+                break;
+            }
+        }
+        if (!$exists) {
+            $pdo->exec("ALTER TABLE {$table} ADD COLUMN {$column} {$definition}");
+        }
+    };
+
     $pdo->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -48,6 +64,18 @@ function gogo_bootstrap_schema(PDO $pdo): void
             password_hash TEXT NOT NULL,
             role TEXT NOT NULL CHECK(role IN ('customer', 'admin')),
             created_at TEXT DEFAULT CURRENT_TIMESTAMP
+        );
+    SQL);
+
+    $pdo->exec(<<<SQL
+        CREATE TABLE IF NOT EXISTS auth_credentials (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            role TEXT NOT NULL CHECK(role IN ('customer', 'admin')),
+            username TEXT NOT NULL UNIQUE,
+            password_hash TEXT NOT NULL,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         );
     SQL);
 
@@ -68,12 +96,16 @@ function gogo_bootstrap_schema(PDO $pdo): void
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             customer_name TEXT,
+            address TEXT,
             total REAL NOT NULL,
             status TEXT DEFAULT 'Pending',
             created_at TEXT DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
         );
     SQL);
+    $ensureColumn('orders', 'order_type', "TEXT DEFAULT 'pickup'");
+    $ensureColumn('orders', 'scheduled_time', 'TEXT');
+    $ensureColumn('orders', 'address', 'TEXT');
 
     $pdo->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS order_items (
@@ -89,6 +121,46 @@ function gogo_bootstrap_schema(PDO $pdo): void
     SQL);
 }
 
+function gogo_store_credentials(PDO $pdo, int $userId, string $username, string $passwordHash, string $role): void
+{
+    if ($userId <= 0 || $username === '' || $passwordHash === '') {
+        return;
+    }
+
+    $stmt = $pdo->prepare('
+        INSERT INTO auth_credentials (user_id, role, username, password_hash)
+        VALUES (:uid, :role, :username, :hash)
+        ON CONFLICT(username) DO UPDATE SET
+            user_id = excluded.user_id,
+            role = excluded.role,
+            password_hash = excluded.password_hash
+    ');
+
+    $stmt->execute([
+        ':uid' => $userId,
+        ':role' => $role,
+        ':username' => strtolower($username),
+        ':hash' => $passwordHash,
+    ]);
+}
+
+function gogo_backfill_credentials(PDO $pdo): void
+{
+    $users = $pdo->query('SELECT id, email, password_hash, role FROM users')->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($users as $user) {
+        if (empty($user['email']) || empty($user['password_hash'])) {
+            continue;
+        }
+        gogo_store_credentials(
+            $pdo,
+            (int) $user['id'],
+            $user['email'],
+            $user['password_hash'],
+            $user['role'] ?? 'customer'
+        );
+    }
+}
+
 function gogo_seed_if_empty(PDO $pdo): void
 {
     // Seed a default admin + a demo customer.
@@ -99,23 +171,29 @@ function gogo_seed_if_empty(PDO $pdo): void
             VALUES (:first, :last, :email, :phone, :pass, :role)
         ');
 
+        $hashAdmin = password_hash('admin123', PASSWORD_DEFAULT);
         $stmt->execute([
             ':first' => 'Admin',
             ':last' => 'User',
             ':email' => 'admin@gogoorder.local',
             ':phone' => '555-0100',
-            ':pass' => password_hash('admin123', PASSWORD_DEFAULT),
+            ':pass' => $hashAdmin,
             ':role' => 'admin',
         ]);
+        $adminId = (int) $pdo->lastInsertId();
+        gogo_store_credentials($pdo, $adminId, 'admin@gogoorder.local', $hashAdmin, 'admin');
 
+        $hashCustomer = password_hash('customer123', PASSWORD_DEFAULT);
         $stmt->execute([
             ':first' => 'Demo',
             ':last' => 'Customer',
             ':email' => 'customer@gogoorder.local',
             ':phone' => '555-0200',
-            ':pass' => password_hash('customer123', PASSWORD_DEFAULT),
+            ':pass' => $hashCustomer,
             ':role' => 'customer',
         ]);
+        $custId = (int) $pdo->lastInsertId();
+        gogo_store_credentials($pdo, $custId, 'customer@gogoorder.local', $hashCustomer, 'customer');
     }
 
     // Seed menu items if empty using existing JSON/menu.json as source.

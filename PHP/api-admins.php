@@ -38,6 +38,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $tempPassword = bin2hex(random_bytes(4)); // 8 hex chars
 
 $pdo = gogo_db();
+$hash = password_hash($tempPassword, PASSWORD_DEFAULT);
 
 // Check uniqueness
 $exists = $pdo->prepare('SELECT id FROM users WHERE email = :email LIMIT 1');
@@ -57,10 +58,11 @@ $stmt->execute([
     ':last' => $last,
     ':email' => $email,
     ':phone' => $phone,
-    ':pass' => password_hash($tempPassword, PASSWORD_DEFAULT),
+    ':pass' => $hash,
     ':role' => 'admin',
 ]);
 $dbId = (int) $pdo->lastInsertId();
+gogo_store_credentials($pdo, $dbId, $email, $hash, 'admin');
 
 // Sync to JSON/admins.json
 $jsonPath = __DIR__ . '/../JSON/admins.json';

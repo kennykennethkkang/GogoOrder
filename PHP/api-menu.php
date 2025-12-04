@@ -87,7 +87,8 @@ function handleUpload(string $field = 'image_file', int $maxBytes = 5_000_000, s
         return null;
     }
 
-    return 'img/uploads/' . $targetName;
+    $relative = 'img/uploads/' . ($safeCat ? $safeCat . '/' : '') . $targetName;
+    return $relative;
 }
 
 function json_out(array $data, int $code = 200): void

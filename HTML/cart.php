@@ -92,6 +92,25 @@ $fullName = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''))
                         </div>
                         <input type="hidden" id="customer-name" value="<?php echo htmlspecialchars($fullName); ?>">
                     </div>
+                    <div class="summary-block">
+                        <p class="summary-label">Order Type</p>
+                        <div class="order-type-options">
+                            <label class="pill-option"><input type="radio" name="order_type" value="pickup" checked> Pickup</label>
+                            <label class="pill-option"><input type="radio" name="order_type" value="delivery"> Delivery</label>
+                        </div>
+                    </div>
+                    <div class="summary-block" id="address-block" style="display:none;">
+                        <p class="summary-label">Delivery address</p>
+                        <input type="text" id="delivery-address" name="delivery_address" placeholder="Enter delivery address">
+                    </div>
+                    <div class="summary-block">
+                        <p class="summary-label">Schedule time</p>
+                        <div class="schedule-row">
+                            <input type="datetime-local" id="scheduled-time" name="scheduled_time" required>
+                            <button type="button" id="asap-btn" class="asap-btn">ASAP</button>
+                        </div>
+                        <small class="hint">Choose a time or tap ASAP for earliest fulfillment.</small>
+                    </div>
                     <button id="confirm-order" class="primary-btn">Confirm Order</button>
                 </div>
             </div>

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form.elements["name"].value = item.name || "";
         form.elements["price"].value = item.price || "";
         form.elements["category"].value = item.category || "";
-        form.elements["image"].value = item.image || "";
+        form.elements["image"].value = item.image_url || item.image || "";
         form.elements["description"].value = item.description || "";
       })
       .catch((err) => console.error("Error loading menu.json for edit:", err));
