@@ -1,106 +1,12 @@
 <?php
+// PHP/login.php
+// Login page with authentication check - includes HTML template
+
 require_once __DIR__ . '/../PHP/db.php';
 if (gogo_current_user()) {
     header('Location: ../index.php');
     exit;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gogo Order - Sign In</title>
-    <link rel="stylesheet" href="../CSS/auth.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-</head>
-
-<body class="auth-body">
-    <div class="auth-wrapper">
-        <div class="auth-logo">
-            <img src="../img/logo.png" alt="Gogo Order">
-            <span>Welcome back</span>
-        </div>
-        <div class="auth-grid">
-            <div class="auth-card">
-                <h2 class="auth-title">Sign In</h2>
-                <p class="auth-subtitle">Sign in to stay connected.</p>
-                <div id="login-error" class="auth-error" style="display:none;"></div>
-                <div id="login-success" class="auth-success" style="display:none;"></div>
-                <form class="auth-form" id="unified-login">
-                    <div>
-                        <label for="login-email">Email <span class="required-star">*</span></label>
-                        <input id="login-email" name="email" type="email" placeholder="Enter your email" required>
-                    </div>
-                    <div>
-                        <label for="login-password">Password <span class="required-star">*</span></label>
-                        <input id="login-password" name="password" type="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class="auth-actions">
-                        <div class="auth-checkbox">
-                            <input type="checkbox" id="remember-me">
-                            <label for="remember-me">Remember me</label>
-                        </div>
-                        <a href="#" class="auth-footer">Forgot Password</a>
-                    </div>
-                    <button class="auth-btn" type="submit">Sign in</button>
-                    <div class="auth-footer">
-                        Don't have an account?
-                        <a href="#" id="open-signup">Open sign up</a>
-                    </div>
-                </form>
-            </div>
-
-            <div id="signup-modal" class="auth-modal" style="display:none;">
-                <div class="auth-modal-content">
-                    <button class="auth-modal-close" id="close-signup">&times;</button>
-                    <h2 class="auth-title">Create Account</h2>
-                    <p class="auth-subtitle">Customer sign up</p>
-                    <div id="signup-error" class="auth-error" style="display:none;"></div>
-                    <div id="signup-success" class="auth-success" style="display:none;"></div>
-                    <form class="auth-form" id="customer-signup">
-                        <div class="auth-two-col">
-                            <div>
-                                <label for="first">First Name</label>
-                                <input id="first" name="first_name" type="text" placeholder="Enter first name" required>
-                            </div>
-                            <div>
-                                <label for="last">Last Name</label>
-                                <input id="last" name="last_name" type="text" placeholder="Enter last name" required>
-                            </div>
-                        </div>
-                        <div>
-                            <label for="signup-email">Email <span class="required-star">*</span></label>
-                            <input id="signup-email" name="email" type="email" placeholder="Enter your email" required>
-                        </div>
-                        <div>
-                            <label for="phone">Phone No. <span class="required-star">*</span></label>
-                            <input id="phone" name="phone" type="tel" placeholder="Enter phone number" required>
-                        </div>
-                        <div class="auth-two-col">
-                            <div>
-                                <label for="signup-password">Password <span class="required-star">*</span></label>
-                                <input id="signup-password" name="password" type="password" placeholder="Enter password" required>
-                            </div>
-                            <div>
-                                <label for="confirm-password">Confirm password <span class="required-star">*</span></label>
-                                <input id="confirm-password" name="confirm_password" type="password" placeholder="Confirm password" required>
-                            </div>
-                        </div>
-                        <div class="auth-checkbox">
-                            <input type="checkbox" id="terms" required>
-                            <label for="terms">I agree with the terms of use <span class="required-star">*</span></label>
-                        </div>
-                        <button class="auth-btn" type="submit">Sign up</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="../JS/auth-forms.js"></script>
-</body>
-
-</html>
+// Include the HTML template
+include __DIR__ . '/login.html';

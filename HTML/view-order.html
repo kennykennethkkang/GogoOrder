@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=view-order.php">
-  <title>Orders</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gogo Order - Orders</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../CSS/customer-pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-  <p>Opening orders... <a href="view-order.php">Continue</a></p>
+
+<body class="page-body">
+    <div class="global-taskbar">
+        <div class="taskbar-left">
+            <a class="taskbar-logo-link" href="../index.php">
+                <img src="../img/logo.png" class="taskbar-logo" alt="Gogo Order">
+                <span class="taskbar-title">Gogo Order</span>
+            </a>
+        </div>
+        <div class="taskbar-center">
+            <a class="taskbar-link" href="../index.php">Home</a>
+            <a class="taskbar-link" href="cart.php">Cart</a>
+            <a class="taskbar-link" href="view-order.php">Orders</a>
+        </div>
+        <div class="taskbar-right">
+            <div class="taskbar-user-menu">
+                <button class="user-menu-btn" id="user-menu-btn">
+                    <?php echo isset($fullName) ? htmlspecialchars($fullName ?: 'Account') : 'Account'; ?>
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+                <div class="user-menu" id="user-menu" style="display:none;">
+                    <button data-open-profile>Account Settings</button>
+                    <a data-admin-link href="admin-dashboard.php" style="display:none;">Go to Admin</a>
+                    <a href="../PHP/logout.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <?php include __DIR__ . '/account-modal.html'; ?>
+        <main class="page-main">
+            <h1 class="page-title">Your Orders</h1>
+            <div class="content-card">
+                <div data-order-list>
+                    <!-- filled by JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../JS/topbar.js"></script>
+    <script src="../JS/account.js"></script>
+    <script src="../JS/customer-orders.js"></script>
 </body>
+
 </html>

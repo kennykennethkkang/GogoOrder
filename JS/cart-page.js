@@ -6,12 +6,6 @@
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
   const cartKey = "gogoCart";
 
-  function normalizeImage(raw) {
-    if (!raw) return "/img/placeholder.png";
-    if (String(raw).startsWith("http")) return raw;
-    return "/" + String(raw).replace(/^\/?/, "");
-  }
-
   function loadCart() {
     try {
       const items = JSON.parse(localStorage.getItem(cartKey)) || [];

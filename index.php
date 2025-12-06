@@ -50,39 +50,7 @@ $user = gogo_require_login();
 
         <!-- Main Content -->
         <main class="main">
-
-            <div id="account-modal" class="account-modal">
-                <div class="account-modal-content">
-                <button class="account-close" data-close-account-modal>&times;</button>
-                <h3 id="account-modal-title">Account Settings</h3>
-                <p>Update your profile and password.</p>
-                <form id="account-form" class="account-form">
-                    <div class="auth-two-col">
-                        <div>
-                            <label>First name</label>
-                            <input type="text" name="first_name" placeholder="First name" required>
-                        </div>
-                        <div>
-                            <label>Last name</label>
-                            <input type="text" name="last_name" placeholder="Last name" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label>Phone</label>
-                        <input type="text" name="phone" placeholder="Phone">
-                    </div>
-                    <div>
-                        <label>New password (optional)</label>
-                        <input type="password" name="password" placeholder="New password">
-                    </div>
-                    <button type="submit">Save</button>
-                </form>
-            </div>
-        </div>
-
-            <!-- Header -->
-            <header class="header">
-            </header>
+            <?php include __DIR__ . '/HTML/account-modal.html'; ?>
 
             <!-- Hero -->
             <section class="hero">
@@ -137,9 +105,9 @@ $user = gogo_require_login();
 
     </div>
 
+    <script src="JS/utils.js"></script>
     <script src="JS/topbar.js"></script>
     <script src="JS/account.js"></script>
-    <script src="JS/global-sidebar.js"></script>
     <script src="JS/client-app.js"></script>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gogo Order - View Orders</title>
+    <title>Gogo Order - Add Admin</title>
 
     <link rel="stylesheet" href="../base.css">
     <link rel="stylesheet" href="../CSS/admin.css">
@@ -35,13 +35,13 @@
             <div>
                 <div class="admin-nav-section-title">Pages</div>
                 <nav class="admin-nav">
-                    <a href="admin-view-orders.php" class="admin-nav-link active">
+                    <a href="admin-view-orders.php" class="admin-nav-link">
                         <i class="fa-solid fa-receipt"></i> View Orders
                     </a>
                     <a href="admin-menu-list.php" class="admin-nav-link">
                         <i class="fa-solid fa-utensils"></i> Edit Menu
                     </a>
-                    <a href="admin-add-admin.php" class="admin-nav-link">
+                    <a href="admin-add-admin.php" class="admin-nav-link active">
                         <i class="fa-solid fa-user-plus"></i> Add Admin
                     </a>
                 </nav>
@@ -51,10 +51,6 @@
         <!-- Main -->
         <main class="admin-main">
             <header class="admin-header">
-                <div class="admin-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input id="order-search" type="text" placeholder="Search orders...">
-                </div>
                 <div class="admin-header-right">
                     <a class="admin-switch" href="../index.php">Customer View</a>
                     <div class="taskbar-user-menu">
@@ -74,41 +70,47 @@
                 </div>
             </header>
 
-            <?php include __DIR__ . '/account-modal.html'; ?>
-
             <section class="admin-content">
-                <h1 class="admin-page-title">View Orders</h1>
+                <h1 class="admin-page-title">Add Admin</h1>
 
-                <div class="table-card">
-                    <div class="table-header">
-                        <h3>All Orders</h3>
-                        <div class="table-actions">Showing <span id="order-count">0</span> orders</div>
-                    </div>
+                <div class="form-card">
+                    <form id="add-admin-form">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label>First Name</label>
+                                <input type="text" name="first_name" placeholder="Enter first name" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Last Name</label>
+                                <input type="text" name="last_name" placeholder="Enter last name" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="Enter email" required>
+                            </div>
+                            <div class="form-field">
+                                <label>Phone</label>
+                                <input type="tel" name="phone" placeholder="Enter phone number" required>
+                            </div>
+                        </div>
 
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Customer</th>
-                                <th>Items</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>Placed</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="orders-tbody">
-                            <!-- Filled by JS -->
-                        </tbody>
-                    </table>
+                        <div id="add-admin-msg" class="auth-success" style="display:none; margin-top:12px;"></div>
+                        <div id="add-admin-err" class="auth-error" style="display:none; margin-top:12px;"></div>
+
+                        <div class="form-actions" style="margin-top:18px;">
+                            <button type="button" class="btn-ghost" onclick="window.location.href='admin-dashboard.php'">Cancel</button>
+                            <button type="submit" class="btn-primary">Create Admin</button>
+                        </div>
+                    </form>
                 </div>
             </section>
         </main>
     </div>
 
     <script src="../JS/admin-auth.js"></script>
-    <script src="../JS/admin-orders.js"></script>
     <script src="../JS/account.js"></script>
+    <script src="../JS/admin-add-admin.js"></script>
 </body>
 
 </html>
+

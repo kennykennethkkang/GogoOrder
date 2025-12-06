@@ -26,5 +26,19 @@
         "last_name": "Kang",
         "email": "kennethkang0715@gmail.com",
         "phone": "6693092180"
+    },
+    {
+        "id": 4,
+        "first_name": "diofsods",
+        "last_name": "dfjdj",
+        "email": "ccjdoijo@gmail.com",
+        "phone": "123456789"
+    },
+    {
+        "id": 5,
+        "first_name": "Conner",
+        "last_name": "Chen",
+        "email": "cchen19@scu.edu",
+        "phone": "6695889088"
     }
 ]

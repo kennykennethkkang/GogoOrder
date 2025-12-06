@@ -155,17 +155,41 @@ body.page-body {
 .pill-option {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    border: 1px solid #ffb47a;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid #ffb47a;
     border-radius: 999px;
     background: #fff;
     font-weight: 600;
     color: #1e3a5f;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
 }
 
-.pill-option input {
+.pill-option:hover {
+    background: #fff7f0;
+    border-color: #ff7b29;
+}
+
+.pill-option input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
     accent-color: #ff7b29;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.pill-option:has(input[type="radio"]:checked) {
+    background: #ff7b29;
+    color: #fff;
+    border-color: #ff7b29;
+}
+
+.pill-option:has(input[type="radio"]:checked):hover {
+    background: #e86c1f;
+    border-color: #e86c1f;
 }
 
 .schedule-row {

@@ -5,8 +5,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
-
-header('Content-Type: application/json');
+require_once __DIR__ . '/utils.php';
 
 $pdo = gogo_db();
 $method = $_SERVER['REQUEST_METHOD'];
@@ -91,12 +90,6 @@ function handleUpload(string $field = 'image_file', int $maxBytes = 5_000_000, s
     return $relative;
 }
 
-function json_out(array $data, int $code = 200): void
-{
-    http_response_code($code);
-    echo json_encode($data);
-    exit;
-}
 
 if ($method === 'GET') {
     $query = trim($_GET['search'] ?? '');
@@ -126,7 +119,7 @@ if ($method === 'GET') {
     $stmt->execute($params);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    json_out(['items' => $items]);
+    json_response(['items' => $items]);
 }
 
 if ($method === 'POST') {
@@ -135,13 +128,13 @@ if ($method === 'POST') {
     $name = trim($input['name'] ?? '');
     $price = (float) ($input['price'] ?? 0);
     if ($name === '' || $price <= 0) {
-        json_out(['error' => 'Name and price are required'], 400);
+        json_response(['error' => 'Name and price are required'], 400);
     }
 
     $category = trim($input['category'] ?? '');
     $imageUpload = handleUpload('image_file', 5_000_000, $category);
     if (isset($_FILES['image_file']) && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE && !$imageUpload) {
-        json_out(['error' => 'Image upload failed. Use jpg/png/gif/webp under 5MB.'], 400);
+        json_response(['error' => 'Image upload failed. Use jpg/png/gif/webp under 5MB.'], 400);
     }
     $imageUrl = $imageUpload ?? trim($input['image'] ?? '');
 
@@ -171,27 +164,27 @@ if ($method === 'POST') {
     ];
     saveMenuJson($jsonItem, false);
 
-    json_out(['id' => $newId, 'image_url' => $imageUrl]);
+    json_response(['id' => $newId, 'image_url' => $imageUrl]);
 }
 
 if ($method === 'PUT' || $method === 'PATCH') {
     gogo_assert_admin();
     $id = (int) ($_GET['id'] ?? ($input['id'] ?? 0));
     if ($id <= 0) {
-        json_out(['error' => 'Missing id'], 400);
+        json_response(['error' => 'Missing id'], 400);
     }
 
     $stmt = $pdo->prepare('SELECT * FROM menu_items WHERE id = :id LIMIT 1');
     $stmt->execute([':id' => $id]);
     $existing = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$existing) {
-        json_out(['error' => 'Item not found'], 404);
+        json_response(['error' => 'Item not found'], 404);
     }
 
     $category = trim($input['category'] ?? $existing['category'] ?? '');
     $imageUpload = handleUpload('image_file', 5_000_000, $category);
     if (isset($_FILES['image_file']) && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE && !$imageUpload) {
-        json_out(['error' => 'Image upload failed. Use jpg/png/gif/webp under 5MB.'], 400);
+        json_response(['error' => 'Image upload failed. Use jpg/png/gif/webp under 5MB.'], 400);
     }
     $newImage = $imageUpload ?? trim($input['image'] ?? '');
     if ($newImage === '' && isset($existing['image_url'])) {
@@ -232,19 +225,19 @@ if ($method === 'PUT' || $method === 'PATCH') {
     ];
     saveMenuJson($jsonItem, true);
 
-    json_out(['ok' => true]);
+    json_response(['ok' => true]);
 }
 
 if ($method === 'DELETE') {
     gogo_assert_admin();
     $id = (int) ($_GET['id'] ?? ($input['id'] ?? 0));
     if ($id <= 0) {
-        json_out(['error' => 'Missing id'], 400);
+        json_response(['error' => 'Missing id'], 400);
     }
 
     $stmt = $pdo->prepare('DELETE FROM menu_items WHERE id = :id');
     $stmt->execute([':id' => $id]);
-    json_out(['ok' => true]);
+    json_response(['ok' => true]);
 }
 
-json_out(['error' => 'Unsupported request'], 405);
+json_response(['error' => 'Unsupported request'], 405);

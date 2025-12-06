@@ -5,18 +5,11 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/utils.php';
 
-header('Content-Type: application/json');
 $pdo = gogo_db();
 $method = $_SERVER['REQUEST_METHOD'];
 $input = json_decode((string) file_get_contents('php://input'), true) ?? [];
-
-function out(array $data, int $code = 200): void
-{
-    http_response_code($code);
-    echo json_encode($data);
-    exit;
-}
 
 function sync_order_json(array $order, array $items, string $status): void
 {
@@ -112,7 +105,7 @@ if ($method === 'GET') {
         $order['items'] = $itemsByOrder[$order['id']] ?? [];
     }
 
-    out(['orders' => $orders]);
+    json_response(['orders' => $orders]);
 }
 
 if ($method === 'POST') {
@@ -120,7 +113,7 @@ if ($method === 'POST') {
 
     $items = $input['items'] ?? [];
     if (!is_array($items) || count($items) === 0) {
-        out(['error' => 'Order must include items'], 400);
+        json_response(['error' => 'Order must include items'], 400);
     }
 
     $orderType = strtolower(trim($input['order_type'] ?? 'pickup'));
@@ -130,13 +123,13 @@ if ($method === 'POST') {
     $scheduledTime = trim($input['scheduled_time'] ?? '');
     $address = trim($input['address'] ?? '');
     if ($orderType === 'delivery' && $address === '') {
-        out(['error' => 'Delivery address is required'], 400);
+        json_response(['error' => 'Delivery address is required'], 400);
     }
 
     $ids = array_column($items, 'id');
     $ids = array_filter(array_map('intval', $ids), static fn ($v) => $v > 0);
     if (!$ids) {
-        out(['error' => 'Invalid items'], 400);
+        json_response(['error' => 'Invalid items'], 400);
     }
 
     $placeholder = implode(',', array_fill(0, count($ids), '?'));
@@ -166,7 +159,7 @@ if ($method === 'POST') {
     }
 
     if (!$lineItems) {
-        out(['error' => 'No valid items to order'], 400);
+        json_response(['error' => 'No valid items to order'], 400);
     }
 
     $pdo->beginTransaction();
@@ -220,10 +213,10 @@ if ($method === 'POST') {
             'address' => $address,
         ];
         sync_order_json($orderRow, $lineItems, 'Pending');
-        out(['order_id' => $orderId, 'total' => $subtotal]);
+        json_response(['order_id' => $orderId, 'total' => $subtotal]);
     } catch (Throwable $e) {
         $pdo->rollBack();
-        out(['error' => 'Could not save order'], 500);
+        json_response(['error' => 'Could not save order'], 500);
     }
 }
 
@@ -233,7 +226,7 @@ if ($method === 'PATCH' || $method === 'PUT') {
     $status = trim($input['status'] ?? '');
 
     if ($orderId <= 0 || $status === '') {
-        out(['error' => 'Missing id or status'], 400);
+        json_response(['error' => 'Missing id or status'], 400);
     }
 
     // Only admin or owner can update
@@ -241,10 +234,10 @@ if ($method === 'PATCH' || $method === 'PUT') {
     $check->execute([':id' => $orderId]);
     $row = $check->fetch(PDO::FETCH_ASSOC);
     if (!$row) {
-        out(['error' => 'Order not found'], 404);
+        json_response(['error' => 'Order not found'], 404);
     }
     if ($current['role'] !== 'admin' && (int) $row['user_id'] !== (int) $current['id']) {
-        out(['error' => 'Forbidden'], 403);
+        json_response(['error' => 'Forbidden'], 403);
     }
 
     $stmt = $pdo->prepare('UPDATE orders SET status = :status WHERE id = :id');
@@ -274,7 +267,7 @@ if ($method === 'PATCH' || $method === 'PUT') {
     $orderRow['total'] = $total;
     sync_order_json($orderRow, $items, $status);
 
-    out(['ok' => true]);
+    json_response(['ok' => true]);
 }
 
-out(['error' => 'Unsupported request'], 405);
+json_response(['error' => 'Unsupported request'], 405);

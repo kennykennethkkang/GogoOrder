@@ -27,12 +27,6 @@
     renderCart();
   }
 
-  function normalizeImage(raw) {
-    if (!raw) return "/img/placeholder.png";
-    if (String(raw).startsWith("http")) return raw;
-    return "/" + String(raw).replace(/^\/?/, "");
-  }
-
   function addToCart(item) {
     const cart = loadCart();
     const existing = cart.find((c) => c.id === item.id);

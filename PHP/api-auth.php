@@ -5,23 +5,15 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/auth.php';
-
-header('Content-Type: application/json');
+require_once __DIR__ . '/utils.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $input = json_decode((string) file_get_contents('php://input'), true) ?? [];
 $action = $_GET['action'] ?? $input['action'] ?? null;
 
-function respond(array $data, int $code = 200): void
-{
-    http_response_code($code);
-    echo json_encode($data);
-    exit;
-}
-
 if ($method === 'GET') {
     $user = gogo_current_user();
-    respond(['user' => $user]);
+    json_response(['user' => $user]);
 }
 
 if ($method === 'POST') {
@@ -32,25 +24,53 @@ if ($method === 'POST') {
 
         $result = gogo_login_user($email, $password, $role ?: null);
         if (!$result['ok']) {
-            respond(['error' => $result['message']], 400);
+            json_response(['error' => $result['message']], 400);
         }
-        respond(['user' => $result['user']]);
+        json_response(['user' => $result['user']]);
     }
 
     if ($action === 'signup') {
         $role = $input['role'] ?? ($_POST['role'] ?? 'customer');
         $result = gogo_register_user($input ?: $_POST, $role);
         if (!$result['ok']) {
-            respond(['error' => $result['message']], 400);
+            json_response(['error' => $result['message']], 400);
         }
-        respond(['user' => $result['user']]);
+        json_response(['user' => $result['user']]);
     }
 
     if ($action === 'logout') {
         gogo_logout();
-        respond(['ok' => true]);
+        json_response(['ok' => true]);
+    }
+
+    if ($action === 'request-reset') {
+        $email = $input['email'] ?? ($_POST['email'] ?? '');
+        $result = gogo_request_password_reset($email);
+        if (!$result['ok']) {
+            json_response(['error' => $result['message']], 400);
+        }
+        json_response($result);
+    }
+
+    if ($action === 'reset-password') {
+        $token = $input['token'] ?? ($_POST['token'] ?? '');
+        $password = $input['password'] ?? ($_POST['password'] ?? '');
+        $result = gogo_reset_password($token, $password);
+        if (!$result['ok']) {
+            json_response(['error' => $result['message']], 400);
+        }
+        json_response($result);
+    }
+
+    if ($action === 'verify-token') {
+        $token = $input['token'] ?? ($_GET['token'] ?? '');
+        $result = gogo_verify_reset_token($token);
+        if (!$result['ok']) {
+            json_response(['error' => $result['message']], 400);
+        }
+        json_response($result);
     }
 }
 
-respond(['error' => 'Unsupported request'], 405);
+json_response(['error' => 'Unsupported request'], 405);
 

@@ -119,6 +119,18 @@ function gogo_bootstrap_schema(PDO $pdo): void
             FOREIGN KEY (menu_item_id) REFERENCES menu_items(id) ON DELETE SET NULL
         );
     SQL);
+
+    $pdo->exec(<<<SQL
+        CREATE TABLE IF NOT EXISTS password_reset_tokens (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            token TEXT NOT NULL UNIQUE,
+            expires_at TEXT NOT NULL,
+            used INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        );
+    SQL);
 }
 
 function gogo_store_credentials(PDO $pdo, int $userId, string $username, string $passwordHash, string $role): void
