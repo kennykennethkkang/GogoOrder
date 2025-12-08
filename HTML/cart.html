@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gogo Order - Cart</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../CSS/customer-pages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="page-body">
+    <div class="global-taskbar">
+        <div class="taskbar-left">
+            <a class="taskbar-logo-link" href="../index.php">
+                <img src="../img/logo.png" class="taskbar-logo" alt="Gogo Order">
+                <span class="taskbar-title">Gogo Order</span>
+            </a>
+        </div>
+        <div class="taskbar-center">
+            <a class="taskbar-link" href="../index.php">Home</a>
+            <a class="taskbar-link" href="cart.php">Cart</a>
+            <a class="taskbar-link" href="view-order.php">Orders</a>
+        </div>
+        <div class="taskbar-right">
+            <div class="taskbar-user-menu">
+                <button class="user-menu-btn" id="user-menu-btn">
+                    <?php echo isset($fullName) ? htmlspecialchars($fullName ?: 'Account') : 'Account'; ?>
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+                <div class="user-menu" id="user-menu" style="display:none;">
+                    <button data-open-profile>Account Settings</button>
+                    <a data-admin-link href="admin-dashboard.php" style="display:none;">Go to Admin</a>
+                    <a href="../PHP/logout.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-container">
+        <?php include __DIR__ . '/account-modal.html'; ?>
+        <main class="page-main">
+            <h1 class="page-title">Cart</h1>
+            <div class="content-card cart-grid">
+                <div data-cart-list>
+                    <!-- cart rows via JS -->
+                </div>
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>Your Subtotal</span>
+                        <span data-cart-total>$0.00</span>
+                    </div>
+                    <div>
+                        <label>Name</label>
+                        <div class="summary-name" data-customer-name-display>
+                            <?php echo isset($fullName) ? htmlspecialchars($fullName ?: 'Customer') : 'Customer'; ?>
+                        </div>
+                        <input type="hidden" id="customer-name" value="<?php echo isset($fullName) ? htmlspecialchars($fullName) : 'Customer'; ?>">
+                    </div>
+                    <div class="summary-block">
+                        <p class="summary-label">Order Type</p>
+                        <div class="order-type-options">
+                            <label class="pill-option"><input type="radio" name="order_type" value="pickup" checked> Pickup</label>
+                            <label class="pill-option"><input type="radio" name="order_type" value="delivery"> Delivery</label>
+                        </div>
+                    </div>
+                    <div class="summary-block" id="address-block" style="display:none;">
+                        <p class="summary-label">Delivery address</p>
+                        <input type="text" id="delivery-address" name="delivery_address" placeholder="Enter delivery address">
+                    </div>
+                    <div class="summary-block">
+                        <p class="summary-label">Schedule time</p>
+                        <div class="schedule-row">
+                            <input type="datetime-local" id="scheduled-time" name="scheduled_time" required>
+                            <button type="button" id="asap-btn" class="asap-btn">ASAP</button>
+                        </div>
+                        <small class="hint">Choose a time or tap ASAP for earliest fulfillment.</small>
+                    </div>
+                    <button id="confirm-order" class="primary-btn">Confirm Order</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../JS/utils.js"></script>
+    <script src="../JS/topbar.js"></script>
+    <script src="../JS/account.js"></script>
+    <script src="../JS/cart-page.js"></script>
+</body>
+
+</html>

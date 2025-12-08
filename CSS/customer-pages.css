@@ -1,0 +1,374 @@
+/* CSS/customer-pages.css */
+
+body.page-body {
+    margin: 0;
+    background: #e8f1f6;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: calc(100vh - 60px);
+    padding: 0 24px 32px;
+}
+
+.page-main {
+    padding: 24px 32px 40px;
+    background: #e8f1f6;
+}
+
+/* modal styles moved to base.css */
+
+.page-title {
+    font-family: "Prata", serif;
+    font-size: 28px;
+    color: #1e3a5f;
+    margin: 0 0 20px;
+}
+
+.content-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+}
+
+.cart-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+}
+
+.cart-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cart-row:last-child {
+    border-bottom: none;
+}
+
+.cart-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-row-left img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.cart-row-title {
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.cart-description {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.cart-customization {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.cart-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
+}
+
+.cart-row-price {
+    color: #ff7b29;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.cart-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #b71c1c;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.summary-box {
+    background: #ffead6;
+    border-radius: 16px;
+    padding: 18px;
+    display: grid;
+    gap: 12px;
+}
+
+.summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    color: #1e3a5f;
+}
+
+.summary-block {
+    display: grid;
+    gap: 6px;
+}
+
+.summary-label {
+    margin: 0;
+    font-weight: 700;
+    color: #1e3a5f;
+}
+
+.summary-box input {
+    width: 100%;
+    border: 1px solid #e2c9ba;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.summary-name {
+    padding: 10px 12px;
+    border: 1px solid #e2c9ba;
+    border-radius: 12px;
+    background: #fff;
+    font-weight: 600;
+}
+
+.primary-btn {
+    background: #ff7b29;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.primary-btn:hover {
+    background: #e86c1f;
+}
+
+.order-type-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pill-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid #ffb47a;
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 600;
+    color: #1e3a5f;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.pill-option:hover {
+    background: #fff7f0;
+    border-color: #ff7b29;
+}
+
+.pill-option input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+    accent-color: #ff7b29;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.pill-option:has(input[type="radio"]:checked) {
+    background: #ff7b29;
+    color: #fff;
+    border-color: #ff7b29;
+}
+
+.pill-option:has(input[type="radio"]:checked):hover {
+    background: #e86c1f;
+    border-color: #e86c1f;
+}
+
+.schedule-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.asap-btn {
+    border: 1px solid #ff7b29;
+    color: #ff7b29;
+    background: #fff7f0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.asap-btn:hover {
+    background: #ffe1cc;
+}
+
+.hint {
+    color: #7a7a7a;
+    font-size: 12px;
+}
+
+.order-card {
+    background: #ffead6;
+    border-radius: 18px;
+    padding: 18px 18px 14px;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "items items items"
+        "footer footer footer";
+    gap: 10px 16px;
+}
+
+.order-card-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.status-badge {
+    background: #fff;
+    color: #ff7b29;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 12px;
+    border: 1px solid #ffd6b9;
+}
+
+.order-grid {
+    grid-area: items;
+    display: grid;
+    gap: 8px;
+}
+
+.order-item-row {
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 0.6fr;
+    align-items: start;
+    font-size: 14px;
+    color: #1e1e1e;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.order-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.order-item-name {
+    font-weight: 600;
+}
+
+.order-item-description {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.order-item-customization {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.order-item-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
+}
+
+.order-qty {
+    text-align: center;
+    color: #444;
+}
+
+.order-price {
+    text-align: right;
+    color: #1e1e1e;
+    font-weight: 600;
+}
+
+.order-card-footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: start;
+    font-size: 13px;
+    color: #555;
+}
+
+.order-meta-left,
+.order-meta-center,
+.order-meta-right {
+    display: grid;
+    gap: 4px;
+}
+
+.order-cancel-btn {
+    background: #ffe0dc;
+    border: 1px solid #ffc2b8;
+    color: #c24130;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.order-cancel-btn:hover {
+    background: #ffcfc6;
+}
+
+.badge-pending {
+    background: #fff5d6;
+    border-color: #ffebac;
+    color: #b27d00;
+}
+
+.badge-cancelled {
+    background: #ffe0dc;
+    border-color: #ffc2b8;
+    color: #c24130;
+}
+
+.badge-completed {
+    background: #e3f9e5;
+    border-color: #c3ebc8;
+    color: #1b7a2f;
+}
