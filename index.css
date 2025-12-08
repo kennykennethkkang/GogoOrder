@@ -8,7 +8,7 @@
 .hero {
     margin-top: 25px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 25px;
 }
 
@@ -80,7 +80,71 @@
     background: #e66a1f;
 }
 
-/* removed promo card */
+.hero-promo {
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-promo img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.hero-promo h1 {
+    color: #ff7b29;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.hero-promo p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Search Bar */
+.search-bar {
+    background: white;
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 18px;
+    border: none;
+}
+
+.search-bar i {
+    color: #999;
+    margin-right: 12px;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+    background: transparent;
+    padding: 0;
+}
+
+.search-bar input::placeholder {
+    color: #999;
+}
 
 /* Categories */
 .categories {
@@ -161,13 +225,6 @@
     margin: 0;
 }
 
-.category-arrow {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    color: #ff7b29;
-    font-size: 12px;
-}
 
 .category.active {
     background: #ffead6;
@@ -290,6 +347,18 @@
 .cart-item-info span {
     color: #999;
     font-size: 12px;
+}
+
+.cart-customization {
+    font-size: 11px;
+    color: #666;
+    margin: 3px 0;
+    line-height: 1.4;
+}
+
+.cart-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
 }
 
 .cart-item i {

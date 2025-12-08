@@ -29,6 +29,49 @@ document.addEventListener("DOMContentLoaded", () => {
       const itemCount = Array.isArray(order.items)
         ? order.items.reduce((sum, item) => sum + (item.qty || 0), 0)
         : 0;
+      
+      // Build items detail HTML
+      const itemsDetail = (order.items || [])
+        .map((item) => {
+          let customizationsHTML = "";
+          let descriptionHTML = "";
+          
+          if (item.description) {
+            descriptionHTML = `<div class="admin-order-item-description">${item.description}</div>`;
+          }
+          
+          if (item.customizations) {
+            try {
+              const customData = typeof item.customizations === 'string' 
+                ? JSON.parse(item.customizations) 
+                : item.customizations;
+              
+              if (typeof customData === 'object' && customData !== null) {
+                if (customData.with && Array.isArray(customData.with) && customData.with.length > 0) {
+                  customizationsHTML += `<div class="admin-order-item-customization"><span class="custom-label">With:</span> ${customData.with.join(", ")}</div>`;
+                }
+                if (customData.without && Array.isArray(customData.without) && customData.without.length > 0) {
+                  customizationsHTML += `<div class="admin-order-item-customization"><span class="custom-label">Without:</span> ${customData.without.join(", ")}</div>`;
+                }
+              } else if (Array.isArray(customData) && customData.length > 0) {
+                customizationsHTML += `<div class="admin-order-item-customization"><span class="custom-label">With:</span> ${customData.join(", ")}</div>`;
+              }
+            } catch (e) {
+              if (item.customizations) {
+                customizationsHTML += `<div class="admin-order-item-customization">${item.customizations}</div>`;
+              }
+            }
+          }
+          
+          return `
+            <div class="admin-order-item-detail">
+              <strong>${item.item_name}</strong> x${item.qty} - $${Number(item.price).toFixed(2)}
+              ${descriptionHTML}
+              ${customizationsHTML}
+            </div>
+          `;
+        })
+        .join("");
 
       const statusLower = (order.status || "").toLowerCase();
       let statusClass = "admin-status-badge admin-status-pending";
@@ -44,7 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
       tr.innerHTML = `
         <td>${order.id || order.order_id}</td>
         <td>${order.customer_name || order.name || ""}</td>
-        <td>${itemCount}</td>
+        <td>
+          <div>${itemCount} item(s)</div>
+          <details class="admin-order-details">
+            <summary class="admin-order-details-summary">View Items</summary>
+            <div class="admin-order-items-list">
+              ${itemsDetail}
+            </div>
+          </details>
+        </td>
         <td>$${Number(order.total || 0).toFixed(2)}</td>
         <td><span class="${statusClass}">${order.status || ""}</span></td>
         <td>

@@ -11,6 +11,7 @@ $user = gogo_require_login();
     <title>Gogo Order</title>
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="itemModal.css">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -63,17 +64,22 @@ $user = gogo_require_login();
                         <button class="hero-btn" onclick="document.querySelector('.categories').scrollIntoView({behavior:'smooth'})">Check Menu</button>
                     </div>
                 </div>
+                <div class="hero-promo">
+                    <img src="img/Food/Entree/Burger.png" alt="Burger">
+                    <h1>50% off</h1>
+                    <p>The full price of burgers</p>
+                </div>
             </section>
 
             <!-- Menu Categories -->
             <section class="categories">
-                <div class="search-bar" style="max-width:420px; margin-bottom:18px;">
+                <div class="search-bar">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input id="menu-search" type="text" placeholder="Search menu...">
+                    <input id="menu-search" type="text" placeholder="Search...">
                 </div>
                 <div class="section-title">
                     <h3>Menu category</h3>
-                    <a href="#menu">View All <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#menu" id="view-all-btn">View All <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="category-list">
@@ -103,6 +109,18 @@ $user = gogo_require_login();
             </div>
         </aside>
 
+    </div>
+
+    <!-- Item Modal -->
+    <div class="item-modal" id="item-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <div id="modal-item-details">
+                <!-- Modal content will be filled by JS -->
+            </div>
+        </div>
     </div>
 
     <script src="JS/utils.js"></script>

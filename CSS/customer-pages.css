@@ -70,10 +70,30 @@ body.page-body {
     color: #1e1e1e;
 }
 
+.cart-description {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.cart-customization {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.cart-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
+}
+
 .cart-row-price {
     color: #ff7b29;
     font-weight: 600;
     font-size: 14px;
+    margin-top: 4px;
 }
 
 .cart-row-actions {
@@ -257,9 +277,40 @@ body.page-body {
 .order-item-row {
     display: grid;
     grid-template-columns: 2fr 0.5fr 0.6fr;
-    align-items: center;
+    align-items: start;
     font-size: 14px;
     color: #1e1e1e;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.order-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.order-item-name {
+    font-weight: 600;
+}
+
+.order-item-description {
+    font-size: 12px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.order-item-customization {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.order-item-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
 }
 
 .order-qty {

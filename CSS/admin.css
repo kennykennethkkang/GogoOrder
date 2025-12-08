@@ -268,6 +268,58 @@ body.admin-body {
     background: #eef4ff;
 }
 
+.admin-order-details {
+    margin-top: 4px;
+}
+
+.admin-order-details-summary {
+    cursor: pointer;
+    color: #ff7b29;
+    font-size: 12px;
+    font-weight: 500;
+    user-select: none;
+}
+
+.admin-order-details-summary:hover {
+    text-decoration: underline;
+}
+
+.admin-order-items-list {
+    margin-top: 8px;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.admin-order-item-detail {
+    padding: 6px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.admin-order-item-detail:last-child {
+    border-bottom: none;
+}
+
+.admin-order-item-description {
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.admin-order-item-customization {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.4;
+}
+
+.admin-order-item-customization .custom-label {
+    font-weight: 600;
+    color: #ff7b29;
+}
+
 .admin-status-badge {
     padding: 4px 10px;
     border-radius: 999px;
@@ -407,4 +459,97 @@ body.admin-body {
     .form-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Ingredients section */
+.ingredients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.ingredient-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: #fffdf8;
+    border: 1px solid #f5b47a;
+    border-radius: 12px;
+}
+
+.ingredient-row .ingredient-name {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.ingredient-row .ingredient-name:focus {
+    outline: none;
+    border-color: #ff7b29;
+    box-shadow: 0 0 0 2px rgba(255, 123, 41, 0.1);
+}
+
+.ingredient-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #4b5a7a;
+    user-select: none;
+}
+
+.ingredient-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #ff7b29;
+}
+
+.btn-remove-ingredient {
+    padding: 6px 10px;
+    border: none;
+    background: #ffe0dc;
+    color: #c24130;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-ingredient:hover {
+    background: #ffc2b8;
+}
+
+.btn-add-ingredient {
+    padding: 10px 16px;
+    border: 1px dashed #f5b47a;
+    background: #fffdf8;
+    color: #ff7b29;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-add-ingredient:hover {
+    background: #ffe9d3;
+    border-color: #ff7b29;
+    border-style: solid;
+}
+
+.btn-add-ingredient i {
+    font-size: 12px;
 }

@@ -8,6 +8,7 @@
 
   let allMenu = [];
   let activeCategory = null;
+  let showAllItems = false;
   let searchTerm = "";
 
   function loadCart() {
@@ -29,13 +30,25 @@
 
   function addToCart(item) {
     const cart = loadCart();
-    const existing = cart.find((c) => c.id === item.id);
+    // Create a unique key based on id and customizations
+    const customKey = JSON.stringify(item.customizations || []) + JSON.stringify(item.removedIngredients || []);
+    const existing = cart.find((c) => {
+      const cKey = JSON.stringify(c.customizations || []) + JSON.stringify(c.removedIngredients || []);
+      return c.id === item.id && cKey === customKey;
+    });
     const normalizedImage = normalizeImage(item.image_url || item.image);
 
     if (existing) {
       existing.qty += 1;
     } else {
-      cart.push({ ...item, qty: 1, image_url: normalizedImage });
+      cart.push({ 
+        ...item, 
+        qty: 1, 
+        image_url: normalizedImage,
+        description: item.description || "",
+        customizations: item.customizations || [],
+        removedIngredients: item.removedIngredients || []
+      });
     }
     saveCart(cart);
   }
@@ -71,6 +84,26 @@
     drinks: "drink.png",
   };
 
+  // Define the desired category order
+  const categoryOrder = ["Appetizers", "Entrees", "Dessert", "Salad", "Drink"];
+
+  function sortCategories(categories) {
+    return categories.sort((a, b) => {
+      const indexA = categoryOrder.indexOf(a);
+      const indexB = categoryOrder.indexOf(b);
+      // If both are in the order list, sort by their index
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB;
+      }
+      // If only A is in the list, A comes first
+      if (indexA !== -1) return -1;
+      // If only B is in the list, B comes first
+      if (indexB !== -1) return 1;
+      // If neither is in the list, maintain original order
+      return 0;
+    });
+  }
+
   function renderCategories() {
     const list = document.querySelector(".category-list");
     if (!list) return;
@@ -78,22 +111,25 @@
     const categories = Array.from(
       new Set(allMenu.map((m) => m.category || "Other"))
     );
-    if (!activeCategory) {
-      activeCategory = categories[0] || null;
+    // Sort categories according to desired order
+    const sortedCategories = sortCategories(categories);
+    // Only auto-select first category on initial load, not when explicitly showing all
+    if (activeCategory === null && !showAllItems) {
+      activeCategory = sortedCategories[0] || null;
     }
 
-    categories.forEach((cat) => {
+    sortedCategories.forEach((cat) => {
       const slug = (cat || "category").toLowerCase().replace(/\s+/g, "");
       const iconName = categoryIconMap[slug] || "appetizers.png";
       const div = document.createElement("div");
-      div.className = "category" + (cat === activeCategory ? " active" : "");
+      div.className = "category" + (cat === activeCategory && !showAllItems ? " active" : "");
       div.innerHTML = `
         <img src="img/categories/${iconName}" alt="${cat}" onerror="this.src='img/categories/appetizers.png'">
         <p>${cat}</p>
-        <i class="fa-solid fa-arrow-right category-arrow"></i>
       `;
       div.addEventListener("click", () => {
         activeCategory = cat;
+        showAllItems = false;
         renderCategories();
         renderMenuItems();
       });
@@ -107,9 +143,11 @@
     container.innerHTML = "";
 
     const filtered = allMenu.filter((m) => {
-      const inCategory = activeCategory
-        ? (m.category || "").toLowerCase() === activeCategory.toLowerCase()
-        : true;
+      const inCategory = showAllItems 
+        ? true 
+        : (activeCategory
+          ? (m.category || "").toLowerCase() === activeCategory.toLowerCase()
+          : true);
       const matchesSearch = searchTerm
         ? (m.name || "").toLowerCase().includes(searchTerm.toLowerCase())
         : true;
@@ -119,6 +157,7 @@
     filtered.forEach((item) => {
       const card = document.createElement("div");
       card.className = "item-card";
+      card.style.cursor = "pointer";
       const imgSrc = normalizeImage(item.image_url || item.image);
       card.innerHTML = `
         <img src="${imgSrc}" alt="${item.name}">
@@ -130,6 +169,12 @@
           </button>
         </div>
       `;
+      // Make entire card clickable to show modal
+      card.addEventListener("click", (e) => {
+        if (!e.target.closest(".add-btn")) {
+          showItemModal(item);
+        }
+      });
       container.appendChild(card);
     });
   }
@@ -151,10 +196,18 @@
         const row = document.createElement("div");
         row.className = "cart-item";
         const imgSrc = normalizeImage(item.image_url || item.image);
+        let customizationsHTML = "";
+        if (item.customizations && item.customizations.length > 0) {
+          customizationsHTML = `<div class="cart-customization"><span class="custom-label">With:</span> ${item.customizations.join(", ")}</div>`;
+        }
+        if (item.removedIngredients && item.removedIngredients.length > 0) {
+          customizationsHTML += `<div class="cart-customization"><span class="custom-label">Without:</span> ${item.removedIngredients.join(", ")}</div>`;
+        }
         row.innerHTML = `
           <img src="${imgSrc}">
           <div class="cart-item-info">
             <p>${item.name}</p>
+            ${customizationsHTML}
             <span>$${Number(item.price).toFixed(2)}</span>
           </div>
           <div class="cart-qty">
@@ -172,6 +225,114 @@
     }
   }
 
+  function showItemModal(item) {
+    const modal = document.getElementById("item-modal");
+    const modalDetails = document.getElementById("modal-item-details");
+    if (!modal || !modalDetails) return;
+
+    const imgSrc = normalizeImage(item.image_url || item.image);
+    const ingredients = item.ingredients || [];
+    
+    let ingredientsHTML = "";
+    if (ingredients.length > 0) {
+      ingredientsHTML = `
+        <div class="modal-section">
+          <h3>Customize Ingredients</h3>
+          <p class="section-subtitle">Select ingredients to include or exclude</p>
+          <div class="ingredients-list">
+      `;
+      
+      ingredients.forEach((ing, index) => {
+        const isRequired = !ing.removable;
+        const checked = !isRequired ? "checked" : "";
+        const disabled = isRequired ? "disabled" : "";
+        ingredientsHTML += `
+          <label class="ingredient-item ${isRequired ? 'required' : ''}">
+            <input type="checkbox" ${checked} ${disabled} data-ingredient="${index}">
+            <span class="checkmark"></span>
+            <span class="ingredient-name">${ing.name}</span>
+            ${isRequired ? '<span class="required-badge">Required</span>' : ''}
+          </label>
+        `;
+      });
+      
+      ingredientsHTML += `
+          </div>
+        </div>
+      `;
+    }
+
+    modalDetails.innerHTML = `
+      <div class="modal-header">
+        <img src="${imgSrc}" alt="${item.name}" class="modal-item-image">
+        <div class="modal-header-info">
+          <h2>${item.name}</h2>
+          <p class="modal-description">${item.description || "No description available."}</p>
+          <p class="modal-price">$${Number(item.price).toFixed(2)}</p>
+        </div>
+      </div>
+      ${ingredientsHTML}
+      <div class="modal-footer">
+        <div class="modal-total">
+          <span>Total:</span>
+          <strong>$${Number(item.price).toFixed(2)}</strong>
+        </div>
+        <button class="add-to-cart-modal-btn" data-modal-add-id="${item.id}">
+          <i class="fa-solid fa-cart-plus"></i>
+          Add to Cart
+        </button>
+      </div>
+    `;
+
+    modal.classList.add("show");
+    
+    // Attach event listener for add to cart button
+    const addBtn = modalDetails.querySelector("[data-modal-add-id]");
+    if (addBtn) {
+      addBtn.addEventListener("click", () => {
+        const selectedIngredients = [];
+        const checkboxes = modalDetails.querySelectorAll("input[type='checkbox']:checked");
+        checkboxes.forEach((cb) => {
+          const index = parseInt(cb.getAttribute("data-ingredient"));
+          if (ingredients[index]) {
+            selectedIngredients.push(ingredients[index].name);
+          }
+        });
+        
+        addToCart({
+          id: item.id,
+          name: item.name,
+          price: Number(item.price),
+          image: item.image_url || item.image,
+          description: item.description || "",
+          customizations: selectedIngredients,
+          removedIngredients: getRemovedIngredients(ingredients, checkboxes)
+        });
+        
+        closeItemModal();
+      });
+    }
+  }
+
+  function getRemovedIngredients(allIngredients, checkedBoxes) {
+    const checkedIndices = Array.from(checkedBoxes).map(cb => parseInt(cb.getAttribute("data-ingredient")));
+    const removed = [];
+    allIngredients.forEach((ing, index) => {
+      // Only track removable ingredients that are unchecked
+      if (ing.removable && !checkedIndices.includes(index)) {
+        removed.push(ing.name);
+      }
+    });
+    return removed;
+  }
+
+  function closeItemModal() {
+    const modal = document.getElementById("item-modal");
+    if (modal) {
+      modal.classList.remove("show");
+    }
+  }
+
   function attachCartListeners() {
     document.addEventListener("click", (event) => {
       const addBtn = event.target.closest("[data-add-id]");
@@ -184,6 +345,7 @@
             name: item.name,
             price: Number(item.price),
             image: item.image_url || item.image,
+            description: item.description || "",
           });
         }
       }
@@ -228,6 +390,38 @@
     fetchMenu();
     attachCartListeners();
     attachCheckout();
+    
+    // Close modal handlers
+    const modal = document.getElementById("item-modal");
+    const closeBtn = document.getElementById("modal-close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeItemModal);
+    }
+    if (modal) {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeItemModal();
+        }
+      });
+    }
+    
+    // View All button handler
+    const viewAllBtn = document.getElementById("view-all-btn");
+    if (viewAllBtn) {
+      viewAllBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        showAllItems = true;
+        activeCategory = null;
+        renderCategories();
+        renderMenuItems();
+        // Scroll to menu section
+        const menuSection = document.querySelector("#menu");
+        if (menuSection) {
+          menuSection.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+    
     const searchInput = document.querySelector("#menu-search");
     if (searchInput) {
       searchInput.addEventListener("input", () => {

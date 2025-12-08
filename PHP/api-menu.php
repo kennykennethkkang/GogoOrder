@@ -119,6 +119,37 @@ if ($method === 'GET') {
     $stmt->execute($params);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Load ingredients from menu.json and merge with database items
+    $jsonPath = __DIR__ . '/../JSON/menu.json';
+    $jsonMenu = [];
+    if (is_readable($jsonPath)) {
+        $decoded = json_decode((string) file_get_contents($jsonPath), true);
+        if (is_array($decoded)) {
+            $jsonMenu = $decoded;
+        }
+    }
+
+    // Create a map of JSON items by ID for quick lookup
+    $jsonMap = [];
+    foreach ($jsonMenu as $jsonItem) {
+        if (isset($jsonItem['id'])) {
+            $jsonMap[(int) $jsonItem['id']] = $jsonItem;
+        }
+    }
+
+    // Merge ingredients from JSON into database items
+    foreach ($items as &$item) {
+        $itemId = (int) ($item['id'] ?? 0);
+        if (isset($jsonMap[$itemId]) && isset($jsonMap[$itemId]['ingredients'])) {
+            $item['ingredients'] = $jsonMap[$itemId]['ingredients'];
+        }
+        // Also ensure image field is set (for compatibility)
+        if (!isset($item['image']) && isset($item['image_url'])) {
+            $item['image'] = $item['image_url'];
+        }
+    }
+    unset($item);
+
     json_response(['items' => $items]);
 }
 
@@ -153,6 +184,20 @@ if ($method === 'POST') {
 
     $newId = (int) $pdo->lastInsertId();
 
+    // Parse ingredients if provided
+    $ingredients = [];
+    if (isset($input['ingredients'])) {
+        $ingredientsRaw = $input['ingredients'];
+        if (is_string($ingredientsRaw)) {
+            $decoded = json_decode($ingredientsRaw, true);
+            if (is_array($decoded)) {
+                $ingredients = $decoded;
+            }
+        } elseif (is_array($ingredientsRaw)) {
+            $ingredients = $ingredientsRaw;
+        }
+    }
+
     // Sync to menu.json
     $jsonItem = [
         'id' => $newId,
@@ -162,6 +207,12 @@ if ($method === 'POST') {
         'description' => trim($input['description'] ?? ''),
         'image' => $imageUrl,
     ];
+    
+    // Add ingredients if provided
+    if (!empty($ingredients)) {
+        $jsonItem['ingredients'] = $ingredients;
+    }
+    
     saveMenuJson($jsonItem, false);
 
     json_response(['id' => $newId, 'image_url' => $imageUrl]);
@@ -214,6 +265,20 @@ if ($method === 'PUT' || $method === 'PATCH') {
         ':id' => $id,
     ]);
 
+    // Parse ingredients if provided
+    $ingredients = [];
+    if (isset($input['ingredients'])) {
+        $ingredientsRaw = $input['ingredients'];
+        if (is_string($ingredientsRaw)) {
+            $decoded = json_decode($ingredientsRaw, true);
+            if (is_array($decoded)) {
+                $ingredients = $decoded;
+            }
+        } elseif (is_array($ingredientsRaw)) {
+            $ingredients = $ingredientsRaw;
+        }
+    }
+
     // Sync to menu.json
     $jsonItem = [
         'id' => $id,
@@ -223,6 +288,34 @@ if ($method === 'PUT' || $method === 'PATCH') {
         'description' => $fields['description'],
         'image' => $fields['image_url'],
     ];
+    
+    // Add ingredients if provided (preserve existing if not provided)
+    if (isset($input['ingredients'])) {
+        // Only update ingredients if explicitly provided
+        if (!empty($ingredients)) {
+            $jsonItem['ingredients'] = $ingredients;
+        } else {
+            // If empty array is sent, remove ingredients
+            $jsonItem['ingredients'] = [];
+        }
+    } else {
+        // Preserve existing ingredients from JSON if not provided in update
+        $jsonPath = __DIR__ . '/../JSON/menu.json';
+        if (is_readable($jsonPath)) {
+            $decoded = json_decode((string) file_get_contents($jsonPath), true);
+            if (is_array($decoded)) {
+                foreach ($decoded as $jsonItemExisting) {
+                    if (isset($jsonItemExisting['id']) && (int) $jsonItemExisting['id'] === $id) {
+                        if (isset($jsonItemExisting['ingredients'])) {
+                            $jsonItem['ingredients'] = $jsonItemExisting['ingredients'];
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
     saveMenuJson($jsonItem, true);
 
     json_response(['ok' => true]);

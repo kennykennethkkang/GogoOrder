@@ -9,10 +9,29 @@
   function loadCart() {
     try {
       const items = JSON.parse(localStorage.getItem(cartKey)) || [];
-      return items.map((item) => ({
-        ...item,
-        image_url: normalizeImage(item.image_url || item.image),
-      }));
+      return items.map((item) => {
+        const imgPath = item.image_url || item.image || '';
+        // Normalize image path based on current directory
+        let normalizedImg = imgPath;
+        if (imgPath && !imgPath.startsWith('http')) {
+          // Remove leading slash if present
+          normalizedImg = imgPath.replace(/^\/+/, '');
+          if (isHtmlSubdir) {
+            // If in HTML subdirectory, need to go up one level
+            if (!normalizedImg.startsWith('../')) {
+              normalizedImg = '../' + normalizedImg;
+            }
+          } else {
+            // If in root, ensure it doesn't have ../
+            normalizedImg = normalizedImg.replace(/^\.\.\//, '');
+          }
+        }
+        return {
+          ...item,
+          image_url: normalizedImg || (isHtmlSubdir ? '../img/logo.png' : 'img/logo.png'),
+          image: normalizedImg || (isHtmlSubdir ? '../img/logo.png' : 'img/logo.png'),
+        };
+      });
     } catch (e) {
       return [];
     }
@@ -42,12 +61,23 @@
     cart.forEach((item) => {
       const row = document.createElement("div");
       row.className = "cart-row";
-      const imgSrc = normalizeImage(item.image_url || item.image);
+      // Use the already normalized image from loadCart
+      const imgSrc = item.image_url || item.image || (isHtmlSubdir ? '../img/logo.png' : 'img/logo.png');
+      let customizationsHTML = "";
+      if (item.customizations && item.customizations.length > 0) {
+        customizationsHTML = `<div class="cart-customization"><span class="custom-label">With:</span> ${item.customizations.join(", ")}</div>`;
+      }
+      if (item.removedIngredients && item.removedIngredients.length > 0) {
+        customizationsHTML += `<div class="cart-customization"><span class="custom-label">Without:</span> ${item.removedIngredients.join(", ")}</div>`;
+      }
+      const descriptionHTML = item.description ? `<div class="cart-description">${item.description}</div>` : "";
       row.innerHTML = `
         <div class="cart-row-left">
           <img src="${imgSrc}" alt="${item.name}">
           <div>
             <div class="cart-row-title">${item.name}</div>
+            ${descriptionHTML}
+            ${customizationsHTML}
             <div class="cart-row-price">$${Number(item.price).toFixed(2)}</div>
           </div>
         </div>
@@ -115,6 +145,9 @@
       items: cart.map((item) => ({
         id: item.id,
         qty: item.qty,
+        description: item.description || "",
+        customizations: item.customizations || [],
+        removedIngredients: item.removedIngredients || []
       })),
     };
 

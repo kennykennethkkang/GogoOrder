@@ -8,7 +8,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const idInput = document.getElementById("item-id");
   const params = new URLSearchParams(window.location.search);
   const editId = params.get("id");
+  const ingredientsList = document.getElementById("ingredients-list");
+  const addIngredientBtn = document.getElementById("add-ingredient-btn");
 
+  // Ingredient management functions
+  function addIngredientRow(ingredient = { name: "", removable: false }) {
+    if (!ingredientsList) return;
+
+    const row = document.createElement("div");
+    row.className = "ingredient-row";
+    row.innerHTML = `
+      <input type="text" class="ingredient-name" placeholder="Ingredient name" value="${ingredient.name || ""}" required>
+      <label class="ingredient-checkbox">
+        <input type="checkbox" class="ingredient-removable" ${ingredient.removable ? "checked" : ""}>
+        <span>Removable</span>
+      </label>
+      <button type="button" class="btn-remove-ingredient" title="Remove ingredient">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+    `;
+
+    const removeBtn = row.querySelector(".btn-remove-ingredient");
+    removeBtn.addEventListener("click", () => row.remove());
+
+    ingredientsList.appendChild(row);
+  }
+
+  function getIngredients() {
+    if (!ingredientsList) return [];
+    const rows = ingredientsList.querySelectorAll(".ingredient-row");
+    const ingredients = [];
+    rows.forEach((row) => {
+      const name = row.querySelector(".ingredient-name")?.value.trim();
+      const removable = row.querySelector(".ingredient-removable")?.checked || false;
+      if (name) {
+        ingredients.push({ name, removable });
+      }
+    });
+    return ingredients;
+  }
+
+  function loadIngredients(ingredients) {
+    if (!ingredientsList) return;
+    ingredientsList.innerHTML = "";
+    if (ingredients && Array.isArray(ingredients) && ingredients.length > 0) {
+      ingredients.forEach((ing) => addIngredientRow(ing));
+    }
+  }
+
+  // Add ingredient button handler
+  if (addIngredientBtn) {
+    addIngredientBtn.addEventListener("click", () => addIngredientRow());
+  }
+
+  // Load existing data for edit mode
   if (mode === "edit" && editId) {
     fetch(`${apiBase}/api-menu.php`)
       .then((res) => res.json())
@@ -23,6 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
         form.elements["category"].value = item.category || "";
         form.elements["image"].value = item.image_url || item.image || "";
         form.elements["description"].value = item.description || "";
+        
+        // Load ingredients if they exist
+        if (item.ingredients && Array.isArray(item.ingredients)) {
+          loadIngredients(item.ingredients);
+        }
       })
       .catch((err) => console.error("Error loading menu.json for edit:", err));
   }
@@ -31,6 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const formData = new FormData(form);
+    
+    // Collect ingredients data
+    const ingredients = getIngredients();
+    formData.append("ingredients", JSON.stringify(ingredients));
 
     if (mode === "add") {
       fetch(`${apiBase}/api-menu.php`, {

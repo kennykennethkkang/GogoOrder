@@ -2,9 +2,11 @@
 // Shared utility functions
 
 function normalizeImage(raw) {
-  if (!raw) return "/img/placeholder.png";
+  if (!raw || raw === "") return "img/logo.png";
   if (String(raw).startsWith("http")) return raw;
-  return "/" + String(raw).replace(/^\/?/, "");
+  // Remove leading slash if present, ensure it starts with img/
+  const path = String(raw).replace(/^\/+/, "");
+  return path.startsWith("img/") ? path : "img/" + path;
 }
 
 function showMsg(el, msg, autoHide = true) {

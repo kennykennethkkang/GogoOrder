@@ -31,11 +31,17 @@ function sync_order_json(array $order, array $items, string $status): void
     // Map line items
     $mappedItems = [];
     foreach ($items as $it) {
+        $customizations = '';
+        if (!empty($it['customizations'])) {
+            $customizations = $it['customizations'];
+        }
         $mappedItems[] = [
             'id' => $it['menu_item_id'] ?? $it['id'] ?? null,
             'name' => $it['item_name'] ?? $it['name'] ?? '',
             'qty' => $it['qty'] ?? 0,
             'price' => $it['price'] ?? 0,
+            'description' => $it['description'] ?? '',
+            'customizations' => $customizations,
         ];
     }
 
@@ -150,11 +156,22 @@ if ($method === 'POST') {
         }
         $price = (float) $menuItems[$id]['price'];
         $subtotal += $price * $qty;
+        $description = trim($item['description'] ?? $menuItems[$id]['description'] ?? '');
+        $customizationsData = [];
+        if (isset($item['customizations']) && is_array($item['customizations']) && count($item['customizations']) > 0) {
+            $customizationsData['with'] = $item['customizations'];
+        }
+        if (isset($item['removedIngredients']) && is_array($item['removedIngredients']) && count($item['removedIngredients']) > 0) {
+            $customizationsData['without'] = $item['removedIngredients'];
+        }
+        $customizations = !empty($customizationsData) ? json_encode($customizationsData) : '';
         $lineItems[] = [
             'menu_item_id' => $id,
             'item_name' => $menuItems[$id]['name'],
             'qty' => $qty,
             'price' => $price,
+            'description' => $description,
+            'customizations' => $customizations,
         ];
     }
 
@@ -187,8 +204,8 @@ if ($method === 'POST') {
         $orderId = (int) $pdo->lastInsertId();
 
         $itemStmt = $pdo->prepare('
-            INSERT INTO order_items (order_id, menu_item_id, item_name, qty, price)
-            VALUES (:order_id, :menu_item_id, :name, :qty, :price)
+            INSERT INTO order_items (order_id, menu_item_id, item_name, qty, price, description, customizations)
+            VALUES (:order_id, :menu_item_id, :name, :qty, :price, :description, :customizations)
         ');
 
         foreach ($lineItems as $li) {
@@ -198,6 +215,8 @@ if ($method === 'POST') {
                 ':name' => $li['item_name'],
                 ':qty' => $li['qty'],
                 ':price' => $li['price'],
+                ':description' => $li['description'] ?? '',
+                ':customizations' => $li['customizations'] ?? '',
             ]);
         }
 

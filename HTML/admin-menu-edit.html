@@ -125,6 +125,19 @@
                                 placeholder="Enter description here"></textarea>
                         </div>
 
+                        <div class="form-field" style="margin-top:16px;">
+                            <label>Ingredients (for customization)</label>
+                            <div id="ingredients-list" class="ingredients-list">
+                                <!-- Ingredients will be added here dynamically -->
+                            </div>
+                            <button type="button" id="add-ingredient-btn" class="btn-add-ingredient">
+                                <i class="fa-solid fa-plus"></i> Add Ingredient
+                            </button>
+                            <small style="display:block; margin-top:8px; color:#666;">
+                                Check "Removable" to allow customers to toggle this ingredient on/off
+                            </small>
+                        </div>
+
                         <div class="form-actions">
                             <button type="button" class="btn-ghost"
                                 onclick="window.location.href='admin-menu-list.php'">

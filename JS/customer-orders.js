@@ -33,13 +33,50 @@
       const created = formatDateTime(order.created_at || order.timestamp);
       const itemsHtml = (order.items || [])
         .map(
-          (item) => `
-            <div class="order-item-row">
-              <span>${item.item_name}</span>
-              <span class="order-qty">x${item.qty}</span>
-              <span class="order-price">$${Number(item.price).toFixed(2)}</span>
-            </div>
-          `
+          (item) => {
+            let customizationsHTML = "";
+            let descriptionHTML = "";
+            
+            if (item.description) {
+              descriptionHTML = `<div class="order-item-description">${item.description}</div>`;
+            }
+            
+            if (item.customizations) {
+              try {
+                const customData = typeof item.customizations === 'string' 
+                  ? JSON.parse(item.customizations) 
+                  : item.customizations;
+                
+                if (typeof customData === 'object' && customData !== null) {
+                  if (customData.with && Array.isArray(customData.with) && customData.with.length > 0) {
+                    customizationsHTML += `<div class="order-item-customization"><span class="custom-label">With:</span> ${customData.with.join(", ")}</div>`;
+                  }
+                  if (customData.without && Array.isArray(customData.without) && customData.without.length > 0) {
+                    customizationsHTML += `<div class="order-item-customization"><span class="custom-label">Without:</span> ${customData.without.join(", ")}</div>`;
+                  }
+                } else if (Array.isArray(customData) && customData.length > 0) {
+                  customizationsHTML += `<div class="order-item-customization"><span class="custom-label">With:</span> ${customData.join(", ")}</div>`;
+                }
+              } catch (e) {
+                // If parsing fails, try to display as string
+                if (item.customizations) {
+                  customizationsHTML += `<div class="order-item-customization">${item.customizations}</div>`;
+                }
+              }
+            }
+            
+            return `
+              <div class="order-item-row">
+                <div class="order-item-info">
+                  <span class="order-item-name">${item.item_name}</span>
+                  ${descriptionHTML}
+                  ${customizationsHTML}
+                </div>
+                <span class="order-qty">x${item.qty}</span>
+                <span class="order-price">$${Number(item.price).toFixed(2)}</span>
+              </div>
+            `;
+          }
         )
         .join("");
 
