@@ -155,5 +155,84 @@
         "scheduled_time": "2025-12-06T14:12",
         "address": "1474 lafayette street",
         "user_id": 5
+    },
+    {
+        "order_id": 7,
+        "name": "Conner Chen",
+        "items": [
+            {
+                "id": 40,
+                "name": "Tipperary",
+                "qty": 3,
+                "price": 7.49,
+                "description": "Classic Irish cocktail with a smooth and sophisticated flavor.",
+                "customizations": ""
+            }
+        ],
+        "total": 22.47,
+        "status": "Cancelled",
+        "timestamp": "2025-12-08 08:35:22",
+        "order_type": "pickup",
+        "scheduled_time": "2025-12-08T00:34",
+        "address": "",
+        "user_id": 6
+    },
+    {
+        "order_id": 8,
+        "name": "Conner Chen",
+        "items": [
+            {
+                "id": 25,
+                "name": "Smoked Salmon",
+                "qty": 1,
+                "price": 9.99,
+                "description": "Premium smoked salmon served with capers and cream cheese.",
+                "customizations": ""
+            },
+            {
+                "id": 24,
+                "name": "Pickled Shrimp",
+                "qty": 1,
+                "price": 7.49,
+                "description": "Fresh shrimp marinated in tangy pickling spices.",
+                "customizations": ""
+            }
+        ],
+        "total": 17.48,
+        "status": "Pending",
+        "timestamp": "2025-12-08 08:36:05",
+        "order_type": "pickup",
+        "scheduled_time": "2025-12-09T12:30",
+        "address": "",
+        "user_id": 6
+    },
+    {
+        "order_id": 9,
+        "name": "Conner Chen",
+        "items": [
+            {
+                "id": 15,
+                "name": "Gateau Basque",
+                "qty": 1,
+                "price": 8.49,
+                "description": "Traditional French pastry cake with a buttery crust and sweet filling.",
+                "customizations": ""
+            },
+            {
+                "id": 19,
+                "name": "Dim Sum",
+                "qty": 1,
+                "price": 6.49,
+                "description": "Traditional steamed dumplings with savory fillings.",
+                "customizations": ""
+            }
+        ],
+        "total": 14.98,
+        "status": "Pending",
+        "timestamp": "2025-12-08 08:39:49",
+        "order_type": "pickup",
+        "scheduled_time": "2025-12-10T12:30",
+        "address": "",
+        "user_id": 6
     }
 ]
