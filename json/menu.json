@@ -5,7 +5,33 @@
         "price": 12.99,
         "category": "Entrees",
         "description": "Classic spaghetti pasta served with marinara sauce and herbs.",
-        "image": "img\/Food\/Entree\/Spaghetti.png"
+        "image": "img/Food/Entree/Spaghetti.png",
+        "ingredients": [
+            {
+                "name": "Parmesan Cheese",
+                "removable": true
+            },
+            {
+                "name": "Basil",
+                "removable": true
+            },
+            {
+                "name": "Garlic",
+                "removable": true
+            },
+            {
+                "name": "Onions",
+                "removable": true
+            },
+            {
+                "name": "Meatballs",
+                "removable": true
+            },
+            {
+                "name": "Marinara Sauce",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 2,
@@ -13,7 +39,41 @@
         "price": 11.99,
         "category": "Entrees",
         "description": "Juicy beef burger with fresh vegetables and special sauce.",
-        "image": "img\/Food\/Entree\/Burger.png"
+        "image": "img/Food/Entree/Burger.png",
+        "ingredients": [
+            {
+                "name": "Lettuce",
+                "removable": true
+            },
+            {
+                "name": "Tomato",
+                "removable": true
+            },
+            {
+                "name": "Onions",
+                "removable": true
+            },
+            {
+                "name": "Pickles",
+                "removable": true
+            },
+            {
+                "name": "Cheese",
+                "removable": true
+            },
+            {
+                "name": "Special Sauce",
+                "removable": true
+            },
+            {
+                "name": "Beef Patty",
+                "removable": false
+            },
+            {
+                "name": "Bun",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 3,
@@ -21,7 +81,29 @@
         "price": 15.99,
         "category": "Entrees",
         "description": "Tender chicken cooked with sweet grapes and aromatic fennel.",
-        "image": "img\/Food\/Entree\/ChickenGrapesFennel.png"
+        "image": "img/Food/Entree/ChickenGrapesFennel.png",
+        "ingredients": [
+            {
+                "name": "Grapes",
+                "removable": true
+            },
+            {
+                "name": "Fennel",
+                "removable": true
+            },
+            {
+                "name": "Herbs",
+                "removable": true
+            },
+            {
+                "name": "White Wine",
+                "removable": false
+            },
+            {
+                "name": "Chicken",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 4,
@@ -29,7 +111,33 @@
         "price": 9.99,
         "category": "Entrees",
         "description": "Comforting chicken and rice porridge, warm and satisfying.",
-        "image": "img\/Food\/Entree\/ChickenRicePorridge.png"
+        "image": "img/Food/Entree/ChickenRicePorridge.png",
+        "ingredients": [
+            {
+                "name": "Green Onions",
+                "removable": true
+            },
+            {
+                "name": "Ginger",
+                "removable": true
+            },
+            {
+                "name": "Soy Sauce",
+                "removable": true
+            },
+            {
+                "name": "Sesame Oil",
+                "removable": true
+            },
+            {
+                "name": "Chicken",
+                "removable": false
+            },
+            {
+                "name": "Rice",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 5,
@@ -37,7 +145,33 @@
         "price": 16.99,
         "category": "Entrees",
         "description": "Fresh clams cooked in sherry with briny olives.",
-        "image": "img\/Food\/Entree\/clamsWithSherryandOlives.png"
+        "image": "img/Food/Entree/clamsWithSherryandOlives.png",
+        "ingredients": [
+            {
+                "name": "Olives",
+                "removable": true
+            },
+            {
+                "name": "Garlic",
+                "removable": true
+            },
+            {
+                "name": "Parsley",
+                "removable": true
+            },
+            {
+                "name": "Lemon",
+                "removable": true
+            },
+            {
+                "name": "Sherry",
+                "removable": false
+            },
+            {
+                "name": "Clams",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 6,
@@ -45,7 +179,29 @@
         "price": 14.99,
         "category": "Entrees",
         "description": "Perfectly roasted chicken with crispy golden skin.",
-        "image": "img\/Food\/Entree\/CrispyRoastChicken.png"
+        "image": "img/Food/Entree/CrispyRoastChicken.png",
+        "ingredients": [
+            {
+                "name": "Lemon",
+                "removable": true
+            },
+            {
+                "name": "Herbs",
+                "removable": true
+            },
+            {
+                "name": "Garlic",
+                "removable": true
+            },
+            {
+                "name": "Butter",
+                "removable": false
+            },
+            {
+                "name": "Chicken",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 7,
@@ -53,7 +209,45 @@
         "price": 10.99,
         "category": "Entrees",
         "description": "Savory mushroom tacos with fresh toppings and salsa.",
-        "image": "img\/Food\/Entree\/MushroomTacos.png"
+        "image": "img/Food/Entree/MushroomTacos.png",
+        "ingredients": [
+            {
+                "name": "Lettuce",
+                "removable": true
+            },
+            {
+                "name": "Tomatoes",
+                "removable": true
+            },
+            {
+                "name": "Onions",
+                "removable": true
+            },
+            {
+                "name": "Cilantro",
+                "removable": true
+            },
+            {
+                "name": "Salsa",
+                "removable": true
+            },
+            {
+                "name": "Cheese",
+                "removable": true
+            },
+            {
+                "name": "Sour Cream",
+                "removable": true
+            },
+            {
+                "name": "Mushrooms",
+                "removable": false
+            },
+            {
+                "name": "Tortilla",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 8,
@@ -61,7 +255,29 @@
         "price": 17.99,
         "category": "Entrees",
         "description": "Tender pork chops with sweet and sour grape and fig sauce.",
-        "image": "img\/Food\/Entree\/Pork-Chops-with-Grape-and-Fig-Agrodolce.png"
+        "image": "img/Food/Entree/Pork-Chops-with-Grape-and-Fig-Agrodolce.png",
+        "ingredients": [
+            {
+                "name": "Grapes",
+                "removable": true
+            },
+            {
+                "name": "Figs",
+                "removable": true
+            },
+            {
+                "name": "Herbs",
+                "removable": true
+            },
+            {
+                "name": "Balsamic Vinegar",
+                "removable": false
+            },
+            {
+                "name": "Pork Chops",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 9,
@@ -69,7 +285,33 @@
         "price": 13.99,
         "category": "Entrees",
         "description": "Creamy risotto with wild mushrooms and fresh thyme.",
-        "image": "img\/Food\/Entree\/risotto-with-mushrooms-and-thyme.png"
+        "image": "img/Food/Entree/risotto-with-mushrooms-and-thyme.png",
+        "ingredients": [
+            {
+                "name": "Parmesan Cheese",
+                "removable": true
+            },
+            {
+                "name": "Thyme",
+                "removable": true
+            },
+            {
+                "name": "Garlic",
+                "removable": true
+            },
+            {
+                "name": "White Wine",
+                "removable": false
+            },
+            {
+                "name": "Mushrooms",
+                "removable": false
+            },
+            {
+                "name": "Arborio Rice",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 10,
@@ -77,7 +319,37 @@
         "price": 14.99,
         "category": "Entrees",
         "description": "Fresh shrimp served over flavorful noodles.",
-        "image": "img\/Food\/Entree\/ShrimpNoodle.png"
+        "image": "img/Food/Entree/ShrimpNoodle.png",
+        "ingredients": [
+            {
+                "name": "Green Onions",
+                "removable": true
+            },
+            {
+                "name": "Bean Sprouts",
+                "removable": true
+            },
+            {
+                "name": "Cilantro",
+                "removable": true
+            },
+            {
+                "name": "Lime",
+                "removable": true
+            },
+            {
+                "name": "Chili",
+                "removable": true
+            },
+            {
+                "name": "Shrimp",
+                "removable": false
+            },
+            {
+                "name": "Noodles",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 11,
@@ -85,7 +357,25 @@
         "price": 6.99,
         "category": "Dessert",
         "description": "Light and fluffy cake made with 7UP for a unique citrus flavor.",
-        "image": "img\/Food\/dessert\/7upCake.png"
+        "image": "img/Food/dessert/7upCake.png",
+        "ingredients": [
+            {
+                "name": "Lemon Zest",
+                "removable": true
+            },
+            {
+                "name": "Powdered Sugar",
+                "removable": false
+            },
+            {
+                "name": "7UP",
+                "removable": false
+            },
+            {
+                "name": "Flour",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 12,
@@ -93,7 +383,29 @@
         "price": 5.99,
         "category": "Dessert",
         "description": "Delicious cookies with apple pie filling, perfect for dessert lovers.",
-        "image": "img\/Food\/dessert\/Apple-Pie-Cookies.png"
+        "image": "img/Food/dessert/Apple-Pie-Cookies.png",
+        "ingredients": [
+            {
+                "name": "Cinnamon",
+                "removable": true
+            },
+            {
+                "name": "Nutmeg",
+                "removable": true
+            },
+            {
+                "name": "Vanilla Ice Cream",
+                "removable": true
+            },
+            {
+                "name": "Apple Filling",
+                "removable": false
+            },
+            {
+                "name": "Cookie Dough",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 13,
@@ -101,7 +413,29 @@
         "price": 7.49,
         "category": "Dessert",
         "description": "Traditional Italian pastry filled with sweet ricotta cream.",
-        "image": "img\/Food\/dessert\/Cannoli.png"
+        "image": "img/Food/dessert/Cannoli.png",
+        "ingredients": [
+            {
+                "name": "Chocolate Chips",
+                "removable": true
+            },
+            {
+                "name": "Pistachios",
+                "removable": true
+            },
+            {
+                "name": "Powdered Sugar",
+                "removable": false
+            },
+            {
+                "name": "Ricotta Cream",
+                "removable": false
+            },
+            {
+                "name": "Pastry Shell",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 14,
@@ -109,7 +443,29 @@
         "price": 8.99,
         "category": "Dessert",
         "description": "Rich and decadent flourless chocolate cake, gluten-free and indulgent.",
-        "image": "img\/Food\/dessert\/FlourlessChocolate.png"
+        "image": "img/Food/dessert/FlourlessChocolate.png",
+        "ingredients": [
+            {
+                "name": "Whipped Cream",
+                "removable": true
+            },
+            {
+                "name": "Berries",
+                "removable": true
+            },
+            {
+                "name": "Chocolate Ganache",
+                "removable": true
+            },
+            {
+                "name": "Dark Chocolate",
+                "removable": false
+            },
+            {
+                "name": "Eggs",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 15,
@@ -117,7 +473,29 @@
         "price": 8.49,
         "category": "Dessert",
         "description": "Traditional French pastry cake with a buttery crust and sweet filling.",
-        "image": "img\/Food\/dessert\/GateauBasque.png"
+        "image": "img/Food/dessert/GateauBasque.png",
+        "ingredients": [
+            {
+                "name": "Cherry Filling",
+                "removable": true
+            },
+            {
+                "name": "Almond Cream",
+                "removable": true
+            },
+            {
+                "name": "Powdered Sugar",
+                "removable": false
+            },
+            {
+                "name": "Butter",
+                "removable": false
+            },
+            {
+                "name": "Pastry",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 16,
@@ -125,7 +503,29 @@
         "price": 7.99,
         "category": "Dessert",
         "description": "Elegant pear tart with delicate pastry and caramelized pears.",
-        "image": "img\/Food\/dessert\/PearTart.png"
+        "image": "img/Food/dessert/PearTart.png",
+        "ingredients": [
+            {
+                "name": "Vanilla Ice Cream",
+                "removable": true
+            },
+            {
+                "name": "Caramel Sauce",
+                "removable": true
+            },
+            {
+                "name": "Cinnamon",
+                "removable": true
+            },
+            {
+                "name": "Pears",
+                "removable": false
+            },
+            {
+                "name": "Pastry",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 17,
@@ -133,7 +533,25 @@
         "price": 6.99,
         "category": "Dessert",
         "description": "Classic yellow cake topped with rich chocolate frosting.",
-        "image": "img\/Food\/dessert\/YellowCakewithChocholateFrosting.png"
+        "image": "img/Food/dessert/YellowCakewithChocholateFrosting.png",
+        "ingredients": [
+            {
+                "name": "Chocolate Frosting",
+                "removable": true
+            },
+            {
+                "name": "Sprinkles",
+                "removable": true
+            },
+            {
+                "name": "Vanilla Extract",
+                "removable": false
+            },
+            {
+                "name": "Yellow Cake",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 18,
@@ -141,7 +559,29 @@
         "price": 5.99,
         "category": "Appetizers",
         "description": "Freshly baked cheese biscuits with a golden crust.",
-        "image": "img\/Food\/appetizers\/CheeseBiscuits.png"
+        "image": "img/Food/appetizers/CheeseBiscuits.png",
+        "ingredients": [
+            {
+                "name": "Cheddar Cheese",
+                "removable": true
+            },
+            {
+                "name": "Butter",
+                "removable": false
+            },
+            {
+                "name": "Flour",
+                "removable": false
+            },
+            {
+                "name": "Garlic",
+                "removable": true
+            },
+            {
+                "name": "Herbs",
+                "removable": true
+            }
+        ]
     },
     {
         "id": 19,
@@ -149,7 +589,33 @@
         "price": 6.49,
         "category": "Appetizers",
         "description": "Traditional steamed dumplings with savory fillings.",
-        "image": "img\/Food\/appetizers\/Dimsum.jpg"
+        "image": "img/Food/appetizers/Dimsum.jpg",
+        "ingredients": [
+            {
+                "name": "Soy Sauce",
+                "removable": true
+            },
+            {
+                "name": "Ginger",
+                "removable": true
+            },
+            {
+                "name": "Green Onions",
+                "removable": true
+            },
+            {
+                "name": "Sesame Oil",
+                "removable": true
+            },
+            {
+                "name": "Dumpling Wrapper",
+                "removable": false
+            },
+            {
+                "name": "Filling",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 20,
@@ -157,7 +623,29 @@
         "price": 7.99,
         "category": "Appetizers",
         "description": "Sweet figs wrapped in crispy bacon with a hint of chile.",
-        "image": "img\/Food\/appetizers\/figs-with-bacon-and-chile.png"
+        "image": "img/Food/appetizers/figs-with-bacon-and-chile.png",
+        "ingredients": [
+            {
+                "name": "Chile",
+                "removable": true
+            },
+            {
+                "name": "Honey",
+                "removable": true
+            },
+            {
+                "name": "Balsamic Glaze",
+                "removable": true
+            },
+            {
+                "name": "Bacon",
+                "removable": false
+            },
+            {
+                "name": "Figs",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 21,
@@ -165,7 +653,25 @@
         "price": 4.99,
         "category": "Appetizers",
         "description": "Crispy golden french fries served hot and fresh.",
-        "image": "img\/Food\/appetizers\/fries.jpg"
+        "image": "img/Food/appetizers/fries.jpg",
+        "ingredients": [
+            {
+                "name": "Ketchup",
+                "removable": true
+            },
+            {
+                "name": "Mayonnaise",
+                "removable": true
+            },
+            {
+                "name": "Salt",
+                "removable": true
+            },
+            {
+                "name": "Potatoes",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 22,
@@ -173,7 +679,33 @@
         "price": 8.49,
         "category": "Appetizers",
         "description": "Sweet dates stuffed with creamy goat cheese and salami.",
-        "image": "img\/Food\/appetizers\/GoatCheeseSalamiStuffedDates.png"
+        "image": "img/Food/appetizers/GoatCheeseSalamiStuffedDates.png",
+        "ingredients": [
+            {
+                "name": "Honey",
+                "removable": true
+            },
+            {
+                "name": "Walnuts",
+                "removable": true
+            },
+            {
+                "name": "Balsamic Glaze",
+                "removable": true
+            },
+            {
+                "name": "Goat Cheese",
+                "removable": false
+            },
+            {
+                "name": "Salami",
+                "removable": false
+            },
+            {
+                "name": "Dates",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 23,
@@ -181,7 +713,29 @@
         "price": 6.99,
         "category": "Appetizers",
         "description": "Spicy jalapeno peppers filled with rich smoked gouda cheese.",
-        "image": "img\/Food\/appetizers\/JalapenoPeppersWithSmokedGouda.png"
+        "image": "img/Food/appetizers/JalapenoPeppersWithSmokedGouda.png",
+        "ingredients": [
+            {
+                "name": "Bacon",
+                "removable": true
+            },
+            {
+                "name": "Cream Cheese",
+                "removable": true
+            },
+            {
+                "name": "Cilantro",
+                "removable": true
+            },
+            {
+                "name": "Jalapenos",
+                "removable": false
+            },
+            {
+                "name": "Smoked Gouda",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 24,
@@ -189,7 +743,29 @@
         "price": 7.49,
         "category": "Appetizers",
         "description": "Fresh shrimp marinated in tangy pickling spices.",
-        "image": "img\/Food\/appetizers\/Pickled-Shrimp.png"
+        "image": "img/Food/appetizers/Pickled-Shrimp.png",
+        "ingredients": [
+            {
+                "name": "Dill",
+                "removable": true
+            },
+            {
+                "name": "Red Onions",
+                "removable": true
+            },
+            {
+                "name": "Lemon",
+                "removable": true
+            },
+            {
+                "name": "Pickling Spices",
+                "removable": false
+            },
+            {
+                "name": "Shrimp",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 25,
@@ -197,7 +773,33 @@
         "price": 9.99,
         "category": "Appetizers",
         "description": "Premium smoked salmon served with capers and cream cheese.",
-        "image": "img\/Food\/appetizers\/smokedSalmon.jpg"
+        "image": "img/Food/appetizers/smokedSalmon.jpg",
+        "ingredients": [
+            {
+                "name": "Capers",
+                "removable": true
+            },
+            {
+                "name": "Red Onions",
+                "removable": true
+            },
+            {
+                "name": "Dill",
+                "removable": true
+            },
+            {
+                "name": "Lemon",
+                "removable": true
+            },
+            {
+                "name": "Cream Cheese",
+                "removable": false
+            },
+            {
+                "name": "Smoked Salmon",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 26,
@@ -205,7 +807,33 @@
         "price": 7.99,
         "category": "Salad",
         "description": "Hearty black eyed pea salad with a spicy hot sauce vinaigrette dressing.",
-        "image": "img\/Food\/Salad\/BlackEyedPeaSaladwithHotSauceVinaigrette.png"
+        "image": "img/Food/Salad/BlackEyedPeaSaladwithHotSauceVinaigrette.png",
+        "ingredients": [
+            {
+                "name": "Red Bell Peppers",
+                "removable": true
+            },
+            {
+                "name": "Celery",
+                "removable": true
+            },
+            {
+                "name": "Red Onions",
+                "removable": true
+            },
+            {
+                "name": "Cilantro",
+                "removable": true
+            },
+            {
+                "name": "Hot Sauce",
+                "removable": true
+            },
+            {
+                "name": "Black Eyed Peas",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 27,
@@ -213,7 +841,29 @@
         "price": 8.49,
         "category": "Salad",
         "description": "Classic Italian salad with fresh mozzarella, tomatoes, and basil.",
-        "image": "img\/Food\/Salad\/CapreseSalad.png"
+        "image": "img/Food/Salad/CapreseSalad.png",
+        "ingredients": [
+            {
+                "name": "Balsamic Glaze",
+                "removable": true
+            },
+            {
+                "name": "Olive Oil",
+                "removable": true
+            },
+            {
+                "name": "Basil",
+                "removable": true
+            },
+            {
+                "name": "Mozzarella",
+                "removable": false
+            },
+            {
+                "name": "Tomatoes",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 28,
@@ -221,7 +871,29 @@
         "price": 7.49,
         "category": "Salad",
         "description": "Nutritious five bean salad with a smoky paprika vinaigrette.",
-        "image": "img\/Food\/Salad\/FiveBeanSaladWithSmokedPaprikaVinaigrette.png"
+        "image": "img/Food/Salad/FiveBeanSaladWithSmokedPaprikaVinaigrette.png",
+        "ingredients": [
+            {
+                "name": "Red Onions",
+                "removable": true
+            },
+            {
+                "name": "Cilantro",
+                "removable": true
+            },
+            {
+                "name": "Bell Peppers",
+                "removable": true
+            },
+            {
+                "name": "Smoked Paprika",
+                "removable": false
+            },
+            {
+                "name": "Five Beans",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 29,
@@ -229,7 +901,33 @@
         "price": 8.99,
         "category": "Salad",
         "description": "Flavorful Korean-style kimchi fried rice with vegetables.",
-        "image": "img\/Food\/Salad\/KimchiFriedRice.png"
+        "image": "img/Food/Salad/KimchiFriedRice.png",
+        "ingredients": [
+            {
+                "name": "Fried Egg",
+                "removable": true
+            },
+            {
+                "name": "Green Onions",
+                "removable": true
+            },
+            {
+                "name": "Sesame Seeds",
+                "removable": true
+            },
+            {
+                "name": "Gochujang",
+                "removable": true
+            },
+            {
+                "name": "Kimchi",
+                "removable": false
+            },
+            {
+                "name": "Rice",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 30,
@@ -237,7 +935,33 @@
         "price": 8.99,
         "category": "Salad",
         "description": "Fresh kale salad with tropical flavors and sweet onion dressing.",
-        "image": "img\/Food\/Salad\/MauiKaleSaladWithSweetOnionDressing.png"
+        "image": "img/Food/Salad/MauiKaleSaladWithSweetOnionDressing.png",
+        "ingredients": [
+            {
+                "name": "Mango",
+                "removable": true
+            },
+            {
+                "name": "Pineapple",
+                "removable": true
+            },
+            {
+                "name": "Macadamia Nuts",
+                "removable": true
+            },
+            {
+                "name": "Coconut",
+                "removable": true
+            },
+            {
+                "name": "Kale",
+                "removable": false
+            },
+            {
+                "name": "Sweet Onion Dressing",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 31,
@@ -245,7 +969,29 @@
         "price": 9.49,
         "category": "Salad",
         "description": "Asian-inspired kale Caesar salad with miso dressing.",
-        "image": "img\/Food\/Salad\/MisoKaleCaesarSalad.png"
+        "image": "img/Food/Salad/MisoKaleCaesarSalad.png",
+        "ingredients": [
+            {
+                "name": "Parmesan Cheese",
+                "removable": true
+            },
+            {
+                "name": "Croutons",
+                "removable": true
+            },
+            {
+                "name": "Sesame Seeds",
+                "removable": true
+            },
+            {
+                "name": "Miso Dressing",
+                "removable": false
+            },
+            {
+                "name": "Kale",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 32,
@@ -253,7 +999,33 @@
         "price": 8.99,
         "category": "Salad",
         "description": "Seasonal winter vegetables with creamy hummus in a satisfying bowl.",
-        "image": "img\/Food\/Salad\/WinterSaladHummusBowls.png"
+        "image": "img/Food/Salad/WinterSaladHummusBowls.png",
+        "ingredients": [
+            {
+                "name": "Roasted Vegetables",
+                "removable": true
+            },
+            {
+                "name": "Olives",
+                "removable": true
+            },
+            {
+                "name": "Feta Cheese",
+                "removable": true
+            },
+            {
+                "name": "Pita Chips",
+                "removable": true
+            },
+            {
+                "name": "Hummus",
+                "removable": false
+            },
+            {
+                "name": "Winter Greens",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 33,
@@ -261,7 +1033,25 @@
         "price": 5.99,
         "category": "Drink",
         "description": "A cozy and warming cocktail perfect for any occasion.",
-        "image": "img\/Food\/drinks\/FlannelFactor.png"
+        "image": "img/Food/drinks/FlannelFactor.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Lemon Twist",
+                "removable": true
+            },
+            {
+                "name": "Whiskey",
+                "removable": false
+            },
+            {
+                "name": "Mixers",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 34,
@@ -269,7 +1059,33 @@
         "price": 4.99,
         "category": "Drink",
         "description": "Refreshing citrus drink with a hint of bitters.",
-        "image": "img\/Food\/drinks\/lemon,lime,andbitters.png"
+        "image": "img/Food/drinks/lemon,lime,andbitters.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Lemon Slice",
+                "removable": true
+            },
+            {
+                "name": "Lime Slice",
+                "removable": true
+            },
+            {
+                "name": "Lemon Juice",
+                "removable": false
+            },
+            {
+                "name": "Lime Juice",
+                "removable": false
+            },
+            {
+                "name": "Bitters",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 35,
@@ -277,7 +1093,29 @@
         "price": 6.49,
         "category": "Drink",
         "description": "Refreshing matcha green tea with mint and sparkling water.",
-        "image": "img\/Food\/drinks\/Mint-Matcha-Sparkler.png"
+        "image": "img/Food/drinks/Mint-Matcha-Sparkler.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Mint Leaves",
+                "removable": true
+            },
+            {
+                "name": "Lemon",
+                "removable": true
+            },
+            {
+                "name": "Matcha Powder",
+                "removable": false
+            },
+            {
+                "name": "Sparkling Water",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 36,
@@ -285,7 +1123,13 @@
         "price": 100000,
         "category": "Entrees",
         "description": "",
-        "image": "img\/uploads\/entrees\/upload_69320a37647496.20534171.jpg"
+        "image": "img/uploads/entrees/upload_69320a37647496.20534171.jpg",
+        "ingredients": [
+            {
+                "name": "Special Ingredients",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 37,
@@ -293,7 +1137,29 @@
         "price": 6.99,
         "category": "Drink",
         "description": "A bold and flavorful cocktail with a winning combination.",
-        "image": "img\/Food\/drinks\/PrizefighterNo1.png"
+        "image": "img/Food/drinks/PrizefighterNo1.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Orange Peel",
+                "removable": true
+            },
+            {
+                "name": "Cherry",
+                "removable": true
+            },
+            {
+                "name": "Gin",
+                "removable": false
+            },
+            {
+                "name": "Vermouth",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 38,
@@ -301,7 +1167,29 @@
         "price": 5.99,
         "category": "Drink",
         "description": "A vibrant and fruity cocktail that's sure to impress.",
-        "image": "img\/Food\/drinks\/RazzleDazzle.png"
+        "image": "img/Food/drinks/RazzleDazzle.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Berries",
+                "removable": true
+            },
+            {
+                "name": "Mint",
+                "removable": true
+            },
+            {
+                "name": "Vodka",
+                "removable": false
+            },
+            {
+                "name": "Fruit Juice",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 39,
@@ -309,7 +1197,29 @@
         "price": 5.49,
         "category": "Drink",
         "description": "A zesty citrus drink with a spicy kick for a refreshing experience.",
-        "image": "img\/Food\/drinks\/spicy-citrus-refresher.png"
+        "image": "img/Food/drinks/spicy-citrus-refresher.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Lime Wedge",
+                "removable": true
+            },
+            {
+                "name": "Chili",
+                "removable": true
+            },
+            {
+                "name": "Citrus Juice",
+                "removable": false
+            },
+            {
+                "name": "Sparkling Water",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 40,
@@ -317,7 +1227,29 @@
         "price": 7.49,
         "category": "Drink",
         "description": "Classic Irish cocktail with a smooth and sophisticated flavor.",
-        "image": "img\/Food\/drinks\/Tipperary.png"
+        "image": "img/Food/drinks/Tipperary.png",
+        "ingredients": [
+            {
+                "name": "Ice",
+                "removable": true
+            },
+            {
+                "name": "Orange Peel",
+                "removable": true
+            },
+            {
+                "name": "Irish Whiskey",
+                "removable": false
+            },
+            {
+                "name": "Sweet Vermouth",
+                "removable": false
+            },
+            {
+                "name": "Green Chartreuse",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 41,
@@ -325,7 +1257,13 @@
         "price": 100000,
         "category": "Entrees",
         "description": "",
-        "image": "img\/uploads\/upload_693208db258c23.89022395.jpg"
+        "image": "img/uploads/upload_693208db258c23.89022395.jpg",
+        "ingredients": [
+            {
+                "name": "Special Ingredients",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 42,
@@ -333,7 +1271,13 @@
         "price": 202020,
         "category": "Dessert",
         "description": "",
-        "image": "img\/uploads\/dessert\/upload_69320b36782709.82265588.jpg"
+        "image": "img/uploads/dessert/upload_69320b36782709.82265588.jpg",
+        "ingredients": [
+            {
+                "name": "Special Ingredients",
+                "removable": false
+            }
+        ]
     },
     {
         "id": 43,
@@ -341,6 +1285,12 @@
         "price": 1000,
         "category": "Drink",
         "description": "",
-        "image": ""
+        "image": "",
+        "ingredients": [
+            {
+                "name": "Special Ingredients",
+                "removable": false
+            }
+        ]
     }
 ]
