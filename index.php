@@ -40,6 +40,7 @@ $user = gogo_require_login();
                 </button>
                 <div class="user-menu" id="user-menu" style="display:none;">
                     <button data-open-profile>Account Settings</button>
+                    <a href="HTML/view-order.php">Order History</a>
                     <a data-admin-link href="HTML/admin-dashboard.php" style="display:none;">Go to Admin</a>
                     <a href="PHP/logout.php">Logout</a>
                 </div>

@@ -122,12 +122,19 @@
 
     const nameInput = document.querySelector("#customer-name");
     const typeInput = document.querySelector('input[name="order_type"]:checked');
-    const scheduleInput = document.querySelector("#scheduled-time");
+    const scheduleDateInput = document.querySelector("#scheduled-date");
+    const scheduleTimeInput = document.querySelector("#scheduled-time");
     const addressInput = document.querySelector("#delivery-address");
 
-    if (scheduleInput && !scheduleInput.value) {
-      alert("Please select a pickup/delivery time or tap ASAP.");
-      return;
+    let scheduledDateTime = "";
+    if (scheduleDateInput || scheduleTimeInput) {
+      const d = scheduleDateInput ? scheduleDateInput.value : "";
+      const t = scheduleTimeInput ? scheduleTimeInput.value : "";
+      if (!d || !t) {
+        alert("Please select both a pickup/delivery date and time or tap ASAP.");
+        return;
+      }
+      scheduledDateTime = `${d}T${t}`;
     }
 
     if (typeInput && typeInput.value === "delivery") {
@@ -140,8 +147,9 @@
     const payload = {
       name: nameInput ? nameInput.value : "",
       order_type: typeInput ? typeInput.value : "pickup",
-      scheduled_time: scheduleInput ? scheduleInput.value : "",
+      scheduled_time: scheduledDateTime,
       address: addressInput ? addressInput.value : "",
+      client_timestamp: new Date().toISOString(),
       items: cart.map((item) => ({
         id: item.id,
         qty: item.qty,
@@ -174,7 +182,8 @@
     renderCart();
 
     const asapBtn = document.querySelector("#asap-btn");
-    const scheduleInput = document.querySelector("#scheduled-time");
+    const scheduleDateInput = document.querySelector("#scheduled-date");
+    const scheduleTimeInput = document.querySelector("#scheduled-time");
     const addressBlock = document.querySelector("#address-block");
     const addressInput = document.querySelector("#delivery-address");
     document.addEventListener("change", (e) => {
@@ -192,14 +201,14 @@
         }
       }
     });
-    if (asapBtn && scheduleInput) {
+    if (asapBtn && scheduleDateInput && scheduleTimeInput) {
       asapBtn.addEventListener("click", () => {
         // Use current time as ASAP marker
         const now = new Date();
         const isoLocal = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-          .toISOString()
-          .slice(0, 16);
-        scheduleInput.value = isoLocal;
+          .toISOString();
+        scheduleDateInput.value = isoLocal.slice(0, 10);
+        scheduleTimeInput.value = isoLocal.slice(11, 16);
       });
     }
 

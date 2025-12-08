@@ -33,6 +33,7 @@
                 </button>
                 <div class="user-menu" id="user-menu" style="display:none;">
                     <button data-open-profile>Account Settings</button>
+                    <a href="view-order.php">Order History</a>
                     <a data-admin-link href="admin-dashboard.php" style="display:none;">Go to Admin</a>
                     <a href="../PHP/logout.php">Logout</a>
                 </div>
@@ -74,10 +75,11 @@
                     <div class="summary-block">
                         <p class="summary-label">Schedule time</p>
                         <div class="schedule-row">
-                            <input type="datetime-local" id="scheduled-time" name="scheduled_time" required>
+                            <input type="date" id="scheduled-date" name="scheduled_date" required>
+                            <input type="time" id="scheduled-time" name="scheduled_time" required>
                             <button type="button" id="asap-btn" class="asap-btn">ASAP</button>
                         </div>
-                        <small class="hint">Choose a time or tap ASAP for earliest fulfillment.</small>
+                        <small class="hint">Choose a date and time or tap ASAP for earliest fulfillment.</small>
                     </div>
                     <button id="confirm-order" class="primary-btn">Confirm Order</button>
                 </div>

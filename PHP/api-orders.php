@@ -179,11 +179,15 @@ if ($method === 'POST') {
         json_response(['error' => 'No valid items to order'], 400);
     }
 
+    // Capture client timestamp if provided, else use server time
+    $clientTimestamp = trim($input['client_timestamp'] ?? '');
+    $createdAt = $clientTimestamp !== '' ? date('Y-m-d H:i:s', strtotime($clientTimestamp)) : date('Y-m-d H:i:s');
+
     $pdo->beginTransaction();
     try {
         $orderStmt = $pdo->prepare('
-            INSERT INTO orders (user_id, customer_name, total, status, order_type, scheduled_time, address)
-            VALUES (:uid, :name, :total, :status, :otype, :stime, :addr)
+            INSERT INTO orders (user_id, customer_name, total, status, order_type, scheduled_time, address, created_at)
+            VALUES (:uid, :name, :total, :status, :otype, :stime, :addr, :created_at)
         ');
 
         $customerName = trim($input['name'] ?? '');
@@ -199,6 +203,7 @@ if ($method === 'POST') {
             ':otype' => $orderType,
             ':stime' => $scheduledTime,
             ':addr' => $address,
+            ':created_at' => $createdAt,
         ]);
 
         $orderId = (int) $pdo->lastInsertId();
@@ -226,7 +231,7 @@ if ($method === 'POST') {
             'user_id' => $user['id'],
             'customer_name' => $customerName,
             'total' => $subtotal,
-            'created_at' => date('Y-m-d H:i:s'),
+            'created_at' => $createdAt,
             'order_type' => $orderType,
             'scheduled_time' => $scheduledTime,
             'address' => $address,
