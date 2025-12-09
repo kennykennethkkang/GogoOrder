@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const tr = document.createElement("tr");
 
       const itemCount = Array.isArray(order.items)
-        ? order.items.reduce((sum, item) => sum + (item.qty || 0), 0)
+        ? order.items.reduce((sum, item) => sum + Number(item.qty || 0), 0)
         : 0;
       
       // Build items detail HTML
