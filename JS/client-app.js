@@ -2,6 +2,7 @@
 // Customer home page: load menu, handle cart interactions, keep UI in sync.
 
 (function () {
+  // figure out base path and localStorage key
   const isHtmlSubdir = window.location.pathname.includes("/HTML/");
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
   const cartKey = "gogoCart";
@@ -12,6 +13,7 @@
   let searchTerm = "";
 
   function loadCart() {
+    // read cart from storage and normalize images
     try {
       const items = JSON.parse(localStorage.getItem(cartKey)) || [];
       return items.map((item) => ({
@@ -29,6 +31,7 @@
   }
 
   function addToCart(item) {
+    // add or bump item (with unique customizations) in cart
     const cart = loadCart();
     // Create a unique key based on id and customizations
     const customKey = JSON.stringify(item.customizations || []) + JSON.stringify(item.removedIngredients || []);
@@ -105,6 +108,7 @@
   }
 
   function renderCategories() {
+    // paint category pills in desired order
     const list = document.querySelector(".category-list");
     if (!list) return;
     list.innerHTML = "";
@@ -138,6 +142,7 @@
   }
 
   function renderMenuItems() {
+    // show menu cards based on category/search filters
     const container = document.querySelector(".menu-items");
     if (!container) return;
     container.innerHTML = "";
@@ -180,6 +185,7 @@
   }
 
   function renderCart() {
+    // draw the mini cart on the home page
     const cart = loadCart();
     const wrap = document.querySelector(".cart-items");
     const totalEl = document.querySelector("[data-cart-total]");
@@ -226,6 +232,7 @@
   }
 
   function showItemModal(item) {
+    // fill the item modal with info and ingredient toggles
     const modal = document.getElementById("item-modal");
     const modalDetails = document.getElementById("modal-item-details");
     if (!modal || !modalDetails) return;
@@ -315,6 +322,7 @@
   }
 
   function getRemovedIngredients(allIngredients, checkedBoxes) {
+    // figure out which removable ingredients the user unchecked
     const checkedIndices = Array.from(checkedBoxes).map(cb => parseInt(cb.getAttribute("data-ingredient")));
     const removed = [];
     allIngredients.forEach((ing, index) => {
@@ -327,6 +335,7 @@
   }
 
   function closeItemModal() {
+    // hide the item modal
     const modal = document.getElementById("item-modal");
     if (modal) {
       modal.classList.remove("show");
@@ -334,6 +343,7 @@
   }
 
   function attachCartListeners() {
+    // handle plus/minus/remove clicks and add-to-cart buttons
     document.addEventListener("click", (event) => {
       const addBtn = event.target.closest("[data-add-id]");
       if (addBtn) {
@@ -364,6 +374,7 @@
   }
 
   function attachCheckout() {
+    // checkout button jump to cart page
     const btn = document.querySelector(".checkout-btn");
     if (!btn) return;
     btn.addEventListener("click", () => {
@@ -373,6 +384,7 @@
   }
 
   function fetchMenu() {
+    // pull menu items from api then render everything
     fetch(`${apiBase}/api-menu.php`)
       .then((res) => res.json())
       .then((data) => {

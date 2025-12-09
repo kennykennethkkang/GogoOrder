@@ -1,10 +1,12 @@
 // JS/admin-dashboard.js
 document.addEventListener("DOMContentLoaded", () => {
+  // grab stat elements to fill later
   const pendingEl = document.getElementById("stat-pending");
   const todayCompletedEl = document.getElementById("stat-completed-today");
   const totalCompletedEl = document.getElementById("stat-completed-total");
   const menuEl = document.getElementById("stat-menu");
 
+  // load orders and menu in parallel
   Promise.all([
     fetch("../PHP/api-orders.php")
       .then((r) => r.json())
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(() => []),
   ])
     .then(([orders, menu]) => {
+      // compare to today's date prefix (YYYY-MM-DD)
       const todayPrefix = new Date().toISOString().slice(0, 10);
 
       let pending = 0;
@@ -23,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let totalCompleted = 0;
 
       orders.forEach((order) => {
+        // normalize status
         const statusLower = (order.status || "").toLowerCase();
         const isCompleted = ["completed", "complete", "done"].includes(statusLower);
         if (statusLower === "pending") pending++;

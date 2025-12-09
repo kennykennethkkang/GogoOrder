@@ -2,9 +2,11 @@
 // Combined account+password modal for both customers/admins.
 
 (function () {
+  // figure out api path depending on html subdir
   const isHtmlSubdir = window.location.pathname.includes("/HTML/");
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
 
+  // cache dropdown + modal elements
   const menuBtn = document.getElementById("user-menu-btn");
   const menu = document.getElementById("user-menu");
   const modal = document.getElementById("account-modal");
@@ -47,6 +49,7 @@
   });
 
   document.querySelectorAll("[data-open-profile]").forEach((btn) => {
+    // open modal when user picks account settings
     btn.addEventListener("click", () => {
       toggleMenu(false);
       openModal();
@@ -70,6 +73,7 @@
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+      // gather fields and send to profile api
       const data = new FormData(form);
       const payload = {
         first_name: data.get("first_name"),

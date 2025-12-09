@@ -1,6 +1,7 @@
 <?php
 // PHP/login.php
-// Login page with authentication check - includes HTML template
+// Login page with authentication check
+// if someone already logged in, this reroutes them so they don't see the form again
 
 require_once __DIR__ . '/../PHP/db.php';
 $user = gogo_current_user();

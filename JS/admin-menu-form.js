@@ -1,13 +1,17 @@
 // JS/admin-menu-form.js
 document.addEventListener("DOMContentLoaded", () => {
+  // base api path for admin pages
   const apiBase = "../PHP";
+  // main form on the page
   const form = document.getElementById("menu-form");
   if (!form) return;
 
+  // detect if we are adding or editing
   const mode = form.dataset.mode || "add";
   const idInput = document.getElementById("item-id");
   const params = new URLSearchParams(window.location.search);
   const editId = params.get("id");
+  // ingredient list helpers
   const ingredientsList = document.getElementById("ingredients-list");
   const addIngredientBtn = document.getElementById("add-ingredient-btn");
 
@@ -35,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getIngredients() {
+    // collect ingredient rows into an array for the request
     if (!ingredientsList) return [];
     const rows = ingredientsList.querySelectorAll(".ingredient-row");
     const ingredients = [];
@@ -63,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load existing data for edit mode
   if (mode === "edit" && editId) {
+    // load existing item so we can prefill the form
     fetch(`${apiBase}/api-menu.php`)
       .then((res) => res.json())
       .then((data) => {
@@ -88,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // bundle form data (including file upload)
     const formData = new FormData(form);
     
     // Collect ingredients data

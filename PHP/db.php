@@ -15,6 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 function gogo_db(): PDO
 {
+    // this keeps one sqlite connection around so we don't open new ones every time
     static $pdo = null;
     if ($pdo !== null) {
         return $pdo;
@@ -41,6 +42,7 @@ function gogo_bootstrap_schema(PDO $pdo): void
 {
     // Helper to add missing columns without migrations.
     $ensureColumn = static function (string $table, string $column, string $definition) use ($pdo): void {
+        // check if the column already exists before altering the table
         $exists = false;
         $cols = $pdo->query("PRAGMA table_info({$table})")->fetchAll(PDO::FETCH_ASSOC);
         foreach ($cols as $col) {
@@ -143,6 +145,7 @@ function gogo_bootstrap_schema(PDO $pdo): void
 
 function gogo_store_credentials(PDO $pdo, int $userId, string $username, string $passwordHash, string $role): void
 {
+    // this mirrors login info into the auth_credentials table so logins work off username/email
     if ($userId <= 0 || $username === '' || $passwordHash === '') {
         return;
     }
@@ -166,6 +169,7 @@ function gogo_store_credentials(PDO $pdo, int $userId, string $username, string 
 
 function gogo_backfill_credentials(PDO $pdo): void
 {
+    // make sure every user row also has a credentials row, useful for old data
     $users = $pdo->query('SELECT id, email, password_hash, role FROM users')->fetchAll(PDO::FETCH_ASSOC);
     foreach ($users as $user) {
         if (empty($user['email']) || empty($user['password_hash'])) {

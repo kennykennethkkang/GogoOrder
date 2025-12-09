@@ -10,6 +10,7 @@ $pdo = gogo_db();
 
 function seed_users(PDO $pdo, string $jsonPath, string $role): void
 {
+    // read json from disk, skip if it doesn't exist
     if (!is_readable($jsonPath)) {
         return;
     }
@@ -18,12 +19,14 @@ function seed_users(PDO $pdo, string $jsonPath, string $role): void
         return;
     }
 
+    // prepare insert into users table; ignore duplicates by id/email
     $ins = $pdo->prepare('
         INSERT OR IGNORE INTO users (id, first_name, last_name, email, phone, password_hash, role)
         VALUES (:id, :first, :last, :email, :phone, :pass, :role)
     ');
 
     foreach ($data as $row) {
+        // pull fields and give a default password if none is in the json
         $id = isset($row['id']) ? (int) $row['id'] : null;
         $email = $row['email'] ?? null;
         if (!$email) continue;
@@ -42,6 +45,7 @@ function seed_users(PDO $pdo, string $jsonPath, string $role): void
         ]);
 
         // Ensure credentials table mirrors the user record.
+        // this looks up the id we just inserted and saves to auth_credentials too
         $idStmt = $pdo->prepare('SELECT id FROM users WHERE email = :email LIMIT 1');
         $idStmt->execute([':email' => $email]);
         $dbId = (int) $idStmt->fetchColumn();
@@ -53,6 +57,7 @@ function seed_users(PDO $pdo, string $jsonPath, string $role): void
 
 function seed_menu(PDO $pdo, string $jsonPath): void
 {
+    // load menu json and insert rows if they aren't already there
     if (!is_readable($jsonPath)) return;
     $data = json_decode((string) file_get_contents($jsonPath), true);
     if (!is_array($data)) return;
@@ -75,6 +80,7 @@ function seed_menu(PDO $pdo, string $jsonPath): void
 }
 
 // Seed admins and customers
+// run both files so both roles are populated
 seed_users($pdo, __DIR__ . '/../JSON/admins.json', 'admin');
 seed_users($pdo, __DIR__ . '/../JSON/costumers.json', 'customer');
 

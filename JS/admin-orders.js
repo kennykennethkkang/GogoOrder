@@ -1,5 +1,6 @@
 // JS/admin-orders.js
 document.addEventListener("DOMContentLoaded", () => {
+  // api base and key elements on the admin orders page
   const apiBase = "../PHP";
   const tbody = document.getElementById("orders-tbody");
   const countEl = document.getElementById("order-count");
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const query = filterText.toLowerCase();
 
+    // basic search filter on id, customer, status
     const filtered = allOrders.filter((order) => {
       if (!query) return true;
       return (
@@ -33,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Build items detail HTML
       const itemsDetail = (order.items || [])
         .map((item) => {
+          // show description/customizations if present
           let customizationsHTML = "";
           let descriptionHTML = "";
           
@@ -79,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (statusLower === "cancelled" || statusLower === "canceled")
         statusClass = "admin-status-badge admin-status-cancelled";
 
+      // show order type/address/time info
       const type = (order.order_type || "pickup").toLowerCase();
       const typeText = type === "delivery" ? "Delivery" : "Pickup";
       const address = type === "delivery" ? order.address || "" : "";
@@ -150,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const cancelBtn = e.target.closest("[data-cancel-id]");
 
       if (completeBtn) {
+        // mark order completed
         const id = completeBtn.getAttribute("data-complete-id");
         fetch(`${apiBase}/api-orders.php?id=${encodeURIComponent(id)}`, {
           method: "PATCH",
@@ -168,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .catch((err) => alert(err.message || "Failed to update order"));
       } else if (cancelBtn) {
+        // mark order cancelled
         const id = cancelBtn.getAttribute("data-cancel-id");
         fetch(`${apiBase}/api-orders.php?id=${encodeURIComponent(id)}`, {
           method: "PATCH",

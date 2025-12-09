@@ -25,22 +25,26 @@
     },
     {
         "order_id": 2,
-        "name": "John",
+        "name": "John Doe",
         "phone": "555-9876",
         "type": "delivery",
-        "address": "123 Maple Street",
+        "address": "",
         "items": [
             {
-                "id": 42,
+                "id": 2,
                 "name": "John ehosidfj",
                 "qty": 1,
-                "price": 202020
+                "price": 202020,
+                "description": "",
+                "customizations": ""
             }
         ],
         "total": 202020,
         "status": "Completed",
-        "timestamp": "2025-12-04 22:38:51",
-        "user_id": 3
+        "timestamp": "2025-12-09 08:41:02",
+        "user_id": 3,
+        "order_type": "pickup",
+        "scheduled_time": ""
     },
     {
         "order_id": 3,
@@ -50,31 +54,42 @@
                 "id": 17,
                 "name": "Yellow Cake with Chocolate Frosting",
                 "qty": 1,
-                "price": 6.99
+                "price": 6.99,
+                "description": "",
+                "customizations": ""
             },
             {
                 "id": 13,
                 "name": "Cannoli",
                 "qty": 1,
-                "price": 7.49
+                "price": 7.49,
+                "description": "",
+                "customizations": ""
             },
             {
-                "id": 42,
+                "id": 5,
                 "name": "John ehosidfj",
                 "qty": 1,
-                "price": 202020
+                "price": 202020,
+                "description": "",
+                "customizations": ""
             },
             {
                 "id": 16,
                 "name": "Pear Tart",
                 "qty": 1,
-                "price": 7.99
+                "price": 7.99,
+                "description": "",
+                "customizations": ""
             }
         ],
         "total": 202042.47,
-        "status": "Pending",
-        "timestamp": "2025-12-04 23:02:18",
-        "user_id": 3
+        "status": "Cancelled",
+        "timestamp": "2025-12-09 08:40:53",
+        "user_id": 3,
+        "order_type": "pickup",
+        "scheduled_time": "",
+        "address": ""
     },
     {
         "order_id": 4,
@@ -155,5 +170,79 @@
         "scheduled_time": "2025-12-06T14:12",
         "address": "1474 lafayette street",
         "user_id": 5
+    },
+    {
+        "order_id": 7,
+        "name": "Admin User",
+        "items": [
+            {
+                "id": 24,
+                "name": "Pickled Shrimp",
+                "qty": 1,
+                "price": 7.49,
+                "description": "Fresh shrimp marinated in tangy pickling spices.",
+                "customizations": ""
+            },
+            {
+                "id": 25,
+                "name": "Smoked Salmon",
+                "qty": 1,
+                "price": 9.99,
+                "description": "Premium smoked salmon served with capers and cream cheese.",
+                "customizations": ""
+            },
+            {
+                "id": 22,
+                "name": "Goat Cheese Salami Stuffed Dates",
+                "qty": 1,
+                "price": 8.49,
+                "description": "Sweet dates stuffed with creamy goat cheese and salami.",
+                "customizations": ""
+            }
+        ],
+        "total": 25.97,
+        "status": "Completed",
+        "timestamp": "2025-12-09 10:27:59",
+        "order_type": "delivery",
+        "scheduled_time": "2025-12-09T02:26",
+        "address": "4444 jon ave san jose ca 21305",
+        "user_id": 1
+    },
+    {
+        "order_id": 8,
+        "name": "Admin User",
+        "items": [
+            {
+                "id": 10,
+                "name": "Shrimp Noodle",
+                "qty": 1,
+                "price": 14.99,
+                "description": "Fresh shrimp served over flavorful noodles.",
+                "customizations": ""
+            },
+            {
+                "id": 9,
+                "name": "Risotto with Mushrooms and Thyme",
+                "qty": 1,
+                "price": 13.99,
+                "description": "Creamy risotto with wild mushrooms and fresh thyme.",
+                "customizations": ""
+            },
+            {
+                "id": 5,
+                "name": "Clams with Sherry and Olives",
+                "qty": 1,
+                "price": 16.99,
+                "description": "Fresh clams cooked in sherry with briny olives.",
+                "customizations": ""
+            }
+        ],
+        "total": 45.97,
+        "status": "Completed",
+        "timestamp": "2025-12-09 10:32:30",
+        "order_type": "delivery",
+        "scheduled_time": "2025-12-09T02:32",
+        "address": "4444 jon ave san jose ca 21305",
+        "user_id": 1
     }
 ]

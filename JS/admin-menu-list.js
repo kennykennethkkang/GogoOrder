@@ -1,5 +1,6 @@
 // JS/admin-menu-list.js
 document.addEventListener("DOMContentLoaded", () => {
+  // setup table + search for admin menu list
   const apiBase = "../PHP";
   const tbody = document.getElementById("menu-tbody");
   const searchInput = document.getElementById("menu-search");
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const query = filterText.toLowerCase();
 
+    // filter by name or category if search is typed
     const filtered = allItems.filter((item) => {
       if (!query) return true;
       return (
@@ -64,11 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const deleteBtn = event.target.closest("[data-delete-id]");
 
       if (editBtn) {
+        // go to edit form with id in query
         const id = editBtn.getAttribute("data-edit-id");
         window.location.href = `admin-menu-edit.php?id=${encodeURIComponent(
           id
         )}`;
       } else if (deleteBtn) {
+        // confirm then delete from api
         const id = deleteBtn.getAttribute("data-delete-id");
         if (confirm("Delete this menu item?")) {
           fetch(`${apiBase}/api-menu.php?id=${encodeURIComponent(id)}`, {

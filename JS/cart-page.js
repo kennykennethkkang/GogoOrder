@@ -2,6 +2,7 @@
 // Cart page interactions + order submission.
 
 (function () {
+  // detect if path is under /HTML to set api paths and images
   const isHtmlSubdir = window.location.pathname.includes("/HTML/");
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
   const cartKey = "gogoCart";
@@ -46,6 +47,7 @@
   }
 
   function renderCart() {
+    // draw cart rows into the page
     const cart = loadCart();
     const list = document.querySelector("[data-cart-list]");
     const totalEl = document.querySelector("[data-cart-total]");
@@ -114,6 +116,7 @@
   }
 
   function submitOrder() {
+    // send cart to server as an order
     const cart = loadCart();
     if (cart.length === 0) {
       alert("Your cart is empty.");

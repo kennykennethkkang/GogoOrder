@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gogo Order - Orders</title>
+    <!-- include shared styles and fonts for the orders page -->
     <link rel="stylesheet" href="../base.css">
     <link rel="stylesheet" href="../CSS/customer-pages.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -15,18 +16,21 @@
 <body class="page-body">
     <div class="global-taskbar">
         <div class="taskbar-left">
+            <!-- logo takes you back home -->
             <a class="taskbar-logo-link" href="../index.php">
                 <img src="../img/logo.png" class="taskbar-logo" alt="Gogo Order">
                 <span class="taskbar-title">Gogo Order</span>
             </a>
         </div>
         <div class="taskbar-center">
+            <!-- simple nav links for customer view -->
             <a class="taskbar-link" href="../index.php">Home</a>
             <a class="taskbar-link" href="cart.php">Cart</a>
             <a class="taskbar-link" href="view-order.php">Orders</a>
         </div>
         <div class="taskbar-right">
             <div class="taskbar-user-menu">
+                <!-- account dropdown shows name and lets you jump to admin if allowed -->
                 <button class="user-menu-btn" id="user-menu-btn">
                     <?php echo isset($fullName) ? htmlspecialchars($fullName ?: 'Account') : 'Account'; ?>
                     <i class="fa-solid fa-caret-down"></i>

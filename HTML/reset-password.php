@@ -1,4 +1,6 @@
 <?php
+// reset-password.php
+// shows reset flow based on token status
 require_once __DIR__ . '/../PHP/auth.php';
 if (gogo_current_user()) {
     header('Location: ../index.php');
@@ -24,6 +26,7 @@ if ($token) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gogo Order - Reset Password</title>
+    <!-- auth styles + fonts -->
     <link rel="stylesheet" href="../CSS/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&display=swap"
@@ -39,12 +42,14 @@ if ($token) {
         <div class="auth-grid">
             <div class="auth-card">
                 <?php if (!$token): ?>
+                    <!-- no token provided -->
                     <h2 class="auth-title">Invalid Link</h2>
                     <p class="auth-subtitle">No reset token provided.</p>
                     <div class="auth-footer">
                         <a href="login.php">Back to Login</a>
                     </div>
                 <?php elseif (!$tokenValid): ?>
+                    <!-- token provided but not valid anymore -->
                     <h2 class="auth-title">Invalid or Expired Link</h2>
                     <p class="auth-subtitle">This password reset link is invalid or has expired.</p>
                     <div id="reset-error" class="auth-error" style="display:none;"></div>
@@ -53,6 +58,7 @@ if ($token) {
                         <a href="#" id="request-new-reset">Request New Reset Link</a>
                     </div>
                 <?php else: ?>
+                    <!-- token is ok, show reset form -->
                     <h2 class="auth-title">Reset Your Password</h2>
                     <p class="auth-subtitle">Enter your new password below.</p>
                     <div id="reset-error" class="auth-error" style="display:none;"></div>
@@ -85,4 +91,3 @@ if ($token) {
 </body>
 
 </html>
-

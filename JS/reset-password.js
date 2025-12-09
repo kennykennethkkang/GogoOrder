@@ -2,6 +2,7 @@
 // Handle password reset form submission and new reset request.
 
 (function () {
+  // grab reset form pieces
   const resetForm = document.getElementById("reset-password-form");
   const resetError = document.getElementById("reset-error");
   const resetSuccess = document.getElementById("reset-success");
@@ -12,6 +13,7 @@
       e.preventDefault();
       hideMsgs(resetError, resetSuccess);
 
+      // collect fields from the form
       const token = document.getElementById("reset-token")?.value;
       const password = document.getElementById("new-password")?.value;
       const confirmPassword = document.getElementById("confirm-new-password")?.value;
@@ -84,4 +86,3 @@
     });
   }
 })();
-

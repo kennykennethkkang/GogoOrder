@@ -5,6 +5,7 @@
     font-family: "Poppins", sans-serif;
 }
 
+/* general reset so everything starts from a clean slate */
 body {
     background: #e8f1f6;
 }
@@ -56,6 +57,7 @@ body {
     width: auto;
 }
 
+/* hide the old title because design moved to one logo */
 .taskbar-title {
     display: none;
 }
@@ -80,6 +82,7 @@ body {
     color: #ff7b29;
 }
 
+/* small admin chip styles */
 .taskbar-link-admin {
     font-weight: 600;
     border: 1px solid #ffd3aa;

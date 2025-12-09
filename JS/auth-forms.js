@@ -2,6 +2,7 @@
 // Unified login (customer + admin) and customer signup modal.
 
 (function () {
+  // cache a bunch of form/modal elements for login/signup/forgot flows
   const loginForm = document.getElementById("unified-login");
   const loginError = document.getElementById("login-error");
   const loginSuccess = document.getElementById("login-success");
@@ -23,6 +24,7 @@
 
 
   function toggleModal(modal, show) {
+    // quick helper to open/close modals
     if (!modal) return;
     modal.style.display = show ? "flex" : "none";
   }
@@ -47,6 +49,7 @@
 
   // Helper function to reset forgot password form
   function resetForgotPasswordForm() {
+    // hide all forgot-password sections and clear fields
     const questionContainer = document.getElementById("security-question-container");
     const answerContainer = document.getElementById("security-answer-container");
     const passwordContainer = document.getElementById("password-fields-container");
@@ -106,6 +109,7 @@
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
       hideMsgs(loginError, loginSuccess, signupError, signupSuccess, forgotError, forgotSuccess);
+      // build payload for unified login
       const data = new FormData(loginForm);
       const payload = {
         action: "login",
@@ -139,6 +143,7 @@
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       hideMsgs(loginError, loginSuccess, signupError, signupSuccess, forgotError, forgotSuccess);
+      // make sure passwords and security info are present
       const data = new FormData(signupForm);
       const password = data.get("password");
       const confirm = data.get("confirm_password");

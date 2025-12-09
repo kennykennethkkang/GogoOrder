@@ -5,6 +5,7 @@
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
 
   function setAdminVisibility(isAdmin) {
+    // toggle any links marked as admin-only
     document.querySelectorAll("[data-admin-link]").forEach((el) => {
       el.style.display = isAdmin ? (el.dataset.display || "block") : "none";
     });

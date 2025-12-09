@@ -1,6 +1,6 @@
 <?php
 // PHP/cart.php
-// Cart page with authentication and user data - includes HTML template
+// Cart page with authentication and user data
 
 require_once __DIR__ . '/../PHP/db.php';
 $user = gogo_require_login();

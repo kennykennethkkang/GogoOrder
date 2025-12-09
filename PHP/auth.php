@@ -8,6 +8,7 @@ require_once __DIR__ . '/db.php';
 
 function gogo_sync_user_json(array $user): void
 {
+    // keep the json file in sync with what's in sqlite for admins or customers
     $roleFile = $user['role'] === 'admin' ? __DIR__ . '/../JSON/admins.json' : __DIR__ . '/../JSON/costumers.json';
     $data = [];
     if (is_readable($roleFile)) {
@@ -69,6 +70,7 @@ function gogo_sync_user_json(array $user): void
 
 function gogo_register_user(array $data, string $role = 'customer'): array
 {
+    // handles sign up and drops the new person into the session
     $pdo = gogo_db();
     $email = strtolower(trim($data['email'] ?? ''));
     $password = $data['password'] ?? '';
@@ -135,6 +137,7 @@ function gogo_register_user(array $data, string $role = 'customer'): array
 
 function gogo_login_user(string $email, string $password, ?string $expectedRole = null): array
 {
+    // simple login: check email/password hash and set session
     $pdo = gogo_db();
     $email = strtolower(trim($email));
 
@@ -173,6 +176,7 @@ function gogo_login_user(string $email, string $password, ?string $expectedRole 
 
 function gogo_assert_admin(): array
 {
+    // quick helper to force admin-only routes
     return gogo_require_login('admin');
 }
 

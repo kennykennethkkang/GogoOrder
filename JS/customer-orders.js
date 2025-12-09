@@ -6,6 +6,7 @@
   const apiBase = isHtmlSubdir ? "../PHP" : "PHP";
 
   function formatDateTime(raw) {
+    // friendly date formatting, fallback if parsing fails
     if (!raw) return "";
     const parsed = new Date(raw);
     if (!isNaN(parsed.getTime())) {
@@ -15,6 +16,7 @@
   }
 
   function renderOrders(orders) {
+    // draw the list of orders for the current user
     const wrap = document.querySelector("[data-order-list]");
     if (!wrap) return;
     wrap.innerHTML = "";
@@ -130,6 +132,7 @@
   }
 
   function loadOrders() {
+    // fetch only the current user's orders
     fetch(`${apiBase}/api-orders.php?mine=1`)
       .then((res) => res.json())
       .then((data) => {

@@ -13,6 +13,7 @@ $input = json_decode((string) file_get_contents('php://input'), true) ?? [];
 
 function sync_order_json(array $order, array $items, string $status): void
 {
+    // save orders to the json file so front end demos can read from it too
     $jsonPath = __DIR__ . '/../JSON/orders.json';
     $data = [];
     if (is_readable($jsonPath)) {
@@ -31,6 +32,7 @@ function sync_order_json(array $order, array $items, string $status): void
     // Map line items
     $mappedItems = [];
     foreach ($items as $it) {
+        // keep any customizations to show later
         $customizations = '';
         if (!empty($it['customizations'])) {
             $customizations = $it['customizations'];
@@ -80,6 +82,7 @@ function sync_order_json(array $order, array $items, string $status): void
 }
 
 if ($method === 'GET') {
+    // list orders for either an admin or the current user
     $user = gogo_require_login();
     $isAdmin = $user['role'] === 'admin';
     $onlyMine = isset($_GET['mine']) && $_GET['mine'] !== '' ? true : false;
@@ -115,6 +118,7 @@ if ($method === 'GET') {
 }
 
 if ($method === 'POST') {
+    // creating a new order
     $user = gogo_require_login();
 
     $items = $input['items'] ?? [];
@@ -245,6 +249,7 @@ if ($method === 'POST') {
 }
 
 if ($method === 'PATCH' || $method === 'PUT') {
+    // update an order status (admin or owner)
     $current = gogo_require_login();
     $orderId = (int) ($_GET['id'] ?? ($input['id'] ?? 0));
     $status = trim($input['status'] ?? '');

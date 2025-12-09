@@ -1,6 +1,6 @@
 <?php
 // PHP/admin-menu-list.php
-// Admin menu list with authentication - includes HTML template
+// Admin menu list with authentication
 
 require_once __DIR__ . '/../PHP/db.php';
 $admin = gogo_require_login('admin');

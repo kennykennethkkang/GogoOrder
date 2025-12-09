@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gogo Order - Sign In</title>
+    <!-- auth styles + icons and fonts -->
     <link rel="stylesheet" href="../CSS/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Prata&family=Poppins:wght@300;400;500;600&display=swap"
@@ -19,6 +20,7 @@
         </div>
         <div class="auth-grid">
             <div class="auth-card">
+                <!-- main login form -->
                 <h2 class="auth-title">Sign In</h2>
                 <p class="auth-subtitle">Sign in to stay connected.</p>
                 <div id="login-error" class="auth-error" style="display:none;"></div>
@@ -47,6 +49,7 @@
                 </form>
             </div>
 
+            <!-- signup modal lives on same page for customers -->
             <div id="signup-modal" class="auth-modal" style="display:none;">
                 <div class="auth-modal-content">
                     <button class="auth-modal-close" id="close-signup">&times;</button>
@@ -112,6 +115,7 @@
                 </div>
             </div>
 
+            <!-- forgot password modal also shares the page -->
             <div id="forgot-password-modal" class="auth-modal" style="display:none;">
                 <div class="auth-modal-content">
                     <button class="auth-modal-close" id="close-forgot-password">&times;</button>

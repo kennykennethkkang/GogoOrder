@@ -10,6 +10,7 @@ $adminRedirect = isset($_SESSION['admin_redirect']);
 gogo_logout();
 
 // Determine correct login path based on current location
+// figuring out where to send user after logging out based on current path
 $loginPath = '/HTML/login.php';
 if (strpos($_SERVER['PHP_SELF'], '/HTML/') !== false) {
     $loginPath = 'login.php';
@@ -18,10 +19,10 @@ if (strpos($_SERVER['PHP_SELF'], '/HTML/') !== false) {
 }
 
 // If admin redirect was requested, add query parameter
+// attach admin=1 so the login page knows it came from admin flow
 if ($adminRedirect) {
     $loginPath .= (strpos($loginPath, '?') !== false ? '&' : '?') . 'admin=1';
 }
 
 header('Location: ' . $loginPath);
 exit;
-

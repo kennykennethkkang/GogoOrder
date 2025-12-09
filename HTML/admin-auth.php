@@ -1,5 +1,5 @@
 <?php
-// Admin auth - handles admin login flow
+// handles admin login flow
 require_once __DIR__ . '/../PHP/db.php';
 $user = gogo_current_user();
 

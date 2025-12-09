@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gogo Order - Add Admin</title>
 
+    <!-- shared base + admin styles -->
     <link rel="stylesheet" href="../base.css">
     <link rel="stylesheet" href="../CSS/admin.css">
 
@@ -53,6 +54,7 @@
             <header class="admin-header">
                 <div class="admin-header-right">
                     <a class="admin-switch" href="../index.php">Customer View</a>
+                    <!-- user dropdown for admin -->
                     <div class="taskbar-user-menu">
                         <button class="user-menu-btn" id="user-menu-btn">
                             <?php 
@@ -70,10 +72,13 @@
                 </div>
             </header>
 
+            <?php include __DIR__ . '/account-modal.html'; ?>
+
             <section class="admin-content">
                 <h1 class="admin-page-title">Add Admin</h1>
 
                 <div class="form-card">
+                    <!-- form to invite/create a new admin -->
                     <form id="add-admin-form">
                         <div class="form-grid">
                             <div class="form-field">
@@ -113,4 +118,3 @@
 </body>
 
 </html>
-
