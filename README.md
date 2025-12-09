@@ -11,6 +11,9 @@
 3) Admin portal: http://localhost:8000/HTML/admin-auth.php (enforces admin role).  
 4) Main app: http://localhost:8000/index.php (requires login); Cart at `/HTML/cart.php`; Orders at `/HTML/view-order.php`.
 
+## Run Webpage
+https://ssl.students.engr.scu.edu/~kkang/php-cgi/GogoOrder/HTML/login.php
+
 ## Seeding SQLite from JSON
 From the project root:
 ```bash
