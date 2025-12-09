@@ -75,6 +75,8 @@ function gogo_register_user(array $data, string $role = 'customer'): array
     $first = trim($data['first_name'] ?? '');
     $last = trim($data['last_name'] ?? '');
     $phone = trim($data['phone'] ?? '');
+    $securityQuestion = trim($data['security_question'] ?? '');
+    $securityAnswer = trim($data['security_answer'] ?? '');
 
     if ($email === '' || $password === '') {
         return ['ok' => false, 'message' => 'Email and password are required.'];
@@ -88,6 +90,10 @@ function gogo_register_user(array $data, string $role = 'customer'): array
         return ['ok' => false, 'message' => 'Password must be at least 6 characters.'];
     }
 
+    if ($securityQuestion === '' || $securityAnswer === '') {
+        return ['ok' => false, 'message' => 'Security question and answer are required.'];
+    }
+
     $role = $role === 'admin' ? 'admin' : 'customer';
 
     $check = $pdo->prepare('SELECT id FROM users WHERE email = :email LIMIT 1');
@@ -97,10 +103,11 @@ function gogo_register_user(array $data, string $role = 'customer'): array
     }
 
     $hash = password_hash($password, PASSWORD_DEFAULT);
+    $securityAnswerHash = password_hash(strtolower($securityAnswer), PASSWORD_DEFAULT);
 
     $stmt = $pdo->prepare('
-        INSERT INTO users (first_name, last_name, email, phone, password_hash, role)
-        VALUES (:first, :last, :email, :phone, :pass, :role)
+        INSERT INTO users (first_name, last_name, email, phone, password_hash, role, security_question, security_answer_hash)
+        VALUES (:first, :last, :email, :phone, :pass, :role, :security_q, :security_a)
     ');
 
     $stmt->execute([
@@ -110,6 +117,8 @@ function gogo_register_user(array $data, string $role = 'customer'): array
         ':phone' => $phone,
         ':pass' => $hash,
         ':role' => $role,
+        ':security_q' => $securityQuestion,
+        ':security_a' => $securityAnswerHash,
     ]);
 
     $id = (int) $pdo->lastInsertId();
@@ -183,7 +192,7 @@ function gogo_request_password_reset(string $email): array
 
     // Always return success to prevent email enumeration
     if (!$user) {
-        return ['ok' => true, 'message' => 'If an account exists with that email, a password reset link has been sent.'];
+        return ['ok' => true, 'message' => 'If an account exists with that email, a password reset link has been generated.'];
     }
 
     // Invalidate any existing tokens for this user
@@ -204,20 +213,16 @@ function gogo_request_password_reset(string $email): array
         ':expires' => $expiresAt,
     ]);
 
-    // For local development: return the reset link in the response
-    // In production, you would send an email here
+    // Generate the reset link
     $resetUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')
         . '://' . $_SERVER['HTTP_HOST']
         . dirname($_SERVER['PHP_SELF'])
         . '/HTML/reset-password.php?token=' . $token;
 
-    // In production, send email here using mail() or a service like PHPMailer
-    // For now, we'll return it in the response for local dev
     return [
         'ok' => true,
         'message' => 'Password reset link has been generated.',
-        'reset_url' => $resetUrl, // Only for local dev - remove in production
-        'dev_note' => 'In production, this link would be sent via email.',
+        'reset_url' => $resetUrl,
     ];
 }
 
@@ -276,6 +281,86 @@ function gogo_reset_password(string $token, string $newPassword): array
     $stmt->execute([':uid' => $userId, ':token' => $token]);
 
     return ['ok' => true, 'message' => 'Password has been reset successfully.'];
+}
+
+function gogo_get_security_question(string $email): array
+{
+    $pdo = gogo_db();
+    $email = strtolower(trim($email));
+
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return ['ok' => false, 'message' => 'Valid email is required.'];
+    }
+
+    // Find user by email
+    $stmt = $pdo->prepare('SELECT security_question FROM users WHERE email = :email LIMIT 1');
+    $stmt->execute([':email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Check if account exists
+    if (!$user) {
+        return ['ok' => false, 'message' => 'Account does not exist with this email.'];
+    }
+
+    // Check if security question is set
+    if (empty($user['security_question'])) {
+        return ['ok' => false, 'message' => 'No security question found for this account. Please contact support.'];
+    }
+
+    return ['ok' => true, 'security_question' => $user['security_question']];
+}
+
+function gogo_reset_password_by_email(string $email, string $securityAnswer, string $newPassword): array
+{
+    $pdo = gogo_db();
+    $email = strtolower(trim($email));
+    $securityAnswer = trim($securityAnswer);
+    $newPassword = trim($newPassword);
+
+    if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return ['ok' => false, 'message' => 'Valid email is required.'];
+    }
+
+    if ($securityAnswer === '') {
+        return ['ok' => false, 'message' => 'Security answer is required.'];
+    }
+
+    if ($newPassword === '') {
+        return ['ok' => false, 'message' => 'Password is required.'];
+    }
+
+    if (strlen($newPassword) < 6) {
+        return ['ok' => false, 'message' => 'Password must be at least 6 characters.'];
+    }
+
+    // Find user by email
+    $stmt = $pdo->prepare('SELECT id, role, security_question, security_answer_hash FROM users WHERE email = :email LIMIT 1');
+    $stmt->execute([':email' => $email]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Always return success to prevent email enumeration
+    if (!$user) {
+        return ['ok' => true, 'message' => 'Password reset completed.'];
+    }
+
+    // Verify security answer
+    if (empty($user['security_answer_hash']) || !password_verify(strtolower($securityAnswer), $user['security_answer_hash'])) {
+        return ['ok' => false, 'message' => 'Incorrect security answer.'];
+    }
+
+    $userId = (int) $user['id'];
+    $role = $user['role'] ?? 'customer';
+    $newHash = password_hash($newPassword, PASSWORD_DEFAULT);
+
+    // Update password in users table
+    $stmt = $pdo->prepare('UPDATE users SET password_hash = :hash WHERE id = :uid');
+    $stmt->execute([':hash' => $newHash, ':uid' => $userId]);
+
+    // Update or insert password in auth_credentials table using the helper function
+    // This ensures the row exists and is properly synced (uses INSERT ... ON CONFLICT)
+    gogo_store_credentials($pdo, $userId, $email, $newHash, $role);
+
+    return ['ok' => true, 'message' => 'Your password has been reset successfully. You can now sign in with your new password.'];
 }
 
 function gogo_verify_reset_token(string $token): array

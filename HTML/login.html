@@ -83,6 +83,26 @@
                                 <input id="confirm-password" name="confirm_password" type="password" placeholder="Confirm password" required>
                             </div>
                         </div>
+                        <div>
+                            <label for="security-question">Security Question <span class="required-star">*</span></label>
+                            <select id="security-question" name="security_question" required>
+                                <option value="">Select a security question</option>
+                                <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+                                <option value="What city were you born in?">What city were you born in?</option>
+                                <option value="What was your mother's maiden name?">What was your mother's maiden name?</option>
+                                <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
+                                <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+                                <option value="What is the name of your favorite teacher?">What is the name of your favorite teacher?</option>
+                                <option value="What street did you grow up on?">What street did you grow up on?</option>
+                                <option value="What was the make of your first car?">What was the make of your first car?</option>
+                                <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                <option value="What is the name of your best friend from childhood?">What is the name of your best friend from childhood?</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="security-answer">Security Answer <span class="required-star">*</span></label>
+                            <input id="security-answer" name="security_answer" type="text" placeholder="Enter your answer" required>
+                        </div>
                         <div class="auth-checkbox">
                             <input type="checkbox" id="terms" required>
                             <label for="terms">I agree with the terms of use <span class="required-star">*</span></label>
@@ -96,7 +116,7 @@
                 <div class="auth-modal-content">
                     <button class="auth-modal-close" id="close-forgot-password">&times;</button>
                     <h2 class="auth-title">Reset Password</h2>
-                    <p class="auth-subtitle">Enter your email to receive a password reset link.</p>
+                    <p class="auth-subtitle">Enter your email, answer your security question, and set a new password.</p>
                     <div id="forgot-error" class="auth-error" style="display:none;"></div>
                     <div id="forgot-success" class="auth-success" style="display:none;"></div>
                     <form class="auth-form" id="forgot-password-form">
@@ -104,7 +124,26 @@
                             <label for="forgot-email">Email <span class="required-star">*</span></label>
                             <input id="forgot-email" name="email" type="email" placeholder="Enter your email" required>
                         </div>
-                        <button class="auth-btn" type="submit">Send Reset Link</button>
+                        <div id="security-question-container" style="display:none;">
+                            <label for="forgot-security-question-display">Security Question</label>
+                            <input id="forgot-security-question-display" type="text" readonly disabled>
+                        </div>
+                        <div id="security-answer-container" style="display:none;">
+                            <label for="forgot-security-answer">Security Answer <span class="required-star">*</span></label>
+                            <input id="forgot-security-answer" name="security_answer" type="text" placeholder="Enter your security answer" required>
+                        </div>
+                        <div id="password-fields-container" style="display:none;">
+                            <div>
+                                <label for="forgot-password">New Password <span class="required-star">*</span></label>
+                                <input id="forgot-password" name="password" type="password" placeholder="Enter new password" required minlength="6">
+                            </div>
+                            <div>
+                                <label for="forgot-confirm-password">Confirm New Password <span class="required-star">*</span></label>
+                                <input id="forgot-confirm-password" name="confirm_password" type="password" placeholder="Confirm new password" required minlength="6">
+                            </div>
+                        </div>
+                        <button class="auth-btn" type="button" id="forgot-check-email-btn">Check Email</button>
+                        <button class="auth-btn" type="submit" id="forgot-submit-btn" style="display:none;">Reset Password</button>
                         <div class="auth-footer">
                             <a href="#" id="close-forgot-password-link">Back to Login</a>
                         </div>

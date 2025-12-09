@@ -45,28 +45,60 @@
     });
   }
 
+  // Helper function to reset forgot password form
+  function resetForgotPasswordForm() {
+    const questionContainer = document.getElementById("security-question-container");
+    const answerContainer = document.getElementById("security-answer-container");
+    const passwordContainer = document.getElementById("password-fields-container");
+    const submitBtn = document.getElementById("forgot-submit-btn");
+    const checkEmailBtn = document.getElementById("forgot-check-email-btn");
+    
+    if (questionContainer) questionContainer.style.display = "none";
+    if (answerContainer) answerContainer.style.display = "none";
+    if (passwordContainer) passwordContainer.style.display = "none";
+    if (submitBtn) submitBtn.style.display = "none";
+    if (checkEmailBtn) checkEmailBtn.style.display = "block";
+    
+    // Clear form fields
+    const emailField = document.getElementById("forgot-email");
+    const answerField = document.getElementById("forgot-security-answer");
+    const passwordField = document.getElementById("forgot-password");
+    const confirmPasswordField = document.getElementById("forgot-confirm-password");
+    
+    if (emailField) emailField.value = "";
+    if (answerField) answerField.value = "";
+    if (passwordField) passwordField.value = "";
+    if (confirmPasswordField) confirmPasswordField.value = "";
+  }
+
   if (openForgot) {
     openForgot.addEventListener("click", (e) => {
       e.preventDefault();
       hideMsgs(loginError, loginSuccess, signupError, signupSuccess, forgotError, forgotSuccess);
+      resetForgotPasswordForm();
       toggleModal(forgotModal, true);
     });
   }
   if (closeForgot) {
     closeForgot.addEventListener("click", (e) => {
       e.preventDefault();
+      resetForgotPasswordForm();
       toggleModal(forgotModal, false);
     });
   }
   if (closeForgotLink) {
     closeForgotLink.addEventListener("click", (e) => {
       e.preventDefault();
+      resetForgotPasswordForm();
       toggleModal(forgotModal, false);
     });
   }
   if (forgotModal) {
     forgotModal.addEventListener("click", (e) => {
-      if (e.target === forgotModal) toggleModal(forgotModal, false);
+      if (e.target === forgotModal) {
+        resetForgotPasswordForm();
+        toggleModal(forgotModal, false);
+      }
     });
   }
 
@@ -115,6 +147,14 @@
         return;
       }
 
+      const securityQuestion = data.get("security_question");
+      const securityAnswer = data.get("security_answer");
+      
+      if (!securityQuestion || !securityAnswer) {
+        showMsg(signupError, "Security question and answer are required.");
+        return;
+      }
+
       const payload = {
         action: "signup",
         role: "customer",
@@ -124,6 +164,8 @@
         phone: data.get("phone"),
         password,
         confirm_password: confirm,
+        security_question: securityQuestion,
+        security_answer: securityAnswer,
       };
 
       fetch("../PHP/api-auth.php", {
@@ -145,8 +187,10 @@
     });
   }
 
-  if (forgotForm) {
-    forgotForm.addEventListener("submit", (e) => {
+  // Handle "Check Email" button click
+  const checkEmailBtn = document.getElementById("forgot-check-email-btn");
+  if (checkEmailBtn) {
+    checkEmailBtn.addEventListener("click", (e) => {
       e.preventDefault();
       hideMsgs(loginError, loginSuccess, signupError, signupSuccess, forgotError, forgotSuccess);
       const email = document.getElementById("forgot-email")?.value;
@@ -156,41 +200,133 @@
         return;
       }
 
+      // Get security question for this email
+      fetch(`../PHP/api-auth.php?action=get-security-question&email=${encodeURIComponent(email)}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json().then((body) => [res.ok, body]))
+        .then(([ok, body]) => {
+          if (!ok || body.error) {
+            // Show error message (e.g., "Account does not exist with this email")
+            showMsg(forgotError, body.error || body.message || "Failed to get security question");
+            return;
+          }
+          
+          if (!body.security_question) {
+            showMsg(forgotError, "No security question found for this account.");
+            return;
+          }
+          
+          // Show security question and answer field
+          const questionDisplay = document.getElementById("forgot-security-question-display");
+          const questionContainer = document.getElementById("security-question-container");
+          const answerContainer = document.getElementById("security-answer-container");
+          const passwordContainer = document.getElementById("password-fields-container");
+          const submitBtn = document.getElementById("forgot-submit-btn");
+          
+          if (questionDisplay && questionContainer && answerContainer && passwordContainer && submitBtn) {
+            questionDisplay.value = body.security_question || "";
+            questionContainer.style.display = "block";
+            answerContainer.style.display = "block";
+            passwordContainer.style.display = "block";
+            checkEmailBtn.style.display = "none";
+            submitBtn.style.display = "block";
+          }
+        })
+        .catch((err) => showMsg(forgotError, err.message || "Failed to get security question"));
+    });
+  }
+
+  if (forgotForm) {
+    forgotForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      hideMsgs(loginError, loginSuccess, signupError, signupSuccess, forgotError, forgotSuccess);
+      const email = document.getElementById("forgot-email")?.value;
+      const securityAnswer = document.getElementById("forgot-security-answer")?.value;
+      const password = document.getElementById("forgot-password")?.value;
+      const confirmPassword = document.getElementById("forgot-confirm-password")?.value;
+
+      if (!email) {
+        showMsg(forgotError, "Email is required.");
+        return;
+      }
+
+      if (!securityAnswer) {
+        showMsg(forgotError, "Security answer is required.");
+        return;
+      }
+
+      if (!password) {
+        showMsg(forgotError, "Password is required.");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMsg(forgotError, "Passwords do not match.");
+        return;
+      }
+
+      if (password.length < 6) {
+        showMsg(forgotError, "Password must be at least 6 characters.");
+        return;
+      }
+
       fetch("../PHP/api-auth.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          action: "request-reset",
+          action: "reset-by-email",
           email: email,
+          security_answer: securityAnswer,
+          password: password,
         }),
       })
         .then((res) => res.json().then((body) => [res.ok, body]))
         .then(([ok, body]) => {
           if (!ok || body.error) {
-            throw new Error(body.error || "Failed to send reset link");
+            throw new Error(body.error || "Failed to reset password");
           }
-          let message = body.message || "Password reset link has been sent.";
           
-          // For local dev: show the reset URL
-          if (body.reset_url) {
-            message += "\n\nReset link (for local development):\n" + body.reset_url;
-            showMsg(forgotSuccess, message);
-            // Copy to clipboard if possible
-            if (navigator.clipboard) {
-              navigator.clipboard.writeText(body.reset_url).then(() => {
-                console.log("Reset link copied to clipboard");
-              });
-            }
-          } else {
-            showMsg(forgotSuccess, message);
-          }
+          // Use explicit message that doesn't mention links
+          const successMessage = body.message && !body.message.toLowerCase().includes('link') 
+            ? body.message 
+            : "Password has been reset successfully!";
+          showMsg(forgotSuccess, successMessage);
           
           // Clear the form
           if (document.getElementById("forgot-email")) {
             document.getElementById("forgot-email").value = "";
           }
+          if (document.getElementById("forgot-security-answer")) {
+            document.getElementById("forgot-security-answer").value = "";
+          }
+          if (document.getElementById("forgot-password")) {
+            document.getElementById("forgot-password").value = "";
+          }
+          if (document.getElementById("forgot-confirm-password")) {
+            document.getElementById("forgot-confirm-password").value = "";
+          }
+
+          // Reset form visibility
+          const questionContainer = document.getElementById("security-question-container");
+          const answerContainer = document.getElementById("security-answer-container");
+          const passwordContainer = document.getElementById("password-fields-container");
+          const submitBtn = document.getElementById("forgot-submit-btn");
+          if (questionContainer && answerContainer && passwordContainer && submitBtn && checkEmailBtn) {
+            questionContainer.style.display = "none";
+            answerContainer.style.display = "none";
+            passwordContainer.style.display = "none";
+            submitBtn.style.display = "none";
+            checkEmailBtn.style.display = "block";
+          }
+
+          // Close modal after a short delay
+          setTimeout(() => {
+            toggleModal(forgotModal, false);
+          }, 2000);
         })
-        .catch((err) => showMsg(forgotError, err.message || "Failed to send reset link"));
+        .catch((err) => showMsg(forgotError, err.message || "Failed to reset password"));
     });
   }
 })();
