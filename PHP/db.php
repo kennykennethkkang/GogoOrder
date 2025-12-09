@@ -63,9 +63,13 @@ function gogo_bootstrap_schema(PDO $pdo): void
             phone TEXT,
             password_hash TEXT NOT NULL,
             role TEXT NOT NULL CHECK(role IN ('customer', 'admin')),
+            security_question TEXT,
+            security_answer_hash TEXT,
             created_at TEXT DEFAULT CURRENT_TIMESTAMP
         );
     SQL);
+    $ensureColumn('users', 'security_question', 'TEXT');
+    $ensureColumn('users', 'security_answer_hash', 'TEXT');
 
     $pdo->exec(<<<SQL
         CREATE TABLE IF NOT EXISTS auth_credentials (

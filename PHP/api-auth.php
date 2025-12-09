@@ -12,8 +12,17 @@ $input = json_decode((string) file_get_contents('php://input'), true) ?? [];
 $action = $_GET['action'] ?? $input['action'] ?? null;
 
 if ($method === 'GET') {
-    $user = gogo_current_user();
-    json_response(['user' => $user]);
+    if ($action === 'get-security-question') {
+        $email = $_GET['email'] ?? '';
+        $result = gogo_get_security_question($email);
+        if (!$result['ok']) {
+            json_response(['error' => $result['message']], 400);
+        }
+        json_response($result);
+    } else {
+        $user = gogo_current_user();
+        json_response(['user' => $user]);
+    }
 }
 
 if ($method === 'POST') {
@@ -46,6 +55,17 @@ if ($method === 'POST') {
     if ($action === 'request-reset') {
         $email = $input['email'] ?? ($_POST['email'] ?? '');
         $result = gogo_request_password_reset($email);
+        if (!$result['ok']) {
+            json_response(['error' => $result['message']], 400);
+        }
+        json_response($result);
+    }
+
+    if ($action === 'reset-by-email') {
+        $email = $input['email'] ?? ($_POST['email'] ?? '');
+        $securityAnswer = $input['security_answer'] ?? ($_POST['security_answer'] ?? '');
+        $password = $input['password'] ?? ($_POST['password'] ?? '');
+        $result = gogo_reset_password_by_email($email, $securityAnswer, $password);
         if (!$result['ok']) {
             json_response(['error' => $result['message']], 400);
         }

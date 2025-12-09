@@ -71,16 +71,16 @@
         .then((res) => res.json().then((body) => [res.ok, body]))
         .then(([ok, body]) => {
           if (!ok || body.error) {
-            alert(body.error || "Failed to request reset link");
+            alert(body.error || "Failed to generate reset link");
             return;
           }
           if (body.reset_url) {
-            alert("Reset link (for local dev):\n\n" + body.reset_url + "\n\nIn production, this would be sent via email.");
+            alert("Password reset link:\n\n" + body.reset_url);
           } else {
-            alert(body.message || "Reset link has been sent.");
+            alert(body.message || "Password reset link has been generated.");
           }
         })
-        .catch((err) => alert(err.message || "Failed to request reset link"));
+        .catch((err) => alert(err.message || "Failed to generate reset link"));
     });
   }
 })();
